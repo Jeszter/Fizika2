@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fyzika II | Vzdelávací portál</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-theme="light">
+<div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+</div>
+
+<div class="animated-bg"></div>
+<div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+</div>
+
+<div id="header-container"></div>
+
+<div class="app-container">
+    <div id="sidebar-container"></div>
+
+    <div class="main-content" id="mainContent">
+        <div class="content-header">
+            <h1><i class="fas fa-bolt"></i> Coulombov zákon</h1>
+        </div>
+
+        <div id="content-container">
+        </div>
+        <div class="navigation-buttons" id="navigationButtons">
+            <button class="btn btn-secondary" onclick="navigateToPrevious()" id="prevBtn">
+                <i class="fas fa-arrow-left"></i> Späť
+            </button>
+
+            <button class="btn btn-test-middle" onclick="loadCurrentSectionTest()" id="testBtn">
+                <i class="fas fa-file-pen"></i> Test z tejto témy
+            </button>
+
+            <button class="btn btn-primary" onclick="navigateToNext()" id="nextBtn">
+                Ďalej <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script src="./js/test-template.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
