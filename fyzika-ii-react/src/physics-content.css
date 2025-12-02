@@ -1,0 +1,320 @@
+
+
+.physics-content {
+    position: relative;
+    z-index: 1;
+}
+
+.physics-content * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Section */
+.physics-content .section {
+    display: none;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    animation: fadeIn 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.physics-content .section.active {
+    display: block;
+}
+
+/* Headers */
+.physics-content .section h2 {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.physics-content .section h2 i {
+    color: var(--primary-blue);
+}
+
+.physics-content .section h3 {
+    color: var(--text-dark);
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.physics-content .section h3 i {
+    color: var(--accent-teal);
+}
+
+/* Paragraphs and Lists */
+.physics-content .section p {
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.physics-content .section ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.physics-content .section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    color: var(--text-light);
+    position: relative;
+}
+
+.physics-content .section li::before {
+    content: "•";
+    color: var(--primary-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Equation with border and number */
+.physics-content .equation {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.physics-content .equation-content {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin: 0;
+}
+
+.physics-content .equation-number {
+    float: right;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: -2.5rem;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+
+.physics-content .formula-container {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--primary-blue-bg) 100%);
+    border-left: 4px solid var(--primary-blue);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--border);
+}
+
+.dark .physics-content .formula-container {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+}
+
+.physics-content .formula-container:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.physics-content .formula {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 1rem 0;
+    padding: 1.5rem;
+    background: var(--background);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid var(--border);
+    color: var(--primary-blue);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.physics-content .formula:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.physics-content .formula-number {
+    float: right;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: -2.5rem;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Theory image centered */
+.physics-content .theory-image {
+    text-align: center;
+    margin: 2rem 0;
+    transition: var(--transition);
+}
+
+.physics-content .theory-image:hover {
+    transform: scale(1.02);
+}
+
+.physics-content .theory-image img {
+    max-width: 100%;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: block;
+    margin: 0 auto;
+}
+
+.physics-content .theory-image img:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.physics-content .image-caption {
+    font-style: italic;
+    margin-top: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* Example */
+.physics-content .example {
+    background: linear-gradient(135deg, var(--primary-blue-bg) 0%, rgba(224, 242, 254, 0.5) 100%);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-left: 4px solid var(--accent-teal);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--border);
+}
+
+.dark .physics-content .example {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+}
+
+.physics-content .example:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.physics-content .example::before {
+    content: "Príklad";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-teal);
+    color: white;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 0 0 0 var(--radius);
+}
+
+/* Formula variables */
+.physics-content .formula-variables {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.physics-content .variable {
+    flex: 1;
+    min-width: 120px;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.physics-content .variable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.physics-content .variable strong {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* Math styling */
+.physics-content .math {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(100px, 50px) rotate(90deg); }
+    50% { transform: translate(50px, 100px) rotate(180deg); }
+    75% { transform: translate(-50px, 75px) rotate(270deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .physics-content .section {
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .physics-content .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .physics-content .section h3 {
+        font-size: 1.1rem;
+    }
+
+    .physics-content .formula {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+
+    .physics-content .theory-image img {
+        border-radius: var(--radius-lg);
+    }
+
+    .physics-content .example {
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .physics-content .formula-container {
+        padding: 1rem;
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    }
+}

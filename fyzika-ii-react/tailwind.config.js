@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -29,84 +28,31 @@ export default {
             },
             animation: {
                 'float': 'float 20s infinite linear',
-                'float-slow': 'float 30s infinite linear',
+                'spin-slow': 'spin 60s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                 'fade-in': 'fadeIn 0.6s ease forwards',
                 'slide-up': 'slideUp 0.8s ease forwards',
-                'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-                'scale-in': 'scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-                'text-reveal': 'textReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards',
             },
             keyframes: {
                 float: {
-                    '0%, 100%': {
-                        transform: 'translate(0, 0) rotate(0deg)'
-                    },
-                    '25%': {
-                        transform: 'translate(100px, 50px) rotate(90deg)'
-                    },
-                    '50%': {
-                        transform: 'translate(50px, 100px) rotate(180deg)'
-                    },
-                    '75%': {
-                        transform: 'translate(-50px, 75px) rotate(270deg)'
-                    },
+                    '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+                    '33%': { transform: 'translate(30px, -50px) rotate(120deg)' },
+                    '66%': { transform: 'translate(-20px, 20px) rotate(240deg)' },
                 },
                 fadeIn: {
-                    '0%': {
-                        opacity: '0',
-                        transform: 'translateY(10px)'
-                    },
-                    '100%': {
-                        opacity: '1',
-                        transform: 'translateY(0)'
-                    },
+                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
                 slideUp: {
-                    '0%': {
-                        opacity: '0',
-                        transform: 'translateY(30px)'
-                    },
-                    '100%': {
-                        opacity: '1',
-                        transform: 'translateY(0)'
-                    },
-                },
-                fadeInUp: {
-                    '0%': {
-                        opacity: '0',
-                        transform: 'translateY(30px)'
-                    },
-                    '100%': {
-                        opacity: '1',
-                        transform: 'translateY(0)'
-                    }
-                },
-                scaleIn: {
-                    '0%': {
-                        opacity: '0',
-                        transform: 'scale(0.8)'
-                    },
-                    '100%': {
-                        opacity: '1',
-                        transform: 'scale(1)'
-                    }
-                },
-                textReveal: {
-                    '0%': {
-                        opacity: '0',
-                        transform: 'translateY(20px)'
-                    },
-                    '100%': {
-                        opacity: '1',
-                        transform: 'translateY(0)'
-                    }
+                    '0%': { opacity: '0', transform: 'translateY(30px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
             },
             borderRadius: {
                 'custom': '20px',
                 'custom-lg': '28px',
                 'custom-xl': '36px',
+                'custom-2xl': '48px',
             },
             boxShadow: {
                 'custom': '0 8px 30px rgba(37, 99, 235, 0.15)',
@@ -115,9 +61,6 @@ export default {
                 'dark-custom': '0 8px 30px rgba(0, 0, 0, 0.3)',
                 'dark-custom-lg': '0 20px 60px rgba(0, 0, 0, 0.4)',
                 'dark-custom-hover': '0 25px 80px rgba(0, 0, 0, 0.5)',
-            },
-            transitionDuration: {
-                '600': '600ms',
             },
             backdropBlur: {
                 'xs': '2px',

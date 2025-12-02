@@ -1,0 +1,214 @@
+
+<div class="section active" id="praca-potencial">
+        <h2><i class="fas fa-battery-three-quarters"></i> 1.4 Práca a potenciálna energia v elektrostatickom poli, elektrický potenciál</h2>
+
+        <p>Elektrostatické pole vytvorené v okolí nabitých telies môže byť popísané nielen pomocou vektora \(\vec{E}\), ale aj pomocou skalárnej veličiny \(\phi\), ktorá sa nazýva elektrický potenciál. Táto skalárna veličina je definovaná pomocou potenciálnej energie náboja v elektrickom poli.</p>
+
+        <p>Predstavme si kladný náboj \(q\) uložený v elektrostatickom poli intenzity \(\vec{E}\). Sila \(\vec{F}_{el}\), ktorá pôsobí na tento náboj, je daná vzťahom:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\vec{F}_{el} = q \vec{E}\]
+            </div>
+        </div>
+
+        <p>Práca vykonaná touto silou pri premiestnení náboja \(q\) z bodu 1 do bodu 2 je:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[W = \int_{\vec{r}_1}^{\vec{r}_2} \vec{F}_{el} \cdot d\vec{r} = q \int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r}\]
+            </div>
+            <span class="equation-number">(1.8)</span>
+        </div>
+
+        <h3><i class="fas fa-compress-arrows-alt"></i> Práca v poli bodového náboja</h3>
+
+        <p>Nech je elektrické pole \(\vec{E}\) vytvorené kladným bodovým nábojom \(Q\) a \(\vec{r}\) je polohový vektor náboja \(q\) vzhľadom na náboj \(Q\) (Obr. 1.10). Práca vykonaná poľom náboja \(Q\), pri premiestnení náboja \(q\) z bodu 1 do bodu 2, je</p>
+
+        <div class="theory-image">
+            <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Práca+v+poli+bodového+náboja" alt="Práca pri premiestnení náboja v poli bodového náboja">
+            <div class="image-caption">Obr. 1.10: K výpočtu práce v poli bodového náboja</div>
+        </div>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[
+                \begin{aligned}
+                W &= q \int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r} = q \int_{\vec{r}_1}^{\vec{r}_2} \frac{Q}{4\pi\varepsilon_0} \frac{\vec{r} \cdot d\vec{r}}{r^3} = \frac{qQ}{4\pi\varepsilon_0} \int_{r_1}^{r_2} \frac{dr}{r^2} = \\
+                &= \frac{qQ}{4\pi\varepsilon_0} \left[ -\frac{1}{r} \right]_{r_1}^{r_2} = \frac{qQ}{4\pi\varepsilon_0} \frac{1}{r_1} - \frac{qQ}{4\pi\varepsilon_0} \frac{1}{r_2}
+                \end{aligned}
+                \]
+            </div>
+            <span class="equation-number">(1.9)</span>
+        </div>
+
+        <p>a závisí iba od polohy týchto bodov a nezávisí od prejdenej dráhy. Z (1.9) je tiež vidno, že ak sa náboj \(q\) pohybuje po uzavretej dráhe, t.j. vráti sa do východiskového bodu, práca elektrostatickej sily je rovná nule. Je to základná vlastnosť elektrostatického poľa a môžeme ju zapísať vzťahom</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\oint \vec{F} \cdot d\vec{r} = 0\]
+            </div>
+        </div>
+
+        <p>Táto rovnica hovorí, že elektrostatická sila je konzervatívna sila. Teda náboj v elektrostatickom poli má potenciálnu energiu \(E_p\), ktorej zmena súvisí s prácou síl elektrostatického poľa podľa nasledovného vyťahu</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\Delta E_p = E_{p2} - E_{p1} = -W = -\int_{\vec{r}_1}^{\vec{r}_2} \vec{F}_{el} \cdot d\vec{r} = -q \int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r}\]
+            </div>
+        </div>
+
+        <p>V poli bodového náboja môžeme písať</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\Delta E_p = \frac{qQ}{4\pi\varepsilon_0} \frac{1}{r_2} - \frac{qQ}{4\pi\varepsilon_0} \frac{1}{r_1}\]
+            </div>
+        </div>
+
+        <h3><i class="fas fa-sliders-h"></i> Definícia elektrického potenciálu</h3>
+
+        <p>Potenciál \(\phi\) elektrostatického poľa definujeme ako podiel potenciálnej energie bodového náboja \(q\) v danom mieste a tohto náboja:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\phi = \frac{E_p}{q}\]
+            </div>
+        </div>
+
+        <p>Pre rozdiel elektrických potenciálov medzi bodmi 1 a 2 máme</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\Delta\phi = \phi_2 - \phi_1 = \frac{E_{p2}}{q} - \frac{E_{p1}}{q} = -\int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r}\]
+            </div>
+            <span class="equation-number">(1.10)</span>
+        </div>
+
+        <p>Pre elementárnu zmenu elektrického potenciálu</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[d\phi = -\vec{E} \cdot d\vec{r}\]
+            </div>
+            <span class="equation-number">(1.11)</span>
+        </div>
+
+        <p>V špeciálnom prípade bodového náboja</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\Delta\phi = \frac{\Delta E_p}{q} = \frac{Q}{4\pi\varepsilon_0} \left( \frac{1}{r_2} - \frac{1}{r_1} \right)\]
+            </div>
+        </div>
+
+        <p>alebo</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\phi = \frac{Q}{4\pi\varepsilon_0} \frac{1}{r} + C\]
+            </div>
+        </div>
+
+        <p>kde \(C\) je konštanta, ktorej hodnota závisí od voľby vzťažného bodu 1.</p>
+
+        <p>Za tento bod (dohodou) berieme spravidla nekonečno a elektrický potenciál v tomto bode je rovný nule. V tomto prípade pre elektrický potenciál v bode 2 dostávame</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\phi_2 = -\int_{\vec{r}_2}^{\infty} \vec{E} \cdot d\vec{r}\]
+            </div>
+        </div>
+
+        <p>a pre elektrický potenciál v poli bodového náboja vo vzdialenosti \(r\) máme</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\phi = \frac{Q}{4\pi\varepsilon_0} \frac{1}{r}\]
+            </div>
+            <span class="equation-number">(1.12)</span>
+        </div>
+
+        <h3><i class="fas fa-project-diagram"></i> Ekvipotenciálne plochy</h3>
+
+        <p>Potenciál môže byť graficky zobrazený ekvipotenciálnymi čiarami alebo (v trojrozmernom prípade) ekvipotenciálnymi plochami. Je to množina bodov s rovnakým potenciálom, t. j. \(d\phi = 0\) a na premiestnenie náboja z jedného bodu do druhého nie je potrebná žiadna práca. Ekvipotenciálna plocha musí byť v každom bode kolmá na intenzitu elektrostatického poľa pretože podľa vzťahu (1.11) ak \(d\phi = 0\), potom vektory \(\vec{E}\) a \(d\vec{r}\) musia byť na seba kolmé.</p>
+
+        <h3><i class="fas fa-calculator"></i> Princíp superpozície pre potenciál</h3>
+
+        <p>Potenciál v ľubovoľnom bode poľa vytvoreného viacerými bodovými nábojmi sa nájde vypočítaním potenciálu \(\phi_i\) od každého jednotlivého náboja, ako keby iné náboje neboli, a sčítaním takto získaných hodnôt:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\phi = \sum_i \phi_i = \frac{1}{4\pi\varepsilon_0} \sum_i \frac{Q_i}{r_i}\]
+            </div>
+        </div>
+
+        <p>Ak je náboj rozložený spojite, suma sa nahradí integrálom</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\phi = \int d\phi = \frac{1}{4\pi\varepsilon_0} \int \frac{dQ}{r}\]
+            </div>
+        </div>
+
+        <p>kde \(dQ\) je element náboja a \(r\) je jeho vzdialenosť od bodu, v ktorom sa \(\phi\) počíta.</p>
+
+        <h3><i class="fas fa-bolt"></i> Elektrické napätie</h3>
+
+        <p>Prácu síl poľa vykonanú pri premiestnení náboja \(q\) z bodu 1 do bodu 2 danú vzťahom (1.8), s využitím vzťahu (1.10) môžeme vyjadriť nasledovne:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[W = q \int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r} = q (\phi_1 - \phi_2) = qU\]
+            </div>
+            <span class="equation-number">(1.13)</span>
+        </div>
+
+        <p>kde</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[U = \int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r} = (\phi_1 - \phi_2)\]
+            </div>
+        </div>
+
+        <p>je elektrické napätie medzi bodmi 1 a 2. Teda elektrické napätie na istom úseku dráhy sa rovná rozdielu elektrických potenciálov medzi koncovými bodmi uvažovaného úseku dráhy. Jednotkou napätia je 1 volt (V).</p>
+
+        <h3><i class="fas fa-exchange-alt"></i> Vzťah medzi intenzitou a potenciálom</h3>
+
+        <p>Teraz vyjadríme súvis medzi intenzitou elektrického poľa \(\vec{E}\) a elektrickým potenciálom \(\phi\). Budeme uvažovať dva blízke body \((x, y, z)\) a \((x+dx, y+dy, z+dz)\). Zmena elektrického potenciálu pri prechode z prvého bodu do druhého je</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[d\phi = \frac{\partial\phi}{\partial x} dx + \frac{\partial\phi}{\partial y} dy + \frac{\partial\phi}{\partial z} dz\]
+            </div>
+        </div>
+
+        <p>podľa (1.11) je:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[d\phi = -\vec{E} \cdot d\vec{r} = -E_x dx - E_y dy - E_z dz\]
+            </div>
+        </div>
+
+        <p>a z porovnania posledných dvoch rovníc:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E_x = -\frac{\partial\phi}{\partial x}, \quad E_y = -\frac{\partial\phi}{\partial y}, \quad E_z = -\frac{\partial\phi}{\partial z}\]
+            </div>
+        </div>
+
+        <p>alebo</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\vec{E} = -\text{grad}\,\phi\]
+            </div>
+        </div>
+
+        <div class="important-note">
+            <p><strong>Fyzikálny význam:</strong> Znamienko mínus zohľadňuje skutočnosť, že intenzita poľa je orientovaná od oblasti kladného potenciálu k oblasti záporného potenciálu, kým vektor \(\text{grad}\,\phi\) je podľa definície orientovaný v smere narastania \(\phi\). Na kladný náboj v elektrostatickom poli pôsobí sila smerujúca od miesta s vyšším potenciálom do miesta s nižším potenciálom. Jednotkou elektrického potenciálu je joule/coulomb = volt (V).</p>
+        </div>
+</div>

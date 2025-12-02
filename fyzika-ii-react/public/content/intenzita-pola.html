@@ -1,0 +1,110 @@
+<div class="section active" id="intenzita-pola">
+    <h2><i class="fas fa-bolt"></i> 1.2 Intenzita elektrostatického poľa</h2>
+
+    <p>Na popis elektrostatického poľa je vhodné zaviesť novú veličinu, ktorú budeme nazývať intenzita elektrického poľa. Môžeme to urobiť nasledovným spôsobom. Umiestnime malý testovací bodový náboj \(q\) (pre jednoduchosť uvažujme kladný náboj) do bodu, kde chceme pole vyšetrovať, a odmeriame elektrostatickú silu \(\vec{F}\), ktorá pôsobí na tento náboj. Intenzitu elektrického poľa \(\vec{E}\) v tomto mieste definujeme vzťahom:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E} = \frac{\vec{F}}{q}\]
+        </div>
+        <span class="equation-number">(1.3)</span>
+    </div>
+
+    <p>Intenzita elektrického poľa (Obr. 1.2) predstavuje silu pôsobiacu na testovací náboj predelenú veľkosťou tohto náboja a nezávisí teda od testovacieho náboja.</p>
+
+    <p>Jednotkou intenzity elektrického poľa v sústave SI je:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[[E] = \frac{[F]}{[q_0]} = \frac{N}{C} = \frac{V}{m}\]
+        </div>
+    </div>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Pole+bodového+náboja" alt="Intenzita elektrického poľa bodového náboja">
+        <div class="image-caption">Obr. 1.2: Intenzita elektrického poľa okolo kladného a záporného bodového náboja</div>
+    </div>
+
+    <h3><i class="fas fa-atom"></i> Intenzita poľa bodového náboja</h3>
+    <p>Použijúc vzťahy (1.2) a (1.3) môžeme intenzitu elektrického poľa v okolí bodového náboja \(Q\) vyjadriť vzťahom:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E} = \frac{\vec{F}}{q} = \frac{1}{4\pi\varepsilon_0} \cdot \frac{Qq}{r^3} \vec{r} \cdot \frac{1}{q} = \frac{1}{4\pi\varepsilon_0} \cdot \frac{Q}{r^3} \vec{r}\]
+        </div>
+    </div>
+
+    <h3><i class="fas fa-cubes"></i> Princíp superpozície pre sústavu nábojov</h3>
+    <p>Ak je pole vytvárané viacerými bodovými nábojmi \(Q_i\) (pozri Obr. 1.3), platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E} = \frac{\vec{F}}{q} = \sum_i \frac{\vec{F}_i}{q} = \sum_i \frac{1}{4\pi\varepsilon_0} \cdot \frac{Q_i q}{r_i^3} \vec{r}_i \cdot \frac{1}{q} = \frac{1}{4\pi\varepsilon_0} \sum_i \frac{Q_i}{r_i^3} \vec{r}_i = \sum_i \vec{E}_i\]
+        </div>
+        <span class="equation-number">(1.4)</span>
+    </div>
+
+    <p>Rovnica (1.4) je príkladom princípu superpozície, ktorý v tomto prípade hovorí, že výsledná intenzita elektrického poľa v danom mieste je vektorovým súčtom intenzít polí vytvorených jednotlivými nábojmi.</p>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/006633/FFFFFF?text=Sústava+nábojov" alt="Sila pôsobiaca na skúšobný náboj v poli viacerých nábojov">
+        <div class="image-caption">Obr. 1.3: Sila pôsobiaca na testovací náboj \(q\) v poli sústavy bodových nábojov</div>
+    </div>
+
+    <h3><i class="fas fa-shapes"></i> Spojité rozloženie náboja</h3>
+    <p>Princíp superpozície možno využiť aj pre výpočet intenzity elektrického poľa v okolí telies so spojite rozloženým nábojom. Ako uvidíme v ďalšom, náboj môže byť rozložený jednak v objeme (objemový náboj), ale tiež aj v tenkej povrchovej vrstve nabitého telesa (plošný náboj).</p>
+
+    <p>Pre opis rozloženia objemového náboja definujeme veličinu <strong>objemová hustota náboja</strong>:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\rho = \frac{dQ}{dV}\]
+        </div>
+    </div>
+
+    <p>kde \(dQ\) je elementárny náboj nachádzajúci sa v elementárnom objeme \(dV\).</p>
+
+    <p>Podobne pre opis rozloženia náboja na povrchu telesa definujeme veličinu <strong>plošná hustota náboja</strong>:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\sigma = \frac{dQ}{dS}\]
+        </div>
+    </div>
+
+    <p>kde \(dQ\) je elementárny náboj rozložený na elementárnej ploche \(dS\).</p>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/660033/FFFFFF?text=Spojité+rozloženie" alt="Intenzita elektrického poľa pre spojité rozloženie náboja">
+        <div class="image-caption">Obr. 1.4: K výpočtu intenzity poľa spojitého objemového rozloženia náboja</div>
+    </div>
+
+    <p>Intenzita elektrického poľa pre náboj rozložený v objeme s objemovou hustotou \(\rho\) môže byť pomocou princípu superpozície vyjadrená vzťahom (pozri Obr. 1.4):</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E} = \int_V \frac{1}{4\pi\varepsilon_0} \cdot \frac{\rho\, dV}{r^3} \vec{r}\]
+        </div>
+    </div>
+
+    <p>pričom integrujeme cez celý objem \(V\), v ktorom je náboj rozložený.</p>
+
+    <p>Podobne môžeme vyjadriť pole pre prípad, že náboj je rozložený na povrchu telesa s plošnou hustotou \(\sigma\):</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E} = \int_S \frac{1}{4\pi\varepsilon_0} \cdot \frac{\sigma\, dS}{r^3} \vec{r}\]
+        </div>
+    </div>
+
+    <p>a integrujeme cez celú plochu \(S\), na ktorej je náboj rozložený.</p>
+
+    <h3><i class="fas fa-stream"></i> Siločiary elektrického poľa</h3>
+    <p>Elektrické pole môžeme znázorniť pomocou elektrických siločiar. Ich vlastnosti možno zhrnúť takto:</p>
+
+    <ol>
+        <li>Dotyčnica k siločiare v každom bode určuje smer intenzity \(\vec{E}\) v tomto bode.</li>
+        <li>Siločiary sa navzájom nepretínajú. Počet siločiar na jednotku prierezu (kolmo na siločiary) je úmerný veľkosti intenzity \(\vec{E}\). Ak sú teda siločiary blízko k sebe, intenzita poľa \(E\) je väčšia, ak sú siločiary vzájomne vzdialené, intenzita poľa \(E\) je menšia.</li>
+        <li>Siločiary majú začiatok iba na kladných nábojoch a končia iba na záporných nábojoch.</li>
+    </ol>
+</div>

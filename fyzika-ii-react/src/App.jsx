@@ -1,58 +1,55 @@
 import React, { useState, useEffect } from 'react'
 import HomePage from './pages/HomePage'
 import ContentPage from './pages/ContentPage'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Navigation from './components/layout/Navigation'
+import MathJaxProvider from './components/MathJaxProvider'
 
-const AnimatedRoutes = () => {
-    const location = useLocation()
-    const [displayLocation, setDisplayLocation] = useState(location)
-    const [transitionStage, setTransitionStage] = useState('fadeIn')
+const App = () => {
+    const [sidebarOpen, setSidebarOpen] = useState(false)
 
     useEffect(() => {
-        if (location !== displayLocation) {
-            setTransitionStage('fadeOut')
-
-            // Даем время для анимации исчезновения
-            setTimeout(() => {
-                setDisplayLocation(location)
-                // Небольшая задержка перед появлением новой страницы
-                setTimeout(() => {
-                    setTransitionStage('fadeIn')
-                }, 50)
-            }, 300)
+        const checkWidth = () => {
+            if (window.innerWidth > 768) {
+                setSidebarOpen(true)
+            } else {
+                setSidebarOpen(false)
+            }
         }
-    }, [location, displayLocation])
 
-    return (
-        <div
-            className={`page-content ${transitionStage}`}
-            style={{
-                opacity: transitionStage === 'fadeOut' ? 0 : 1,
-                transform: transitionStage === 'fadeOut' ? 'translateY(10px)' : 'translateY(0)',
-                transition: 'all 0.3s ease-in-out',
-                width: '100%',
-                height: '100%'
-            }}
-        >
-            <Routes location={displayLocation}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/content" element={<ContentPage />} />
-            </Routes>
-        </div>
-    )
-}
+        checkWidth()
+        window.addEventListener('resize', checkWidth)
 
-function App() {
+        return () => window.removeEventListener('resize', checkWidth)
+    }, [])
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen)
+    }
+
     return (
         <ThemeProvider>
-            <Router>
-                <div className="min-h-screen bg-background dark:bg-gray-900 transition-colors duration-300">
-                    <Navigation />
-                    <AnimatedRoutes />
-                </div>
-            </Router>
+            <MathJaxProvider>
+                <Router>
+                    <div className="min-h-screen bg-background dark:bg-gray-900">
+                        <Navigation
+                            sidebarOpen={sidebarOpen}
+                            toggleSidebar={toggleSidebar}
+                        />
+
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/content" element={
+                                <ContentPage
+                                    sidebarOpen={sidebarOpen}
+                                    setSidebarOpen={setSidebarOpen}
+                                />
+                            } />
+                        </Routes>
+                    </div>
+                </Router>
+            </MathJaxProvider>
         </ThemeProvider>
     )
 }
