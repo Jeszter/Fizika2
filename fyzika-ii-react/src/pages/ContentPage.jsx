@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react'
 import Sidebar from '../components/layout/Sidebar'
+import TestComponent from '../components/TestComponent'
 import '../physics-content.css'
 
-// Мемоизируем компонент, чтобы избежать лишних ререндеров
-const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTitles, getChapterNumber }) => {
+const ContentSection = memo(({
+                                 activeSection,
+                                 sectionContent,
+                                 loading,
+                                 sectionTitles,
+                                 getChapterNumber,
+                                 onStartTest
+                             }) => {
     const contentRef = useRef(null)
     const currentIndex = sections.indexOf(activeSection)
     const isFirstSection = currentIndex === 0
@@ -29,10 +36,8 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
         }
     }
 
-    // Рендерим формулы только после полной загрузки
     useEffect(() => {
         if (window.MathJax && !loading && sectionContent) {
-            // Даем время для рендеринга DOM
             const timer = setTimeout(() => {
                 if (contentRef.current) {
                     window.MathJax.typesetPromise([contentRef.current])
@@ -45,7 +50,6 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
 
     return (
         <div className="max-w-5xl mx-auto pb-8">
-            {/* Кнопка открытия сайдбара на мобильных */}
             <button
                 onClick={() => window.dispatchEvent(new CustomEvent('toggleSidebar'))}
                 className="fixed top-4 left-4 z-20 w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-border dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 shadow-md md:hidden"
@@ -54,10 +58,9 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
                 <i className="fas fa-bars text-text-dark dark:text-gray-300"></i>
             </button>
 
-            {/* Заголовок */}
             <div className="mb-8 mt-4">
-                <div className="flex items-start justify-between gap-4">
-                    <div>
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                    <div className="flex-1 min-w-0">
                         <div className="mb-3">
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-blue/10 dark:bg-blue-500/20 text-primary-blue dark:text-blue-400 rounded-full text-sm font-medium">
                                 <i className="fas fa-bookmark text-xs"></i>
@@ -72,7 +75,6 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
                 </div>
             </div>
 
-            {/* Контент с физическими стилями */}
             <div className="content-wrapper bg-white dark:bg-gray-800 shadow-custom dark:shadow-dark-custom border border-border dark:border-gray-700">
                 {loading ? (
                     <div className="p-12 text-center">
@@ -83,13 +85,12 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
                     <div
                         ref={contentRef}
                         className="physics-content"
-                        key={activeSection} // Ключ для принудительного ререндера при смене секции
+                        key={activeSection}
                         dangerouslySetInnerHTML={{ __html: sectionContent }}
                     />
                 )}
             </div>
 
-            {/* Навигационные кнопки */}
             {!loading && (
                 <div className="navigation-buttons mt-8">
                     <button
@@ -103,6 +104,14 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
                     >
                         <i className="fas fa-arrow-left"></i>
                         <span>Predchádzajúca kapitola</span>
+                    </button>
+
+                    <button
+                        onClick={() => onStartTest(activeSection)}
+                        className="btn-nav btn-test"
+                    >
+                        <i className="fas fa-graduation-cap"></i>
+                        <span>Spustiť test</span>
                     </button>
 
                     <button
@@ -123,7 +132,56 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
     )
 })
 
-// Выносим sections наружу, чтобы они были доступны в обоих компонентах
+const TestView = memo(({ testTopic }) => {
+    const formatTopicName = useCallback((topicId) => {
+        return topicId
+            .replace('-', ' ')
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    }, []);
+
+    return (
+        <div className="max-w-5xl mx-auto pb-8">
+            <button
+                onClick={() => window.dispatchEvent(new CustomEvent('toggleSidebar'))}
+                className="fixed top-4 left-4 z-20 w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-border dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 shadow-md md:hidden"
+                aria-label="Otvoriť menu"
+            >
+                <i className="fas fa-bars text-text-dark dark:text-gray-300"></i>
+            </button>
+
+            <div className="mb-8 mt-4">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                    <div className="flex-1 min-w-0">
+                        <div className="mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl text-sm font-medium shadow-lg">
+                                <i className="fas fa-graduation-cap text-xs"></i>
+                                <span>Test z kapitoly</span>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i className="fas fa-file-pen text-lg"></i>
+                            </div>
+                            <h1 className="text-2xl md:text-3xl font-bold text-text-dark dark:text-white">
+                                {formatTopicName(testTopic)}
+                            </h1>
+                        </div>
+
+                        <p className="text-text-light dark:text-gray-400 text-sm">
+                            Vyberte správne odpovede a overte svoje vedomosti
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <TestComponent topicId={testTopic} />
+        </div>
+    );
+});
+
 const sections = [
     'coulombov-zakon',
     'intenzita-pola',
@@ -156,6 +214,8 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const [activeSection, setActiveSection] = useState('coulombov-zakon')
     const [sectionContent, setSectionContent] = useState('')
     const [loading, setLoading] = useState(true)
+    const [showTest, setShowTest] = useState(false)
+    const [testTopic, setTestTopic] = useState('')
 
     const loadSection = useCallback(async (sectionId) => {
         setLoading(true)
@@ -183,27 +243,34 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
         }
     }, [])
 
-    // Загружаем секцию при смене activeSection
     useEffect(() => {
-        loadSection(activeSection)
-    }, [activeSection, loadSection])
+        if (!showTest) {
+            loadSection(activeSection)
+        }
+    }, [activeSection, loadSection, showTest])
 
-    // Слушаем события изменения секции
     useEffect(() => {
         const handleSectionChange = (e) => {
             setActiveSection(e.detail.sectionId)
+            setShowTest(false)
         }
 
         const handleToggleSidebar = () => {
             setSidebarOpen(prev => !prev)
         }
 
+        const handleCloseTest = () => {
+            setShowTest(false)
+        }
+
         window.addEventListener('sectionChange', handleSectionChange)
         window.addEventListener('toggleSidebar', handleToggleSidebar)
+        window.addEventListener('closeTest', handleCloseTest)
 
         return () => {
             window.removeEventListener('sectionChange', handleSectionChange)
             window.removeEventListener('toggleSidebar', handleToggleSidebar)
+            window.removeEventListener('closeTest', handleCloseTest)
         }
     }, [setSidebarOpen])
 
@@ -220,6 +287,7 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
 
     const handleSectionSelect = useCallback((sectionId) => {
         setActiveSection(sectionId)
+        setShowTest(false)
         if (window.innerWidth <= 768) {
             setSidebarOpen(false)
         }
@@ -231,9 +299,23 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
         }
     }, [sidebarOpen, setSidebarOpen])
 
+    const startTest = useCallback((topicId) => {
+        setTestTopic(topicId)
+        setShowTest(true)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+
+        const formattedTopicName = topicId
+            .replace('-', ' ')
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')
+
+        const title = `Test: ${formattedTopicName}`;
+        document.title = title;
+    }, [])
+
     return (
         <div className="relative min-h-screen flex">
-            {/* Сайдбар */}
             <div
                 className={`sidebar-wrapper fixed top-0 left-0 h-full z-40 transition-transform duration-300 ${
                     sidebarOpen ? 'translate-x-0' : '-translate-x-full'
@@ -250,7 +332,6 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
                 />
             </div>
 
-            {/* Overlay для мобильных */}
             {sidebarOpen && window.innerWidth <= 768 && (
                 <div
                     className="fixed inset-0 bg-black/50 z-30 md:hidden"
@@ -258,17 +339,21 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
                 ></div>
             )}
 
-            {/* Основной контент - фиксированная ширина */}
             <div className={`content-area flex-1 pt-16 px-4 md:px-8 transition-all duration-300 min-h-screen ml-0 ${
                 sidebarOpen && window.innerWidth > 768 ? 'md:ml-80' : ''
             }`}>
-                <ContentSection
-                    activeSection={activeSection}
-                    sectionContent={sectionContent}
-                    loading={loading}
-                    sectionTitles={sectionTitles}
-                    getChapterNumber={getChapterNumber}
-                />
+                {showTest ? (
+                    <TestView testTopic={testTopic} />
+                ) : (
+                    <ContentSection
+                        activeSection={activeSection}
+                        sectionContent={sectionContent}
+                        loading={loading}
+                        sectionTitles={sectionTitles}
+                        getChapterNumber={getChapterNumber}
+                        onStartTest={startTest}
+                    />
+                )}
             </div>
         </div>
     )

@@ -11,7 +11,6 @@
     box-sizing: border-box;
 }
 
-/* Section */
 .physics-content .section {
     display: none;
     background: var(--surface);
@@ -29,7 +28,6 @@
     display: block;
 }
 
-/* Headers */
 .physics-content .section h2 {
     color: var(--text-dark);
     margin-bottom: 1.5rem;
@@ -58,7 +56,6 @@
     color: var(--accent-teal);
 }
 
-/* Paragraphs and Lists */
 .physics-content .section p {
     line-height: 1.7;
     color: var(--text-light);
@@ -87,7 +84,7 @@
     margin-left: -1em;
 }
 
-/* Equation with border and number */
+
 .physics-content .equation {
     text-align: center;
     margin: 1.5rem 0;
@@ -168,7 +165,6 @@
     font-size: 0.9rem;
 }
 
-/* Theory image centered */
 .physics-content .theory-image {
     text-align: center;
     margin: 2rem 0;
@@ -201,7 +197,6 @@
     font-size: 0.95rem;
 }
 
-/* Example */
 .physics-content .example {
     background: linear-gradient(135deg, var(--primary-blue-bg) 0%, rgba(224, 242, 254, 0.5) 100%);
     border-radius: var(--radius-xl);
@@ -236,7 +231,6 @@
     border-radius: 0 0 0 var(--radius);
 }
 
-/* Formula variables */
 .physics-content .formula-variables {
     display: flex;
     flex-wrap: wrap;
@@ -265,13 +259,11 @@
     font-weight: 600;
 }
 
-/* Math styling */
 .physics-content .math {
     font-family: 'Times New Roman', serif;
     font-style: italic;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -284,7 +276,6 @@
     75% { transform: translate(-50px, 75px) rotate(270deg); }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .physics-content .section {
         padding: 1.5rem;

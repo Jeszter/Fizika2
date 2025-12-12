@@ -14,7 +14,6 @@ const Navigation = ({ sidebarOpen, toggleSidebar }) => {
     return (
         <nav className="fixed top-0 left-0 w-full py-3 px-4 md:px-6 z-50 flex justify-between items-center bg-white dark:bg-gray-900 border-b border-border dark:border-gray-800 shadow-md">
             <div className="flex items-center gap-4">
-                {/* Кнопка меню/закрытия сайдбара - показываем только на странице content */}
                 {isContentPage && (
                     <button
                         onClick={toggleSidebar}
@@ -38,7 +37,6 @@ const Navigation = ({ sidebarOpen, toggleSidebar }) => {
             <div className="flex items-center gap-3">
 
 
-                {/* Кнопка переключения темы */}
                 <button
                     onClick={toggleTheme}
                     className="w-10 h-10 bg-white dark:bg-gray-800 border border-border dark:border-gray-700 rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300 shadow-sm hover:scale-105"

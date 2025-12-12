@@ -47,7 +47,6 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
     ]
 
     const handleSectionSelect = (sectionId) => {
-        // Используем событие вместо прямого вызова
         window.dispatchEvent(new CustomEvent('sectionChange', {
             detail: { sectionId }
         }))
@@ -63,7 +62,6 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
             className="w-80 h-full bg-white dark:bg-gray-800 border-r border-border dark:border-gray-700 shadow-lg flex flex-col"
             onClick={handleSidebarClick}
         >
-            {/* Заголовок сайдбара с книжечкой */}
             <div className="p-6 border-b border-border dark:border-gray-700 bg-primary-blue-bg dark:bg-gray-900/50">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">

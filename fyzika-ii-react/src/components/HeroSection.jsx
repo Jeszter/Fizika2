@@ -27,7 +27,7 @@ const HeroSection = () => {
 
                 <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
                     Komplexný vzdelávací portál pre študentov fyziky.
-                    Preskúmajte elektromagnetizmus, optiku a modernú fyziku prostredníctvom prehľadných materiálov.
+                    Preskúmajte elektro magnetizmus, optiku a modernú fyziku prostredníctvom prehľadných materiálov.
                 </p>
 
                 <div className="flex justify-center gap-8 md:gap-12 my-8">
@@ -38,10 +38,6 @@ const HeroSection = () => {
                     <div className="text-center">
                         <span className="block text-3xl md:text-4xl font-black text-primary-blue dark:text-blue-400 mb-2">8</span>
                         <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">Testov</span>
-                    </div>
-                    <div className="text-center">
-                        <span className="block text-3xl md:text-4xl font-black text-primary-blue dark:text-blue-400 mb-2">24+</span>
-                        <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">Hodín</span>
                     </div>
                 </div>
 
