@@ -1,0 +1,285 @@
+{
+  "topic": "Coulombov zákon",
+  "difficulty": "medium",
+  "totalQuestions": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Napíšte Coulombov zákon. Aké sú všetky veličiny, ktoré v ňom vystupujú?",
+      "options": [
+        "a) F = k·Q₁·Q₂/r, kde k je Coulombova konštanta, Q náboje, r vzdialenosť",
+        "b) F = k·|Q₁·Q₂|/r², kde k = 1/(4πε₀), ε₀ elektrická konštanta",
+        "c) F = Q₁·Q₂/(4πr²), bez konštánt",
+        "d) F = ε₀·Q₁·Q₂/r², kde ε₀ permitivita vákua"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Coulombov zákon: F = k·|Q₁·Q₂|/r², kde k = 1/(4πε₀) ≈ 9×10⁹ N·m²/C², Q₁, Q₂ sú veľkosti nábojov, r je vzdialenosť medzi nimi.",
+      "difficulty": "easy",
+      "formula": "F = k·|Q₁·Q₂|/r², k = 1/(4πε₀)"
+    },
+    {
+      "id": 2,
+      "question": "Česaním sa premiestnil náboj 1,602 nC. Koľko elektrónov prešlo medzi hrebeňom vlasmi? (e = 1,602×10⁻¹⁹ C)",
+      "options": [
+        "a) 10⁷ elektrónov",
+        "b) 10⁸ elektrónov",
+        "c) 10⁹ elektrónov",
+        "d) 10¹⁰ elektrónov"
+      ],
+      "correctAnswer": 3,
+      "explanation": "n = Q/e = (1,602×10⁻⁹ C) / (1,602×10⁻¹⁹ C) = 10¹⁰ elektrónov.",
+      "difficulty": "medium",
+      "formula": "n = Q/e"
+    },
+    {
+      "id": 3,
+      "question": "Ako sa zmenila hmotnosť hrebeňa pri premiestnení náboja 1,602 nC? (mₑ = 9,1×10⁻³¹ kg)",
+      "options": [
+        "a) Δm = 9,1×10⁻²¹ kg",
+        "b) Δm = 9,1×10⁻²⁶ kg",
+        "c) Δm = 9,1×10⁻²⁹ kg",
+        "d) Δm = 9,1×10⁻³¹ kg"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Zmena hmotnosti: Δm = n·mₑ = 10¹⁰ × 9,1×10⁻³¹ = 9,1×10⁻³¹ kg.",
+      "difficulty": "medium",
+      "formula": "Δm = n·mₑ"
+    },
+    {
+      "id": 4,
+      "question": "Dve rovnako veľké guľôčky majú náboje Q₁ = 24 μC a Q₂ = -18 μC. Akou silou na seba pôsobia vo vzdialenosti 6 cm vo vákuu? (ε₀ = 8,854×10⁻¹²)",
+      "options": [
+        "a) 539,25 N, príťažlivá",
+        "b) 1078,5 N, príťažlivá",
+        "c) 1078,5 N, odpudivá",
+        "d) 2157 N, príťažlivá"
+      ],
+      "correctAnswer": 1,
+      "explanation": "F = k·|Q₁·Q₂|/r² = 9×10⁹ × |24×10⁻⁶ × (-18)×10⁻⁶| / (0,06)² = 1078,5 N. Opačné náboje = príťažlivá sila.",
+      "difficulty": "medium",
+      "formula": "F = k·|Q₁·Q₂|/r²"
+    },
+    {
+      "id": 5,
+      "question": "Ak sa guľôčky z predchádzajúcej otázky dotknú a potom oddelia na 6 cm, akou silou budú na seba pôsobiť?",
+      "options": [
+        "a) 22,5 N, odpudivá",
+        "b) 11,25 N, príťažlivá",
+        "c) 45 N, odpudivá",
+        "d) 90 N, odpudivá"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Po dotyku: Q' = (Q₁ + Q₂)/2 = (24 + (-18))/2 = 3 μC. F' = k·Q'²/r² = 9×10⁹ × (3×10⁻⁶)²/(0,06)² = 22,5 N (rovnaké náboje = odpudivá).",
+      "difficulty": "hard",
+      "formula": "Q' = (Q₁ + Q₂)/2, F = k·Q'²/r²"
+    },
+    {
+      "id": 6,
+      "question": "Dva náboje Q₁ = 10⁻⁸ C a Q₂ = 9×10⁻⁸ C sa odpudzujú vo vzduchu silou 10⁻³ N. Aká je medzi nimi vzdialenosť? (ε₀ = 8,854×10⁻¹²)",
+      "options": [
+        "a) 1 cm",
+        "b) 2 cm",
+        "c) 3 cm",
+        "d) 4 cm"
+      ],
+      "correctAnswer": 2,
+      "explanation": "r = √(k·Q₁·Q₂/F) = √(9×10⁹ × 10⁻⁸ × 9×10⁻⁸ / 10⁻³) = √(81×10⁻⁴) = 9×10⁻² m = 3 cm.",
+      "difficulty": "medium",
+      "formula": "r = √(k·Q₁·Q₂/F)"
+    },
+    {
+      "id": 7,
+      "question": "Dve pohyblivé častice s rovnakým nábojom sú od seba vzdialené 3,2 mm. Prvá má hmotnosť 6,3×10⁻⁷ kg a zrýchlenie 7 m/s². Aká je hmotnosť druhej častice, ak jej zrýchlenie je 9 m/s²?",
+      "options": [
+        "a) 4,9×10⁻⁶ kg",
+        "b) 4,9×10⁻⁷ kg",
+        "c) 8,1×10⁻⁷ kg",
+        "d) 8,1×10⁻⁶ kg"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Podľa 2. Newtonovho zákona: m₂ = m₁·a₁/a₂ = 6,3×10⁻⁷ × 7/9 = 4,9×10⁻⁷ kg.",
+      "difficulty": "hard",
+      "formula": "m₂ = m₁·a₁/a₂"
+    },
+    {
+      "id": 8,
+      "question": "Aká je veľkosť náboja každej častice z predchádzajúcej otázky? (ε₀ = 8,854×10⁻¹²)",
+      "options": [
+        "a) 7,1×10⁻¹¹ C",
+        "b) 7,1×10⁻¹² C",
+        "c) 1,4×10⁻¹⁰ C",
+        "d) 1,4×10⁻¹¹ C"
+      ],
+      "correctAnswer": 0,
+      "explanation": "F = m₁·a₁ = 6,3×10⁻⁷ × 7 = 4,41×10⁻⁶ N. Q = √(F·r²/k) = √(4,41×10⁻⁶ × (3,2×10⁻³)² / (9×10⁹)) = 7,1×10⁻¹¹ C.",
+      "difficulty": "hard",
+      "formula": "F = m·a, Q = √(F·r²/k)"
+    },
+    {
+      "id": 9,
+      "question": "Dva kladné bodové náboje Q₁ a Q₂ = 4Q₁ sú vzdialené 9 cm. Kde treba umiestniť tretí náboj q, aby naň nepôsobila žiadna sila?",
+      "options": [
+        "a) 3 cm od Q₁",
+        "b) 6 cm od Q₁",
+        "c) 2 cm od Q₁",
+        "d) 1 cm od Q₁"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Nech x je vzdialenosť od Q₁. Podmienka rovnováhy: k·Q₁·q/x² = k·4Q₁·q/(9-x)² ⇒ 1/x² = 4/(9-x)² ⇒ x = 3 cm.",
+      "difficulty": "hard",
+      "formula": "Q₁/x² = 4Q₁/(9-x)²"
+    },
+    {
+      "id": 10,
+      "question": "Dva náboje v prostredí s εᵣ = 1 pôsobia silou F vo vzdialenosti 11 cm. V terpentíne pôsobia rovnakou silou F vo vzdialenosti 7,4 cm. Aká je εᵣ terpentínu?",
+      "options": [
+        "a) 1,21",
+        "b) 2,21",
+        "c) 3,21",
+        "d) 4,21"
+      ],
+      "correctAnswer": 1,
+      "explanation": "F₁ = k·Q₁Q₂/(ε₁·r₁²) = F₂ = k·Q₁Q₂/(ε₂·r₂²) ⇒ ε₂ = ε₁·(r₂/r₁)² = 1 × (7,4/11)² = 2,21.",
+      "difficulty": "medium",
+      "formula": "ε₂ = ε₁·(r₂/r₁)²"
+    },
+    {
+      "id": 11,
+      "question": "Dve rovnako nabité guľôčky hmotnosti 5×10⁻⁴ kg sú zavesené na nitiach dlhých 1 m a vzdialili sa na 4 cm. Aký náboj je na každej? (ε₀ = 8,854×10⁻¹²)",
+      "options": [
+        "a) 4,18×10⁻⁹ C",
+        "b) 4,18×10⁻¹⁰ C",
+        "c) 8,36×10⁻⁹ C",
+        "d) 8,36×10⁻¹⁰ C"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Z rovnováhy síl: F = k·Q²/r² = mg·tanθ ≈ mg·(r/2L). Q = r·√(mgr/2kL) = 0,04 × √(5×10⁻⁴×9,81×0,04/(2×9×10⁹×1)) = 4,18×10⁻⁹ C.",
+      "difficulty": "hard",
+      "formula": "Q = r·√(mgr/2kL)"
+    },
+    {
+      "id": 12,
+      "question": "Coulombov zákon platí presne pre:",
+      "options": [
+        "a) akékoľvek telesá",
+        "b) bodové náboje",
+        "c) vodivé gule",
+        "d) izolované vodiče"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Coulombov zákon platí presne len pre bodové náboje. Pre rozložené náboje platí približne alebo sa musí integrovať.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Sila medzi dvoma nábojmi je:",
+      "options": [
+        "a) priamo úmerná súčinu nábojov",
+        "b) nepriamo úmerná štvorcu vzdialenosti",
+        "c) vždy príťažlivá pre opačné náboje",
+        "d) všetky uvedené tvrdenia"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Všetky tvrdenia sú správne: F = k·|q₁·q₂|/r², opačné náboje sa priťahujú.",
+      "difficulty": "easy",
+      "formula": "F = k·|q₁·q₂|/r²"
+    },
+    {
+      "id": 14,
+      "question": "Hodnota Coulombovej konštanty k je približne:",
+      "options": [
+        "a) 9 × 10³ N·m²/C²",
+        "b) 9 × 10⁶ N·m²/C²",
+        "c) 9 × 10⁹ N·m²/C²",
+        "d) 9 × 10¹² N·m²/C²"
+      ],
+      "correctAnswer": 2,
+      "explanation": "k = 1/(4πε₀) ≈ 8,98755 × 10⁹ N·m²/C², čo sa zaokrúhľuje na 9 × 10⁹ N·m²/C².",
+      "difficulty": "easy",
+      "formula": "k = 1/(4πε₀)"
+    },
+    {
+      "id": 15,
+      "question": "Ak sa vzdialenosť medzi dvoma nábojmi zväčší 3-krát, sila sa zmenší:",
+      "options": [
+        "a) 3-krát",
+        "b) 6-krát",
+        "c) 9-krát",
+        "d) 27-krát"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Sila je nepriamo úmerná štvorcu vzdialenosti: F₂ = F₁/3² = F₁/9.",
+      "difficulty": "medium",
+      "formula": "F ∼ 1/r²"
+    },
+    {
+      "id": 16,
+      "question": "Dva rovnaké náboje Q sú vo vzdialenosti r. Ak sa náboj jedného zväčší 4-krát, sila sa zväčší:",
+      "options": [
+        "a) 2-krát",
+        "b) 4-krát",
+        "c) 8-krát",
+        "d) 16-krát"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Pôvodne: F = k·Q²/r². Po zmene: F' = k·(4Q)·Q/r² = 4kQ²/r² = 4F.",
+      "difficulty": "medium",
+      "formula": "F' = 4F"
+    },
+    {
+      "id": 17,
+      "question": "Sila medzi dvoma nábojmi s opačnými znamienkami je:",
+      "options": [
+        "a) vždy príťažlivá",
+        "b) vždy odpudivá",
+        "c) závisí od vzdialenosti",
+        "d) nikdy neexistuje"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Náboje s opačnými znamienkami sa vždy priťahujú (F < 0 v skalárnom zápise).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Elektrická konštanta ε₀ sa vzťahuje ku k ako:",
+      "options": [
+        "a) k = 1/(4πε₀)",
+        "b) k = 4πε₀",
+        "c) k = ε₀/4π",
+        "d) k = 1/ε₀"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Základný vzťah medzi konštantami: k = 1/(4πε₀).",
+      "difficulty": "medium",
+      "formula": "k = 1/(4πε₀)"
+    },
+    {
+      "id": 19,
+      "question": "Ak sa veľkosť oboch nábojov zväčší 2-krát a vzdialenosť sa zväčší 2-krát, sila sa:",
+      "options": [
+        "a) nezmení",
+        "b) zmenší 2-krát",
+        "c) zmenší 4-krát",
+        "d) zväčší 2-krát"
+      ],
+      "correctAnswer": 0,
+      "explanation": "F' = k·(2q·2q)/(2r)² = 4kq²/4r² = kq²/r² = F.",
+      "difficulty": "hard",
+      "formula": "F' = k·(2q·2q)/(2r)² = F"
+    },
+    {
+      "id": 20,
+      "question": "V akom prostredí je sila medzi nábojmi najväčšia?",
+      "options": [
+        "a) vo vákuu (εᵣ = 1)",
+        "b) vo vzduchu (εᵣ ≈ 1,0006)",
+        "c) vo vode (εᵣ ≈ 80)",
+        "d) v oleji (εᵣ ≈ 3)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Sila F = k·|Q₁Q₂|/(εᵣ·r²). Najväčšia je pri najmenšom εᵣ, teda vo vákuu.",
+      "difficulty": "medium",
+      "formula": "F = k·|Q₁Q₂|/(εᵣ·r²)"
+    }
+  ]
+}

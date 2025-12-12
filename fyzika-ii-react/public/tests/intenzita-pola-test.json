@@ -1,0 +1,268 @@
+{
+  "topic": "Intenzita elektrostatického poľa",
+  "difficulty": "medium",
+  "totalQuestions": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Intenzita elektrického poľa je definovaná ako:",
+      "options": [
+        "a) sila na jednotkový náboj",
+        "b) práca na jednotkový náboj",
+        "c) potenciálna energia na jednotkový náboj",
+        "d) tok na jednotkovú plochu"
+      ],
+      "correctAnswer": 0,
+      "explanation": "E = F/q, kde F je sila pôsobiaca na skúšobný náboj q.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Jednotka intenzity elektrického poľa je:",
+      "options": [
+        "a) V/m",
+        "b) N/C",
+        "c) obe a) a b)",
+        "d) J/C"
+      ],
+      "correctAnswer": 2,
+      "explanation": "1 V/m = 1 N/C, obe jednotky sú ekvivalentné.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Intenzita poľa bodového náboja Q vo vzdialenosti r je:",
+      "options": [
+        "a) E = kQ/r",
+        "b) E = kQ/r²",
+        "c) E = kQ/r³",
+        "d) E = kQ²/r²"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Pre bodový náboj: E = kQ/r² (radiálne pole).",
+      "difficulty": "medium",
+      "formula": "E = kQ/r²"
+    },
+    {
+      "id": 4,
+      "question": "Smer intenzity poľa kladného bodového náboja je:",
+      "options": [
+        "a) k náboju",
+        "b) preč od náboja",
+        "c) tangenciálny",
+        "d) závisí od prostredia"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Pre kladný náboj má intenzita smer preč od náboja (odpudzovanie kladného skúšobného náboja).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Ak sa vzdialenosť od bodového náboja zväčší 2-krát, intenzita poľa sa zmenší:",
+      "options": [
+        "a) 2-krát",
+        "b) 4-krát",
+        "c) 8-krát",
+        "d) 16-krát"
+      ],
+      "correctAnswer": 1,
+      "explanation": "E ∼ 1/r², takže E₂ = E₁/4",
+      "difficulty": "medium"
+    },
+    {
+      "id": 6,
+      "question": "Siločiara je krivka, ktorej dotyčnica v každom bode má smer:",
+      "options": [
+        "a) intenzity elektrického poľa",
+        "b) gradientu potenciálu",
+        "c) prúdovej hustoty",
+        "d) magnetickej indukcie"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Siločiara je tangentová krivka k vektoru intenzity elektrického poľa.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Siločiary elektrického dipólu:",
+      "options": [
+        "a) začínajú a končia na rovnakom náboji",
+        "b) sú uzavreté krivky",
+        "c) začínajú na kladnom a končia na zápornom náboji",
+        "d) sú vždy priame"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Siločiary začínajú na kladných nábojoch a končia na záporných nábojoch.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "question": "Superpozícia elektrických polí znamená, že:",
+      "options": [
+        "a) polia sa navzájom rušia",
+        "b) výsledné pole je vektorový súčet jednotlivých polí",
+        "c) polia sú nezávislé",
+        "d) siločiary sa nikdy nepretínajú"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Princíp superpozície: E = E₁ + E₂ + ... (vektorový súčet).",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "question": "Intenzita poľa vo vnútri vodivej gule s nábojem Q je:",
+      "options": [
+        "a) konštantná",
+        "b) nulová",
+        "c) maximálna v strede",
+        "d) úmerná 1/r²"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Vo vnútri vodivej gule je intenzita elektrického poľa nulová (Faradayova klietka).",
+      "difficulty": "hard"
+    },
+    {
+      "id": 10,
+      "question": "Čiary konštantného potenciálu sú:",
+      "options": [
+        "a) rovnobežné so siločiarami",
+        "b) kolmé na siločiary",
+        "c) pod uhlom 45°",
+        "d) nikdy neexistujú"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Ekvinipotenciálne plochy sú vždy kolmé na siločiary.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "question": "Intenzita poľa medzi dvoma rovnobežnými doskami s opačnými nábojmi je:",
+      "options": [
+        "a) nulová",
+        "b) konštantná",
+        "c) lineárne rastúca",
+        "d) kvadraticky rastúca"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Medzi dvoma veľkými rovnobežnými doskami je homogénne pole E = σ/ε₀.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "question": "Aký je smer intenzity poľa záporného bodového náboja?",
+      "options": [
+        "a) radiálne von",
+        "b) radiálne do stredu",
+        "c) tangenciálny",
+        "d) náhodný"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Pre záporný náboj má intenzita smer do stredu (priťahovanie kladného skúšobného náboja).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Čo je to elektrický dipólový moment?",
+      "options": [
+        "a) súčin náboja a vzdialenosti",
+        "b) podiel náboja a vzdialenosti",
+        "c) súčet nábojov",
+        "d) rozdiel nábojov"
+      ],
+      "correctAnswer": 0,
+      "explanation": "p = q·d, kde q je náboj a d je vektor od záporného ku kladnému náboju.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "question": "Intenzita poľa na osi dipólu vo veľkej vzdialenosti je úmerná:",
+      "options": [
+        "a) 1/r",
+        "b) 1/r²",
+        "c) 1/r³",
+        "d) 1/r⁴"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Pre dipól: E ∼ 1/r³ na osi, E ∼ 1/r³ v rovine kolmej na os.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 15,
+      "question": "Gradient elektrického potenciálu sa rovná:",
+      "options": [
+        "a) intenzite poľa",
+        "b) zápornej intenzite poľa",
+        "c) energii poľa",
+        "d) toku poľa"
+      ],
+      "correctAnswer": 1,
+      "explanation": "E = -∇V, intenzita je záporný gradient potenciálu.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 16,
+      "question": "Ktoré tvrdenie o siločiarach je nepravdivé?",
+      "options": [
+        "a) nikdy sa nepretínajú",
+        "b) začínajú na kladných nábojoch",
+        "c) končia na záporných nábojoch",
+        "d) môžu byť uzavreté"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Siločiary elektrostatického poľa nie sú uzavreté (na rozdiel od magnetického poľa).",
+      "difficulty": "medium"
+    },
+    {
+      "id": 17,
+      "question": "Intenzita poľa nekonečne dlhého nabitého vodiča je úmerná:",
+      "options": [
+        "a) 1/r",
+        "b) 1/r²",
+        "c) 1/r³",
+        "d) konštantná"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Pre nekonečne dlhý vodič: E = λ/(2πε₀r) ∼ 1/r.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 18,
+      "question": "Ak je intenzita poľa 100 V/m, aká sila pôsobí na náboj 2 μC?",
+      "options": [
+        "a) 0.2 mN",
+        "b) 0.5 mN",
+        "c) 2 mN",
+        "d) 5 mN"
+      ],
+      "correctAnswer": 0,
+      "explanation": "F = qE = 2×10⁻⁶ × 100 = 2×10⁻⁴ N = 0.2 mN",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "question": "Intenzita poľa nabitej roviny s plošnou hustotou σ je:",
+      "options": [
+        "a) σ/ε₀",
+        "b) σ/(2ε₀)",
+        "c) σ/(4ε₀)",
+        "d) σ/(8ε₀)"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Pre nekonečnú rovinu: E = σ/(2ε₀) na každej strane.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 20,
+      "question": "Hustota siločiar je úmerná:",
+      "options": [
+        "a) veľkosti intenzity poľa",
+        "b) veľkosti náboja",
+        "c) potenciálu",
+        "d) energii"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Čím hustejšie siločiary, tým väčšia intenzita elektrického poľa.",
+      "difficulty": "easy"
+    }
+  ]
+}
