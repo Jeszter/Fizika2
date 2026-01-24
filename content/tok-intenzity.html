@@ -1,0 +1,200 @@
+
+<div class="section active" id="tok-intenzity">
+        <h2><i class="fas fa-stream"></i> 1.3 Tok intenzity elektrostatického poľa, Gaussov zákon</h2>
+
+        <p>Pri úvahách v tejto časti si môžeme pomôcť predstavou elektrických siločiar, ktorých vlastnosti boli uvedené v predchádzajúcej časti. Uvažujme elementárnu plôšku \(dS\) v elektrostatickom poli, ktoré môže byť vo všeobecnosti nehomogénne. Táto elementárna plôška je taká malá, že môže byť považovaná za rovinnú a pole možno pokladať za konštantné pre všetky body tejto plôšky (pozri Obr. 1.5).</p>
+
+        <div class="theory-image">
+            <img src="../img/1.5.png" alt="Elementárna plôška v elektrickom poli">
+            <div class="image-caption">Obr. 1.5: K definícii toku intenzity elektrického poľa</div>
+        </div>
+
+        <p>Pomocou predstavy o siločiarach môžeme vyjadriť tok vektora intenzity \(dT_E\), ktorý je úmerný počtu siločiar prechádzajúcich cez danú plôšku:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[dT_E = E\, dS_\perp = E\, dS \cos \alpha\]
+            </div>
+            <span class="equation-number">(1.5)</span>
+        </div>
+
+        <p>kde \(dS_\perp\) je priemet \(dS\) na rovinu kolmú na \(\vec{E}\) a \(\alpha\) je uhol medzi \(dS\) a \(dS_\perp\).</p>
+
+        <p>Je zrejmé, že tok vektora intenzity elektrického poľa cez danú plôšku je úmerný počtu siločiar prechádzajúcich cez danú plôšku.</p>
+
+        <p>Ak zavedieme vektor</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[d\vec{S} = dS\, \vec{n}\]
+            </div>
+        </div>
+
+        <p>kde \(\vec{n}\) je jednotkový vektor kolmý na elementárnu plôšku \(dS\), zrejme platí</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\vec{E} \cdot d\vec{S} = dS\, \vec{E} \cdot \vec{n} = E\, dS \cos \alpha\]
+            </div>
+            <span class="equation-number">(1.6)</span>
+        </div>
+
+        <p>Z porovnania rovníc (1.5) a (1.6) dostávame:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[dT_E = \vec{E} \cdot d\vec{S}\]
+            </div>
+            <span class="equation-number">(1.7)</span>
+        </div>
+
+        <p>Táto rovnica definuje tok vektora \(\vec{E}\) cez elementárnu plôšku \(dS\).</p>
+
+        <h3><i class="fas fa-dharmachakra"></i> Gaussov zákon</h3>
+
+        <p>Gaussov zákon sa týka toku intenzity cez ľubovoľnú uzavretú plochu, teda cez plochu, ktorá úplne obopína určitý objem (napríklad guľu). Orientáciu \(d\vec{S}\) pre uzavretú plochu definujeme v smere von z uzavretého objemu. Potom tok pre siločiary vychádzajúce z uzavretého objemu je kladný a tok pre siločiary vchádzajúce do neho je záporný.</p>
+
+        <p>Tok intenzity cez uzavretú plochu je daný vzťahom:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[T_E = \oint_S \vec{E} \cdot d\vec{S}\]
+            </div>
+        </div>
+
+        <p>pričom sa integruje cez celú uzavretú plochu \(S\). Ako už vieme, tok intenzity cez plochu je úmerný počtu elektrických siločiar prechádzajúcich plochou a zároveň siločiara môže začínať a končiť len v mieste náboja. Ak sa v uvažovanom objeme nenachádzajú náboje, každá siločiara začína aj končí mimo tohto objemu. Koľkokrát takáto siločiara prejde do daného objemu cez uzavretú ohraničujúcu plochu, toľkokrát musí z objemu cez túto plochu aj vystúpiť. Veľmi ľahko prídeme takto k záveru, že tok intenzity cez uzavretú plochu je nenulový iba v prípade, ak niektoré siločiary majú počiatok alebo koniec v objeme, ktorý je plochou obopínaný. Inými slovami, tok bude nenulový len vtedy, keď sa v danom objeme nachádzajú náboje.</p>
+
+        <p>Predpokladajme preto, že plocha \(S\) obopína elektrické náboje \(Q_1, Q_2, \dots, Q_i, \dots\) (Obr. 1.6).</p>
+
+        <div class="theory-image">
+            <img src="../img/1.6.png" alt="Uzavretá plocha obsahujúca náboje">
+            <div class="image-caption">Obr. 1.6: K odvodeniu Gaussovho zákona</div>
+        </div>
+
+        <p>Využijúc princíp superpozície, môžeme písať</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[
+                \begin{aligned}
+                T_E &= \oint_S \vec{E} \cdot d\vec{S} = \oint_S \sum_{i=1}^n \vec{E}_i \cdot d\vec{S} = \oint_S \sum_{i=1}^n \frac{1}{4\pi\varepsilon_0} \frac{Q_i}{r_i^3} \vec{r}_i \cdot d\vec{S} = \\
+                &= \oint_S \sum_{i=1}^n \frac{1}{4\pi\varepsilon_0} \frac{Q_i}{r_i^3} r_i\, dS_{\perp i} = \sum_{i=1}^n \frac{Q_i}{4\pi\varepsilon_0} \oint_S \frac{dS_{\perp i}}{r_i^2}.
+                \end{aligned}
+                \]
+            </div>
+        </div>
+
+        <p>Ak \(d\Omega_i\) je priestorový uhol pod ktorým vidíme plôšku \(dS\) z miesta uvažovaného náboja, platí:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[dS_{\perp i} = r_i^2\, d\Omega_i\]
+            </div>
+        </div>
+
+        <p>a teda:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[
+                T_E = \sum_{i=1}^n \frac{Q_i}{4\pi\varepsilon_0} \oint_S \frac{dS_{\perp i}}{r_i^2} = \frac{1}{4\pi\varepsilon_0} \sum_{i=1}^n Q_i \oint_0^{4\pi} d\Omega_i = \sum_{i=1}^n \frac{Q_i}{\varepsilon_0}.
+                \]
+            </div>
+        </div>
+
+        <p>Gaussov zákon, ktorý môžeme vyjadriť takto:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[T_E = \sum_{i=1}^n \frac{Q_i}{\varepsilon_0} = \frac{Q}{\varepsilon_0}\]
+            </div>
+        </div>
+
+        <p>hovorí, že tok intenzity cez ľubovoľnú uzavretú plochu je rovný náboju, ktorý táto plocha obopína, predelenému elektrickou konštantou vákua.</p>
+
+        <div class="important-note">
+            <p><strong>Poznámka:</strong> \(Q\) je výsledný náboj - algebraický súčet všetkých nábojov (berúc do úvahy ich znamienka), pričom nezáleží na tom, kde a ako je náboj v danom objeme rozložený.</p>
+        </div>
+
+        <h3><i class="fas fa-lightbulb"></i> 1.3.1 Niektoré aplikácie Gaussovho zákona</h3>
+
+        <h4><i class="fas fa-bolt"></i> 1. Elektrické pole pri povrchu vodivých nabitých telies</h4>
+
+        <p>V prípade statickej situácie, t.j. ak sú náboje v pokoji, elektrické pole vo vnútri vodivého telesa musí byť nulové. Ak by intenzita elektrického poľa bola nenulová, na voľné náboje, ktoré sa nachádzajú vo vnútri vodivého telesa, by pôsobila sila \(\vec{F} = e\vec{E}\) a tieto náboje by sa dali do usmerneného pohybu, to znamená, že vo vodiči by tiekol elektrický prúd. Takýto prúd ale nebol pozorovaný.</p>
+
+        <p>Smer vektora intenzity poľa \(\vec{E}\), pre body blízke povrchu, je kolmý na plochu povrchu a pre kladný náboj je orientovaný von z plochy. Ak by vektor \(\vec{E}\) nebol kolmý na povrch, mal by zložku v rovine povrchu. Táto zložka by pôsobila na voľné náboje na povrchu a spôsobila by povrchové prúdy. Keďže takéto prúdy neboli pozorované, zložka vektora \(\vec{E}\) v rovine povrchu musí byť nulová a teda vektor \(\vec{E}\) musí byť kolmý na povrch.</p>
+
+        <p>Skutočnosť, že elektrické pole je vo vnútri vodivého telesa nulové, má jeden zaujímavý dôsledok: Každý náboj privedený na vodivé teleso sa rozloží v povrchovej vrstve. Dokážeme to pomocou Gaussovho zákona.</p>
+
+        <p>Majme vodivé teleso, ktoré je nabité nábojom \(Q\). Uvažujme ľubovoľný objem vo vnútri telesa, ktorý obopína uzavretá plocha \(S\). Elektrické pole vo všetkých bodoch tejto plochy je nulové, takže tok intenzity cez túto plochu je nulový. Z Gaussovho zákona je zrejmé, že potom algebraický súčet nábojov vo vnútri tejto plochy je nulový. Keďže to platí pre ľubovoľnú uzavretú plochu vnútri telesa, vnútro nabitého vodivého telesa je elektroneutrálne. Náboj \(Q\), privedený na takéto teleso, môže byť rozložený len v povrchovej vrstve telesa.</p>
+
+        <p>Gaussov zákon umožňuje určiť veľkosť elektrického poľa \(E\) tesne pri povrchu ľubovoľného nabitého telesa.</p>
+
+        <div class="theory-image">
+            <img src="../img/1.7.png" alt="Elektrické pole pri povrchu vodivého telesa">
+            <div class="image-caption">Obr. 1.7: K výpočtu poľa pri povrchu vodivého telesa</div>
+        </div>
+
+        <p>Majme vodivé teleso, na povrchu ktorého je rozložený náboj \(Q\) s plošnou hustotou \(\sigma\). Ako uzavretú integračnú plochu si zvolíme valcovú plochu so základňou \(dS\) veľmi malej výšky, takže jedna základňa valca je tesne pod povrchom telesa a druhá základňa je tesne nad jeho povrchom a plášť obopína plôšku povrchu telesa veľkosti \(dS\), na ktorej je náboj \(dQ\). Výška valca je kolmá na povrch telesa. Elektrické pole je vo vnútri telesa nulové a tesne nad povrchom má smer kolmý na povrch, aj na vektor plochy plášťa valca v každom jeho bode. Preto tok intenzity je nenulový iba cez vonkajšiu základňu valcovej plochy. Plocha \(dS\) základne valca je malá, takže pole môžeme považovať všade na nej za konštantné. Potom z Gaussovho zákona máme</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[dT_E = \vec{E} \cdot d\vec{S} = E\, dS = \frac{dQ}{\varepsilon_0} = \frac{\sigma\, dS}{\varepsilon_0}\]
+            </div>
+        </div>
+
+        <p>kde \(\sigma\) je plošná hustota náboja na povrchu telesa.</p>
+
+        <p>Takto sme dostali pre veľkosť intenzity elektrického poľa tesne nad povrchom nabitého vodivého telesa výsledok</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E = \frac{\sigma}{\varepsilon_0}\]
+            </div>
+        </div>
+
+        <p>ktorý platí pre teleso ľubovoľného tvaru.</p>
+
+        <h4><i class="fas fa-square"></i> 2. Elektrostatické pole v okolí nekonečnej nabitej roviny</h4>
+
+        <p>Majme rovinu, na ktorej je kladný náboj, ktorý je rozložený rovnomerne, s plošnou hustotou \(\sigma\). Aby sme určili intenzitu elektrického poľa, vyberieme si uzavretú valcovú plochu so základňami \(S\) a výškou \(2r\) okolo roviny tak ako je to na Obr. 1.8. Očakávame kvôli symetrii, že \(\vec{E}\) je kolmé na rovinu z oboch strán a je homogénne na oboch základniach vybranej valcovej plochy. Keďže \(\vec{E}\) je v každom bode plochy plášťa valca kolmé na jej vektor, tok cez plášť valcovej plochy je nulový a do celkového toku prispieva iba tok cez základne. Z Gaussovho zákona dostávame:</p>
+
+        <div class="theory-image">
+            <img src="../img/1.8.png" alt="Elektrické pole nekonečnej nabitej roviny">
+            <div class="image-caption">Obr. 1.8: K výpočtu poľa nekonečnej nabitej roviny</div>
+        </div>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[T_E = \oint_S \vec{E} \cdot d\vec{S} = E \cdot 2S = \frac{Q}{\varepsilon_0} = \frac{\sigma S}{\varepsilon_0} \Rightarrow E = \frac{\sigma}{2\varepsilon_0}\]
+            </div>
+        </div>
+
+        <p>Vidíme, že pole je všade rovnaké, \(E\) má rovnakú hodnotu pre body blízke k rovine i pre body od nej vzdialené. V prípade záporného náboja sa vektor intenzity zmení na opačný.</p>
+
+        <h4><i class="fas fa-layer-group"></i> 3. Dve rovnobežné nabité roviny</h4>
+
+        <p>Majme teraz rovnomerne rozložený náboj na dvoch rovnobežných rovinách. Prvá z nich nech je nabitá kladným nábojom a druhá záporným nábojom, obe s nábojovou hustotou \(\sigma\), pozri Obr. 1.9.</p>
+
+        <div class="theory-image">
+            <img src="../img/1.9.png" alt="Elektrické pole dvoch rovnobežných nabitých rovín">
+            <div class="image-caption">Obr. 1.9: Pole dvoch rovnobežných rovín s opačným nábojom</div>
+        </div>
+
+        <p>Určíme elektrostatické pole medzi týmito rovinami a mimo nich. K tomu využíjeme princíp superpozície. Vidíme, že pre veľkosť intenzity poľa medzi rovinami platí</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E = E_1 + E_2 = \frac{\sigma}{2\varepsilon_0} + \frac{\sigma}{2\varepsilon_0} = \frac{\sigma}{\varepsilon_0}\]
+            </div>
+        </div>
+
+        <p>a všade inde</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E = E_2 - E_1 = 0\]
+            </div>
+        </div>
+
+</div>

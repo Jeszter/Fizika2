@@ -1,0 +1,222 @@
+
+<div class="section active" id="pohyb-castice">
+        <h2><i class="fas fa-rocket"></i> 1.5 Pohyb nabitej častice v elektrickom poli</h2>
+
+        <p>Preskúmame pohyb častice s hmotnosťou \(m\) a nábojom \(q\), ktorá sa pohybuje v homogénnom elektrickom poli. Homogénnym elektrickým poľom nazývame pole, v ktorom má vektor intenzity v každom bode rovnaký smer a veľkosť, t. j. \(\vec{E} = \text{konšt}\). Z praktického hľadiska sú najzaujímavejšie prípady pohybu častice v pozdĺžnom a priečnom elektrickom poli.</p>
+
+        <ul>
+            <li><strong>Pozdĺžne elektrické pole:</strong> Častica vletí do poľa tak, že jej počiatočná rýchlosť \(\vec{v}_0\) je rovnobežná s vektorom intenzity poľa \(\vec{E}\).</li>
+            <li><strong>Priečne elektrické pole:</strong> Počiatočná rýchlosť je kolmá na vektor intenzity poľa.</li>
+        </ul>
+
+        <h3><i class="fas fa-long-arrow-alt-right"></i> Pohyb v pozdĺžnom poli</h3>
+
+        <p>Ak má veľkosť rýchlosti náboja \(q\) v homogénnom elektrickom poli v mieste s potenciálom \(\phi_1\) hodnotu \(v_0\), v dôsledku pôsobenia elektrostatickej sily náboj prejde do miesta s potenciálom \(\phi_2\), kde bude mať jeho rýchlosť veľkosť \(v\). Využijúc vetu o kinetickej energii a vzťah (1.13), pre pohyb v pozdĺžnom poli platí:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\frac{1}{2} m v^2 - \frac{1}{2} m v_0^2 = W = q (\phi_1 - \phi_2) = qU\]
+            </div>
+        </div>
+
+        <h3><i class="fas fa-arrows-alt-h"></i> Pohyb v priečnom poli</h3>
+
+        <p>Pre opis pohybu častice v priečnom poli si zvoľme súradnicovú sústavu tak, ako je na Obr. 1.11.</p>
+
+        <div class="theory-image">
+            <img src="../img/1.11.png" alt="Súradnicová sústava pre pohyb v priečnom elektrickom poli">
+            <div class="image-caption">Obr. 1.11: Pohyb nabitej častice v priečnom homogénnom elektrickom poli</div>
+        </div>
+
+        <p>Silu pôsobiacu na časticu môžeme vyjadriť vzťahom:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\vec{F} = q \vec{E} = qE \vec{j}\]
+            </div>
+            <span class="equation-number">(1.14)</span>
+        </div>
+
+        <p>a pre počiatočnú rýchlosť platí:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\vec{v}_0 = v_0 \vec{i}\]
+            </div>
+        </div>
+
+        <p>Druhý Newtonov pohybový zákon (\(\vec{F} = m\vec{a}\)) v kombinácii so vzťahom (1.14) poskytuje rovnice:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[F_x = m a_x = m \frac{d^2 x}{dt^2} = 0\]
+            </div>
+        </div>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[F_y = m a_y = m \frac{d^2 y}{dt^2} = qE\]
+            </div>
+        </div>
+
+        <p>Integráciou týchto rovníc určíme súradnice rýchlosti a súradnice polohy častice v ľubovoľnom časovom okamihu \(t\). Dostaneme</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[v_x = v_0, \quad v_y = \frac{qE}{m} t\]
+            </div>
+            <span class="equation-number">(1.15)</span>
+        </div>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[x = v_0 t, \quad y = \frac{1}{2} \frac{qE}{m} t^2\]
+            </div>
+            <span class="equation-number">(1.16)</span>
+        </div>
+
+        <p>Elimináciou času v rovniciach (1.15) a (1.16) určíme rovnicu dráhy častice:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[y = \frac{1}{2} \frac{qE}{m v_0^2} x^2 = \text{konšt.} \cdot x^2\]
+            </div>
+        </div>
+
+        <p>Častica sa teda pohybuje po parabolickej dráhe.</p>
+    </div>
+
+    <div class="section" id="energia-pola">
+        <h2><i class="fas fa-charging-station"></i> 1.6 Energia sústavy nábojov, nabitého vodiča a elektrostatického poľa</h2>
+
+        <p>Na vytvorenie sústavy nábojov musíme vykonať prácu spojenú s prekonaním odpudivých či príťažlivých síl pôsobiacich medzi nimi. Pod energiou sústavy nábojov budeme potom rozumieť celkové množstvo práce, ktorú musí vykonať vonkajšia sila na jej vytvorenie.</p>
+
+        <p>Predstavme si napríklad, že vytvárame sústavu bodových nábojov. K prvému náboju by sme priniesli druhý náboj, pričom by sme konali prácu proti silám poľa vytvoreného prvým nábojom. Pri ”prinášaní” tretieho náboja by sme konali prácu proti silám poľa vytvoreného prvou dvojicou nábojov a analogicky by to bolo pri postupnom ”prinášaní ” ďalších nábojov.</p>
+
+        <h3><i class="fas fa-atom"></i> Energia sústavy dvoch nábojov</h3>
+
+        <p>Ak využijeme definíciu potenciálnej energie, ktorú vzťahujeme na nekonečno, môžeme pre prácu potrebnú na vytvorenie sústavy dvoch nábojov \(Q_1, Q_2\) písať</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[
+                W' = \int_{\infty}^{\vec{r}} \vec{F}' \cdot d\vec{r} = -\int_{\infty}^{\vec{r}} \vec{F} \cdot d\vec{r} = E_p(r) - E_p(\infty) = E_p(r) = \frac{Q_1 Q_2}{4\pi\varepsilon_0} \frac{1}{r_{12}}
+                \]
+            </div>
+            <span class="equation-number">(1.17)</span>
+        </div>
+
+        <p>kde \(\vec{F}'\) je vonkajšia sila, \(\vec{F}\) je sila poľa, \(\vec{r}_{12}\) je polohový vektor náboja \(Q_2\) vzhľadom na polohu náboja \(Q_1\).</p>
+
+        <p>Pre elektrický potenciál \(\phi_1\) prvého náboja v poli druhého a pre potenciál \(\phi_2\) druhého náboja v poli prvého náboja môžeme na základe vzťahu (1.12) písať</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\phi_1 = \frac{Q_2}{4\pi\varepsilon_0} \frac{1}{r_{12}} \quad \text{a} \quad \phi_2 = \frac{Q_1}{4\pi\varepsilon_0} \frac{1}{r_{12}}\]
+            </div>
+            <span class="equation-number">(1.18)</span>
+        </div>
+
+        <p>Z (1.17), (1.18) môžeme vyjadriť energiu \(E_p\) uvažovanej dvojice nábojov nasledovne</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E_p = W' = Q_1 \phi_1 = Q_2 \phi_2\]
+            </div>
+            <span class="equation-number">(1.19)</span>
+        </div>
+
+        <p>Vzťah (1.19) môžeme vyjadriť aj nasledovným spôsobom:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E_p = \frac{1}{2} (Q_1 \phi_1 + Q_2 \phi_2)\]
+            </div>
+        </div>
+
+        <h3><i class="fas fa-cubes"></i> Energia sústavy viacerých nábojov</h3>
+
+        <p>Postupom naznačeným v úvode tejto kapitoly možno odvodiť analogický vzťah platný pre ľubovolný počet nábojov:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E_p = \frac{1}{2} \sum_i Q_i \phi_i\]
+            </div>
+            <span class="equation-number">(1.20)</span>
+        </div>
+
+        <p>kde sčítavame cez všetky náboje, \(Q_i\) označuje \(i\)-tý náboj a \(\phi_i\) je elektrický potenciál poľa v mieste \(i\)-tého náboja, ktorý je vytvorený ostatnými nábojmi.</p>
+
+        <h3><i class="fas fa-bolt"></i> Energia nabitého vodiča</h3>
+
+        <p>Zo vzťahu (1.20) možno veľmi jednoducho vyjadriť energiu nabitého vodiča. Umožňuje to skutočnosť, že nabitý vodič predstavuje ekvipotenciálny útvar. Môžeme sa o tom presvedčiť nasledovnou úvahou. Vieme, že vo vnútri vodiča je \(E = 0\). Ak spojíme dva ľubovoľné body ľubovolnou krivkou a urobíme nižšie naznačenú integráciu, zrejme platí:</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[\int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r} = \phi_1 - \phi_2 = 0\]
+            </div>
+        </div>
+
+        <p>a teda \(\phi_1 = \phi_2 = \phi\) pre ľubovoľnú dvojicu bodov vodiča.</p>
+
+        <p>Pre energiu nabitého vodiča teraz zo vzťahu (1.20) dostaneme</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E_p = \frac{1}{2} \sum_i Q_i \phi = \frac{1}{2} \phi \sum_i Q_i = \frac{1}{2} \phi Q\]
+            </div>
+        </div>
+
+        <p>kde \(Q = \sum_i Q_i\) je celkový náboj na vodiči.</p>
+
+        <h3><i class="fas fa-cube"></i> Hustota energie elektrostatického poľa</h3>
+
+        <p>Teraz prejdeme k vyjadreniu energie elektrostatického poľa. Uvažujme dve nekonečné rovnobežné roviny nabité s rovnakou plošnou hustotou náboja opačného znamienka (pozri Obr. 1.12). Ak sa tieto roviny dotýkajú, energia je nulová (\(Q = 0\)). Ak sú vo vzájomnej vzdialenosti \(d\), veľkosť intenzity homogénneho elektrostatického poľa vytvoreného v objeme medzi nimi je</p>
+
+        <div class="theory-image">
+            <img src="../img/1.12.png" alt="Dve rovnobežné nabité roviny">
+            <div class="image-caption">Obr. 1.12: K výpočtu energie elektrostatického poľa medzi dvoma rovnobežnými rovinami</div>
+        </div>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E = \frac{\sigma}{\varepsilon_0}\]
+            </div>
+        </div>
+
+        <p>Vieme tiež, že pole vytvorené jednou rovinou v mieste, kde je uložená druhá, je</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[E_1 = \frac{\sigma}{2\varepsilon_0}\]
+            </div>
+        </div>
+
+        <p>Potenciálna energia odpovedajúca ploche \(S\) roviny môže byť vyjadrená</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[
+                \begin{aligned}
+                E_p &= -\int_0^d \vec{F} \cdot \vec{i} \, dx = \int_0^d F \, dx = S\sigma \int_0^d E_1 \, dx = \\
+                &= S\sigma \int_0^d \frac{\sigma}{2\varepsilon_0} \, dx = \frac{\sigma^2}{2\varepsilon_0} S d = \frac{1}{2} \varepsilon_0 E^2 S d.
+                \end{aligned}
+                \]
+            </div>
+            <span class="equation-number">(1.21)</span>
+        </div>
+
+        <p>To je energia elektrostatického poľa, ktoré je vytvorené v objeme \(V = Sd\).</p>
+
+        <p>Výraz</p>
+
+        <div class="equation">
+            <div class="equation-content">
+                \[w_{el} = \frac{E_p}{V} = \frac{1}{2} \varepsilon_0 E^2\]
+            </div>
+        </div>
+
+        <div class="important-note">
+            <p><strong>Fyzikálny význam:</strong> Veličina \(w_{el}\) vyjadruje hustotu energie elektrostatického poľa, teda energiu elektrostatického poľa v objemovej jednotke. Tento vzťah platí všeobecne pre ľubovoľné elektrostatické pole, nielen pre homogénne.</p>
+        </div>
+</div>
