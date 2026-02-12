@@ -31,7 +31,8 @@ const App = () => {
     return (
         <ThemeProvider>
             <MathJaxProvider>
-                <Router>
+                {/* ✨ PRIDANÉ basename PRE GITHUB PAGES ✨ */}
+                <Router basename="/Fizika2">
                     <div className="min-h-screen bg-background dark:bg-gray-900">
                         <Navigation
                             sidebarOpen={sidebarOpen}

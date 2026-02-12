@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Sidebar from '../components/layout/Sidebar'
@@ -30,6 +31,37 @@ const sectionTitles = {
     'intenzita-proudu': 'Intenzita prúdu, hustota prúdu',
     'ohmov-zakon': 'Ohmov zákon, Jouleov zákon',
     'elektromotoricke-napatie': 'Elektromotorické napätie'
+}
+
+// Инициализация MathJax один раз при загрузке
+if (typeof window !== 'undefined') {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            packages: { '[+]': ['ams'] }
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            ignoreHtmlClass: 'tex2jax_ignore',
+            processHtmlClass: 'tex2jax_process'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        }
+    };
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+    script.async = true;
+    script.id = 'MathJax-script';
+
+    if (!document.getElementById('MathJax-script')) {
+        document.head.appendChild(script);
+    }
 }
 
 const ContentSection = memo(({
@@ -66,19 +98,29 @@ const ContentSection = memo(({
     }
 
     useEffect(() => {
-        if (window.MathJax && !loading && sectionContent) {
+        if (window.MathJax && !loading && sectionContent && contentRef.current) {
             const timer = setTimeout(() => {
-                if (contentRef.current) {
+                try {
                     window.MathJax.typesetPromise([contentRef.current])
                         .catch(err => console.log('MathJax typeset error:', err))
+                } catch (e) {
+                    console.log('MathJax error:', e)
                 }
-            }, 150)
+            }, 200)
             return () => clearTimeout(timer)
         }
     }, [sectionContent, loading, activeSection])
 
     return (
-        <div className="max-w-6xl mx-auto pb-8 px-4 md:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto pb-8 px-4 md:px-6">
+            <button
+                onClick={() => window.dispatchEvent(new CustomEvent('toggleSidebar'))}
+                className="fixed top-4 left-4 z-20 w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-border dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 shadow-md md:hidden"
+                aria-label="Otvoriť menu"
+            >
+                <i className="fas fa-bars text-text-dark dark:text-gray-300"></i>
+            </button>
+
             <div className="mb-8 mt-4">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="flex-1 min-w-0">
@@ -89,7 +131,7 @@ const ContentSection = memo(({
                             </div>
                         </div>
 
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-dark dark:text-white break-words pr-12">
+                        <h1 className="text-3xl md:text-4xl font-bold text-text-dark dark:text-white break-words">
                             {sectionTitles[activeSection] || 'Kapitola kurzu'}
                         </h1>
                     </div>
@@ -98,8 +140,8 @@ const ContentSection = memo(({
 
             <div className="content-wrapper bg-white dark:bg-gray-800 shadow-custom dark:shadow-dark-custom border border-border dark:border-gray-700 overflow-x-hidden">
                 {loading ? (
-                    <div className="p-8 sm:p-10 md:p-12 text-center">
-                        <div className="inline-block animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-t-2 border-b-2 border-primary-blue dark:border-blue-400 mb-4"></div>
+                    <div className="p-12 text-center">
+                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-blue dark:border-blue-400 mb-4"></div>
                         <p className="text-text-light dark:text-gray-400">Načítavam obsah...</p>
                     </div>
                 ) : (
@@ -113,11 +155,11 @@ const ContentSection = memo(({
             </div>
 
             {!loading && (
-                <div className="navigation-buttons mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="navigation-buttons mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <button
                         onClick={navigateToPrevious}
                         disabled={isFirstSection}
-                        className={`btn-nav w-full sm:flex-1 ${
+                        className={`btn-nav flex-1 ${
                             isFirstSection
                                 ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
                                 : 'btn-secondary'
@@ -129,7 +171,7 @@ const ContentSection = memo(({
 
                     <button
                         onClick={() => onStartTest(activeSection)}
-                        className="btn-nav btn-test w-full sm:flex-1 order-first sm:order-none"
+                        className="btn-nav btn-test flex-1"
                     >
                         <i className="fas fa-graduation-cap mr-2"></i>
                         <span className="truncate">Spustiť test</span>
@@ -138,7 +180,7 @@ const ContentSection = memo(({
                     <button
                         onClick={navigateToNext}
                         disabled={isLastSection}
-                        className={`btn-nav w-full sm:flex-1 ${
+                        className={`btn-nav flex-1 ${
                             isLastSection
                                 ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
                                 : 'btn-secondary'
@@ -163,7 +205,15 @@ const TestView = memo(({ testTopic }) => {
     }, []);
 
     return (
-        <div className="max-w-6xl mx-auto pb-8 px-4 md:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto pb-8 px-4 md:px-6">
+            <button
+                onClick={() => window.dispatchEvent(new CustomEvent('toggleSidebar'))}
+                className="fixed top-4 left-4 z-20 w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-border dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 shadow-md md:hidden"
+                aria-label="Otvoriť menu"
+            >
+                <i className="fas fa-bars text-text-dark dark:text-gray-300"></i>
+            </button>
+
             <div className="mb-8 mt-4">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="flex-1 min-w-0">
@@ -175,15 +225,15 @@ const TestView = memo(({ testTopic }) => {
                         </div>
 
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                                <i className="fas fa-file-pen text-sm sm:text-lg"></i>
+                            <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                                <i className="fas fa-file-pen text-lg"></i>
                             </div>
-                            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-text-dark dark:text-white break-words pr-12">
+                            <h1 className="text-2xl md:text-3xl font-bold text-text-dark dark:text-white break-words">
                                 {formatTopicName(testTopic)}
                             </h1>
                         </div>
 
-                        <p className="text-text-light dark:text-gray-400 text-xs sm:text-sm">
+                        <p className="text-text-light dark:text-gray-400 text-sm">
                             Vyberte správne odpovede a overte svoje vedomosti
                         </p>
                     </div>
@@ -203,37 +253,8 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const [loading, setLoading] = useState(true)
     const [showTest, setShowTest] = useState(false)
     const [testTopic, setTestTopic] = useState('')
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768)
-        }
-        handleResize()
-        window.addEventListener('resize', handleResize)
-        window.addEventListener('orientationchange', handleResize)
-        return () => {
-            window.removeEventListener('resize', handleResize)
-            window.removeEventListener('orientationchange', handleResize)
-        }
-    }, [])
-
-    useEffect(() => {
-        if (isMobile) {
-            const setVh = () => {
-                const vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
-            };
-            setVh();
-            window.addEventListener('resize', setVh);
-            window.addEventListener('orientationchange', setVh);
-            return () => {
-                window.removeEventListener('resize', setVh);
-                window.removeEventListener('orientationchange', setVh);
-            };
-        }
-    }, [isMobile])
-
+    // Синхронизация с URL
     useEffect(() => {
         if (sectionId) {
             if (sectionId.startsWith('test-')) {
@@ -247,21 +268,25 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
                 setActiveSection(sectionId)
                 setShowTest(false)
                 document.title = `${sectionTitles[sectionId]} - Fyzika pre stredné školy`
-            } else if (sectionId !== 'content') {
-                navigate('/coulombov-zakon', { replace: true })
             }
         }
-    }, [sectionId, navigate])
+    }, [sectionId])
 
     const loadSection = useCallback(async (sectionId) => {
         setLoading(true)
         try {
-            const response = await fetch(`/content/${sectionId}.html`)
+            const response = await fetch(`/Fizika2/content/${sectionId}.html`)
             if (!response.ok) throw new Error('Failed to load content')
             let htmlContent = await response.text()
+
+            // Удаляем ненужные теги
             htmlContent = htmlContent.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
             htmlContent = htmlContent.replace(/<div class="animated-bg"><\/div>/gi, '')
             htmlContent = htmlContent.replace(/<div class="floating-shapes">.*?<\/div>/gs, '')
+
+            // ВАЖНО: Сохраняем относительные пути к картинкам, ничего не меняем
+            // Пути вида ../img/1.1.png остаются как есть
+
             setSectionContent(htmlContent)
         } catch (error) {
             console.error('Error loading section:', error)
@@ -324,76 +349,33 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
         setActiveSection(sectionId)
         setShowTest(false)
         navigate(`/${sectionId}`, { replace: true })
-        if (isMobile) {
+        if (window.innerWidth <= 768) {
             setSidebarOpen(false)
         }
-    }, [setSidebarOpen, navigate, isMobile])
+    }, [setSidebarOpen, navigate])
 
     const handleOverlayClick = useCallback((e) => {
-        if (sidebarOpen && isMobile) {
+        if (sidebarOpen && window.innerWidth <= 768) {
             setSidebarOpen(false)
         }
-    }, [sidebarOpen, setSidebarOpen, isMobile])
+    }, [sidebarOpen, setSidebarOpen])
 
     const startTest = useCallback((topicId) => {
         setTestTopic(topicId)
         setShowTest(true)
         navigate(`/test-${topicId}`, { replace: true })
         window.scrollTo({ top: 0, behavior: 'smooth' })
-        const formattedTopicName = topicId
-            .replace(/-/g, ' ')
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ')
-        document.title = `Test: ${formattedTopicName}`;
+        document.title = `Test: ${sectionTitles[topicId]}`
     }, [navigate])
 
+    const isMobile = window.innerWidth <= 768
+
     return (
-        <div className="relative min-h-screen flex flex-col">
-            <nav className="fixed top-0 left-0 w-full py-3 px-4 md:px-6 z-50 flex justify-between items-center bg-white dark:bg-gray-900 border-b border-border dark:border-gray-800 shadow-md">
-                <div className="flex items-center gap-4">
-                    <button
-                        onClick={() => setSidebarOpen(!sidebarOpen)}
-                        className="w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-border dark:border-gray-700 hover:bg-primary-blue-bg dark:hover:bg-gray-700 transition-all duration-300 group"
-                        aria-label={sidebarOpen ? "Zavrieť menu" : "Otvoriť menu"}
-                    >
-                        <i className={`fas ${sidebarOpen ? 'fa-times' : 'fa-bars'} text-text-dark dark:text-gray-300 group-hover:text-primary-blue dark:group-hover:text-blue-400`}></i>
-                    </button>
-
-                    <a href="/" className="logo flex items-center gap-3 no-underline group">
-                        <div className="logo-icon w-10 h-10 bg-gradient-to-br from-primary-blue to-primary-blue-dark rounded-lg flex items-center justify-center text-white font-bold shadow-md transition-all duration-300 group-hover:scale-105">
-                            F
-                        </div>
-                        <span className="text-xl font-bold text-text-dark dark:text-white">Fyzika II</span>
-                    </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                    <button
-                        id="theme-toggle"
-                        onClick={() => {
-                            if (document.documentElement.classList.contains('dark')) {
-                                document.documentElement.classList.remove('dark');
-                                localStorage.setItem('theme', 'light');
-                            } else {
-                                document.documentElement.classList.add('dark');
-                                localStorage.setItem('theme', 'dark');
-                            }
-                        }}
-                        className="w-10 h-10 bg-white dark:bg-gray-800 border border-border dark:border-gray-700 rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300 shadow-sm hover:scale-105"
-                        aria-label="Prepnúť tému"
-                    >
-                        <i className="fas fa-moon text-text-dark dark:hidden"></i>
-                        <i className="fas fa-sun text-yellow-400 hidden dark:block"></i>
-                    </button>
-                </div>
-            </nav>
-
+        <div className="relative min-h-screen flex">
             <div
                 className={`sidebar-wrapper fixed top-0 left-0 h-full z-40 transition-transform duration-300 ${
                     sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
-                style={{ top: '64px', height: 'calc(100% - 64px)' }}
             >
                 <Sidebar
                     activeSection={activeSection}
@@ -410,11 +392,10 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
                 <div
                     className="fixed inset-0 bg-black/50 z-30 md:hidden"
                     onClick={handleOverlayClick}
-                    style={{ top: '64px', height: 'calc(100% - 64px)' }}
                 ></div>
             )}
 
-            <div className={`flex-1 pt-20 transition-all duration-300 min-h-screen ${
+            <div className={`content-area flex-1 pt-16 px-4 md:px-8 transition-all duration-300 min-h-screen ${
                 sidebarOpen && !isMobile ? 'md:ml-80' : ''
             }`}>
                 {showTest ? (
