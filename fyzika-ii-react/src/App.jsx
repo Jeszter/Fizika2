@@ -40,7 +40,13 @@ const App = () => {
 
                         <Routes>
                             <Route path="/" element={<HomePage />} />
-                            <Route path="/content" element={
+                            <Route path="/:sectionId" element={
+                                <ContentPage
+                                    sidebarOpen={sidebarOpen}
+                                    setSidebarOpen={setSidebarOpen}
+                                />
+                            } />
+                            <Route path="/test-:testId" element={
                                 <ContentPage
                                     sidebarOpen={sidebarOpen}
                                     setSidebarOpen={setSidebarOpen}
