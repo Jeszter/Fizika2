@@ -1,0 +1,107 @@
+<div class="section active" id="kapacita">
+  <h2><i class="fas fa-battery-full"></i> 1.7 Kapacita vodiča, elektrický kondenzátor</h2>
+
+  <p>V predošlej časti sme ukázali, že nabitý vodič predstavuje ekvipotenciálny útvar. Táto skutočnosť nám umožňuje definovať kapacitu vodiča nasledovným spôsobom.</p>
+
+  <h3><i class="fas fa-circle"></i> Kapacita osamelého vodiča</h3>
+
+  <p>Kapacita vodiča \(C\) je definovaná ako podiel náboja \(Q\) na vodiči a absolútneho potenciálu \(\phi\) vodiča (\(\phi = 0\) pre \(r \to \infty\)):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[C = \frac{Q}{\phi}\]
+    </div>
+  </div>
+
+  <p>Jednotkou kapacity v sústave SI, ktorá vyplýva z definície, je coulomb/volt. Táto jednotka sa nazýva farad (F):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[1\,\text{F} = \frac{1\,\text{C}}{1\,\text{V}}\]
+    </div>
+  </div>
+
+  <h3><i class="fas fa-layer-group"></i> Kapacita kondenzátora</h3>
+
+  <p>Sústava pozostávajúca z dvoch vodičov nabitých rovnakým nábojom opačného znamienka sa nazýva <strong>kondenzátor</strong>. Kapacita kondenzátora je definovaná:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[C = \frac{Q}{\phi_1 - \phi_2}\]
+    </div>
+  </div>
+
+  <p>kde \(\phi_1\) a \(\phi_2\) sú elektrické potenciály na jednotlivých vodičoch a \(Q\) je náboj vodiča, ktorý má potenciál \(\phi_1\).</p>
+
+  <h3><i class="fas fa-square"></i> Kapacita doskového kondenzátora</h3>
+
+  <p>Na ilustráciu nájdeme vyjadrenie kapacity pre doskový kondenzátor, ktorý tvoria dve rovnobežné vodivé dosky vo vzdialenosti \(d\), ktorá je malá v porovnaní s rozmermi dosák. Nech na dosky, ktorých plošný obsah je \(S\), sú privedené opačné náboje \(\pm Q\).</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Doskový+kondenzátor" alt="Schéma doskového kondenzátora">
+    <div class="image-caption">Obr. 1.13: Doskový kondenzátor</div>
+  </div>
+
+  <p>Rozdiel potenciálov dosák môže byť vyjadrený:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\phi_2 - \phi_1 = \int_{\phi_1}^{\phi_2} d\phi = -\int_0^d \vec{E} \cdot d\vec{r} = -\int_0^d E\, dr = -Ed\]
+    </div>
+    <span class="equation-number">(1.22)</span>
+  </div>
+
+  <p>a s využitím vzťahu \(E = \frac{\sigma_+}{\varepsilon_0}\) dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\phi_1 - \phi_2 = Ed = \frac{\sigma_+}{\varepsilon_0} d = \frac{Q_+}{S\varepsilon_0} d\]
+    </div>
+  </div>
+
+  <p>Potom pre kapacitu dostávame z definície:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[C = \frac{Q_+}{\phi_1 - \phi_2} = \varepsilon_0 \frac{S}{d}\]
+    </div>
+    <span class="equation-number">(1.23)</span>
+  </div>
+
+  <h3><i class="fas fa-bolt"></i> Napätie a energia kondenzátora</h3>
+
+  <p>Zo vzťahu (1.22) pre elektrické napätie medzi doskami rovinného kondenzátora platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[U = \phi_1 - \phi_2 = Ed\]
+    </div>
+    <span class="equation-number">(1.24)</span>
+  </div>
+
+  <p>a zo vzťahov (1.21), (1.23) a (1.24) určíme energiu nabitého kondenzátora:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_p = \frac{1}{2} C U^2\]
+    </div>
+    <span class="equation-number">(1.25)</span>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Všeobecná platnosť:</strong> Aj keď vzťah (1.25) sme získali v špeciálnom prípade doskového kondenzátora, jeho platnosť je všeobecná a platí pre ľubovoľný elektrický kondenzátor. Môžeme sa o tom presvedčiť, ak použijeme vzťah (1.20), vyjadrujúci energiu sústavy nábojov, a definíciu kapacity elektrického kondenzátora.</p>
+  </div>
+
+  <p>Zo vzťahu (1.20) dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      \begin{aligned}
+      E_p &= \frac{1}{2} (Q_+\phi_1 + Q_-\phi_2) = \frac{1}{2} (Q_+\phi_1 - Q_+\phi_2) = \\
+      &= \frac{1}{2} Q_+ (\phi_1 - \phi_2) = \frac{1}{2} Q_+ U = \frac{1}{2} C U^2
+      \end{aligned}
+      \]
+    </div>
+  </div>
+</div>

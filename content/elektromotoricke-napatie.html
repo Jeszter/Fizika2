@@ -1,0 +1,138 @@
+<div class="section active" id="elektromotoricke-napatie">
+    <h2><i class="fas fa-car-battery"></i> 2.3 Elektromotorické napätie</h2>
+
+    <p>Na udržanie stáleho elektrického prúdu je potrebné zariadenie udržiavajúce stály rozdiel potenciálov - elektrické napätie - na dvoch svorkách z ktorých sa odoberá elektrický prúd. Predstavme si elektrický obvod pozostávajúci z takéhoto zariadenia - <strong>zdroja</strong> - a vodiča s odporom \(R\). Aby bol prúd \(I\) tečúci takýmto obvodom stály, musí mať zdroj takú vlastnosť, že je schopný v každom okamihu kompenzovať pokles alebo nárast počtu nábojov na jeho svorkách, ako dôsledok prúdu.</p>
+
+    <p>Je zrejmé, že vo vnútri zdroja pôsobia sily, zabezpečujúce uvedenú kompenzáciu nábojov. Tieto sily nazývame <strong>"cudzími silami"</strong>. Sú to napríklad chemické sily v akumulátoroch a galvanických článkoch, alebo sily pri elektromagnetickej indukcii.</p>
+
+    <p><strong>Zdrojom elektromotorického napätia</strong> nazývame zariadenie v ktorom sa nejaká forma energie mení na elektrickú. Nech takúto vlastnosť má úsek vodiča ako je to znázornené na obrázku 2.4.</p>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Zdroj+elektromotorického+napätia" alt="Schéma zdroja elektromotorického napätia">
+        <div class="image-caption">Obr. 2.4: Znázornenie cudzích síl v zdroji</div>
+    </div>
+
+    <p>Na jednotlivé voľné elektróny pôsobí "cudzia sila" \(\vec{F}_0\). Intenzitu poľa cudzích síl definujeme vzťahom:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E}_0 = \frac{\vec{F}_0}{e}\]
+        </div>
+    </div>
+
+    <h3><i class="fas fa-charging-station"></i> Definícia elektromotorického napätia</h3>
+
+    <p><strong>Elektromotorické napätie</strong> definujme ako podiel práce cudzej sily vykonanej pri prenesení daného náboja zdrojom elektromotorického napätia a veľkosti tohto náboja. V zmysle tejto definície, pre situáciu na obrázku 2.4 platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\mathcal{E} = \frac{W_{AB}}{|e|} = \frac{\int_A^B \vec{F}_0 \cdot d\vec{l}}{|e|} = \frac{-|e|\int_A^B \vec{E}_0 \cdot d\vec{l}}{|e|} = \int_B^A \vec{E}_0 \cdot d\vec{l}\]
+        </div>
+        <span class="equation-number">(2.6)</span>
+    </div>
+
+    <p>Vo vodiči sa účinkom cudzích síl dostávajú elektróny na koniec \(B\). Vytvárajú tu prebytočný záporný náboj, kým na konci \(A\) sa vytvára rovnaký prebytok kladného náboja. Takéto prerozdelenie nábojov vedie k vzniku elektrického poľa vo vodiči. Na jednotlivé elektróny pôsobí okrem cudzej sily aj sila \(\vec{F}_e\) tohto elektrického poľa, ktorá je opačne orientovaná ako cudzia sila \(\vec{F}_0\).</p>
+
+    <p>Pri otvorenom elektrickom obvode nastáva rovnováha, ak výsledná sila pôsobiaca na elektróny je nulová, tj. keď:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{F}_e + \vec{F}_0 = 0\]
+        </div>
+    </div>
+
+    <p>Ak označíme symbolom \(\vec{E}_e\) intenzitu vytvoreného elektrického poľa, zrejme platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E}_e = -\vec{E}_0\]
+        </div>
+        <span class="equation-number">(2.7)</span>
+    </div>
+
+    <h3><i class="fas fa-bolt"></i> Napätie na nezaťaženom zdroji</h3>
+
+    <p>Uvažujme naďalej otvorený (nezaťažený) zdroj. V súlade s označením na obrázku 2.4, pre rozdiel potenciálov medzi koncovými bodmi zdroja, čiže elektrické napätie, platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[U_{AB} = \phi_A - \phi_B = \int_A^B \vec{E}_e \cdot d\vec{l}\]
+        </div>
+        <span class="equation-number">(2.8)</span>
+    </div>
+
+    <p>Zo vzťahov (2.6), (2.7) a (2.8) postupne dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[U_{AB} = \int_A^B \vec{E}_e \cdot d\vec{l} = -\int_A^B \vec{E}_0 \cdot d\vec{l} = \int_B^A \vec{E}_0 \cdot d\vec{l} = \mathcal{E}\]
+        </div>
+    </div>
+
+    <p>Vidíme, že <strong>napätie na svorkách nezaťaženého zdroja je rovné jeho elektromotorickému napätiu</strong>.</p>
+
+    <h3><i class="fas fa-redo-alt"></i> Uzavretý elektrický obvod</h3>
+
+    <p>Vytvorme teraz uzavretý elektrický obvod tak, že konce zdroja \(A\), \(B\) spojíme vodičom, ktorého elektrický odpor je \(R\). Vo vodiči nastane usmernený pohyb elektrónov z miesta \(B\), kde je ich prebytok, na miesto \(A\), kde je ich nedostatok. V dôsledku toho sa naruší rovnováha poľa cudzích síl a elektrického poľa vo vnútri zdroja. V zdroji opäť na okamih prevládajú cudzie sily a vo vnútri zdroja prebieha pohyb elektrónov obnovujúci elektrické náboje na svorkách zdroja. Takto sa v uzavretom elektrickom obvode udržuje stály elektrický prúd, ktorého veľkosť závisí na veľkosti elektromotorického napätia zdroja.</p>
+
+    <p>Elektrostatické pole je konzervatívne a teda pre čiarový integrál cez uzavretý elektrický obvod platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{E}_e \cdot d\vec{l} = 0\]
+        </div>
+    </div>
+
+    <p>Výsledné elektrické pole v ľubovoľnom bode obvodu je dané vzťahom:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E} = \vec{E}_e + \vec{E}_0\]
+        </div>
+    </div>
+
+    <p>Počítajme teraz čiarový integrál z tohto poľa cez celý uzavretý elektrický obvod:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            \oint \vec{E} \cdot d\vec{l} = \oint \vec{E}_e \cdot d\vec{l} + \oint \vec{E}_0 \cdot d\vec{l} = \int_A^B \!\!\!_{\text{...zdroj}} \!\!\! \vec{E}_0 \cdot d\vec{l} + \int_B^A \!\!\!_{\text{...R}} \!\!\! \vec{E}_0 \cdot d\vec{l} = \mathcal{E}
+            \]
+        </div>
+        <span class="equation-number">(2.9)</span>
+    </div>
+
+    <p>Na základe poslednej rovnice môžeme interpretovať elektromotorické napätie aj ako prácu, ktorú vykoná výsledné elektrické pole o intenzite \(\vec{E}\) pri prenesení kladného jednotkového náboja celým uzavretým obvodom.</p>
+
+    <h3><i class="fas fa-resistance"></i> Vnútorný odpor zdroja</h3>
+
+    <p>Doteraz sme zanedbávali skutočnosť, že aj zdroj môže klásť odpor pohybu nábojov. V skutočnosti aj zdroj má nenulový odpor. Z (2.9) dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            \mathcal{E} = \oint \vec{E} \cdot d\vec{l} = \int_A^B \!\!\!_{\text{...zdroj}} \!\!\! \vec{E} \cdot d\vec{l} + \int_B^A \!\!\!_{\text{...R}} \!\!\! \vec{E} \cdot d\vec{l} = U_v + U_{AB}
+            \]
+        </div>
+    </div>
+
+    <p>kde \(U_v\) je napätie vzniknuté prechodom prúdu cez <strong>vnútorný odpor zdroja</strong> \(r_v\) a \(U_{AB}\) je tzv. <strong>svorkové napätie</strong> na vonkajšom odpore \(R\). Z Ohmovho zákona dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\mathcal{E} = U_v + U_{AB} = r_v I + RI\]
+        </div>
+    </div>
+
+    <p>alebo</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[U_{AB} = \mathcal{E} - U_v = \mathcal{E} - r_v I\]
+        </div>
+    </div>
+
+    <div class="important-note">
+        <p><strong>Dôležitý záver:</strong> Pri prechode prúdu je svorkové napätie rovné elektromotorickému napätiu zmenšenému o úbytok napätia na vnútornom odpore zdroja.</p>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<div class="section active" id="intenzita-proudu">
+    <h2><i class="fas fa-bolt"></i> 2.1 Intenzita prúdu, hustota prúdu</h2>
+
+    <p>Charakteristickou vlastnosťou valenčných elektrónov v kovoch je, že tieto prestávajú byť viazané na atómy a viac-menej sa voľne pohybujú v mriežke kovu. Nazývajú sa <strong>voľné</strong> alebo <strong>vodivostné elektróny</strong>. Za neprítomnosti elektrického poľa je ich pohyb chaotický, neusporiadaný, podobne ako je to u molekúl plynu.</p>
+
+    <p>Ak kovový vodič pripojíme na zdroj jednosmerného napätia (napríklad k batérii), v každom bode vo vnútri vodiča vznikne elektrické pole \(\vec{E}\), ktoré bude pôsobiť na elektróny a spôsobí, že sa začnú pohybovať proti smeru \(\vec{E}\) usmerneným pohybom. Hovoríme, že vznikol elektrický prúd.</p>
+
+    <h3><i class="fas fa-chart-line"></i> Definícia elektrického prúdu</h3>
+
+    <p>Stredný elektrický prúd vo vodiči je definovaný ako:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[I_s = \frac{\Delta Q}{\Delta t}\]
+        </div>
+    </div>
+
+    <p>kde \(\Delta Q\) je náboj, ktorý prejde daným miestom prierezu vodiča počas časového intervalu \(\Delta t\).</p>
+
+    <p>Ak sa elektrické napätie zdroja v čase mení, potom ani prúd nie je v čase konštantný a potrebujeme zaviesť veličinu, ktorá by vyjadrovala elektrický prúd v danom okamihu. Takouto veličinou je <strong>okamžitý elektrický prúd</strong> definovaný vzťahom:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[I = \lim_{\Delta t \to 0} \frac{\Delta Q}{\Delta t} = \frac{dQ}{dt}\]
+        </div>
+    </div>
+
+    <p>Jednotkou elektrického prúdu je <strong>ampér (A)</strong>.</p>
+
+    <h3><i class="fas fa-arrows-alt"></i> Hustota prúdu</h3>
+
+    <p>Vo všeobecnosti pojem prúd zahŕňa aj pohyb nábojov v trojrozmernom priestore. Aby sme ho popísali, zavedieme novú mikroskopickú veličinu - <strong>prúdovú hustotu</strong> \(\vec{j}\). Je to vektorová veličina, ktorá je charakteristikou určitého bodu vo vnútri vodiča a nie vodiča ako celku.</p>
+
+    <p>Nech vo vodiči kruhového prierezu \(S\) sú voľné náboje s objemovou hustotou:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\rho_V = \frac{dQ}{dV}\]
+        </div>
+        <span class="equation-number">(2.1)</span>
+    </div>
+
+    <p>kde \(dQ\) je voľný náboj v elementárnom objeme \(dV = S\, dl\) (Obr. 2.1). Pre jednoduchosť uvažujeme voľné náboje jedného druhu - napríklad voľné náboje v kovoch. Tieto voľné náboje nech sa pohybujú strednou rýchlosťou \(v_s\).</p>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Hustota+prúdu+v+vodiči" alt="Hustota prúdu vo vodiči">
+        <div class="image-caption">Obr. 2.1: Elementárny objem pre výpočet hustoty prúdu</div>
+    </div>
+
+    <p>Veľkosť prúdovej hustoty definujeme ako podiel prúdu \(I\), ktorý tečie plochou \(S\) a tejto plochy:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[j = \frac{I}{S} = \frac{1}{S} \frac{dQ}{dt}\]
+        </div>
+        <span class="equation-number">(2.2)</span>
+    </div>
+
+    <p>Elementárny voľný náboj \(dQ\), ktorý prejde plochou \(S\) za elementárny časový interval \(dt\), je náboj, ktorý sa nachádza v elementárnom objeme \(dV\) naznačenom na Obr. 2.1. V súlade s označením na tomto obrázku a vzťahom (2.1) platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[dQ = \rho_V dV = \rho_V S\, dl\]
+        </div>
+    </div>
+
+    <p>Dosadením do rovnice (2.2) dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[j = \frac{1}{S} \frac{\rho_V S\, dl}{dt} = \rho_V v_s\]
+        </div>
+    </div>
+
+    <p>kde \(v_s = \frac{dl}{dt}\) je stredná rýchlosť elektrónov (driftová rýchlosť).</p>
+
+    <p>Ak je náboj voľného elektrónu \(e\) a v objemovej jednotke daného vodiča je \(n\) takýchto nábojov, potom objemová hustota voľného náboja je \(\rho_V = en\) a pre prúdovú hustotu dostávame:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[j = en v_s\]
+        </div>
+    </div>
+
+    <h3><i class="fas fa-calculator"></i> Výpočet prúdu z hustoty prúdu</h3>
+
+    <p>Prúdovú hustotu v danom bode môžeme vypočítať ako podiel elementárneho prúdu, ktorý tečie cez ľubovoľnú elementárnu plôšku kolmú na smer prúdu v danom bode a tejto plôšky. Pre elektrický prúd \(dI\), ktorý tečie cez takúto elementárnu plôšku platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[dI = j\, dS_\perp\]
+        </div>
+    </div>
+
+    <p>pričom platí, že \(dS_\perp = dS \cos \alpha\).</p>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/006633/FFFFFF?text=Prúdová+hustota+ako+vektor" alt="Vzťah prúdovej hustoty a elementárnej plochy">
+        <div class="image-caption">Obr. 2.2: Elementárny prúd ako skalárny súčin vektorov \(\vec{j}\) a \(d\vec{S}\)</div>
+    </div>
+
+    <p>Elementárny prúd \(dI\) možno teda zapísať ako skalárny súčin vektorov \(\vec{j}\) a \(d\vec{S}\) (Obr. 2.2), pričom vektor prúdovej hustoty má smer rýchlosti nosičov náboja \(\vec{v}_s\):</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[dI = \vec{j} \cdot d\vec{S}\]
+        </div>
+    </div>
+
+    <p>Prúd, ktorý tečie plochou \(S\), vypočítame ako integrál cez celú danú plochu:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[I = \int_S \vec{j} \cdot d\vec{S}\]
+        </div>
+        <span class="equation-number">(2.3)</span>
+    </div>
+
+    <h3><i class="fas fa-sync-alt"></i> Zákon zachovania elektrického náboja</h3>
+
+    <p>Zákon zachovania elektrického náboja hovorí, že celkové množstvo náboja, ktorý vznikne v ľubovoľnom procese, je rovné nule. Je možné ho vyjadriť aj matematicky. Majme objem \(V\), ktorý je ohraničený uzavretou plochou \(S\). Ak prúdi náboj smerom von z uzavretej plochy, náboj \(Q_V\) vo vnútri sa musí zmenšiť o toto odpovedajúce množstvo. Zákon zachovania náboja potom môžeme vyjadriť rovnicou:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_S \vec{j} \cdot d\vec{S} = -\frac{d}{dt} Q_V\]
+        </div>
+    </div>
+</div>

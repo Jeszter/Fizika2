@@ -1,111 +1,152 @@
 <div class="section active" id="energia-sustavy">
-    <h2><i class="fas fa-battery-full"></i> 1.7 Kapacita vodiča, elektrický kondenzátor</h2>
+    <h2><i class="fas fa-charging-station"></i> 1.6 Energia sústavy nábojov, nabitého vodiča a elektrostatického poľa</h2>
 
-    <p>V predošlej časti sme ukázali, že nabitý vodič predstavuje ekvipotenciálny útvar. Táto skutočnosť nám umožňuje definovať kapacitu vodiča nasledovným spôsobom.</p>
+    <p>Na vytvorenie sústavy nábojov musíme vykonať prácu spojenú s prekonaním odpudivých či príťažlivých síl pôsobiacich medzi nimi. Pod energiou sústavy nábojov budeme potom rozumieť celkové množstvo práce, ktorú musí vykonať vonkajšia sila na jej vytvorenie.</p>
 
-    <h3><i class="fas fa-user-circle"></i> Kapacita osamelého vodiča</h3>
+    <p>Predstavme si napríklad, že vytvárame sústavu bodových nábojov. K prvému náboju by sme priniesli druhý náboj, pričom by sme konali prácu proti silám poľa vytvoreného prvým nábojom. Pri "prinášaní" tretieho náboja by sme konali prácu proti silám poľa vytvoreného prvou dvojicou nábojov a analogicky by to bolo pri postupnom "prinášaní" ďalších nábojov.</p>
 
-    <p>Kapacita vodiča \(C\) je definovaná ako podiel náboja \(Q\) na vodiči a absolútneho potenciálu \(\phi\) vodiča (\(\phi = 0\) pre \(r \to \infty\)):</p>
+    <h3><i class="fas fa-atom"></i> Energia sústavy dvoch nábojov</h3>
 
-    <div class="equation">
-        <div class="equation-content">
-            \[C = \frac{Q}{\phi}\]
-        </div>
-    </div>
-
-    <p>Jednotkou kapacity v sústave SI, ktorá vyplýva z definície, je coulomb/volt. Táto jednotka sa nazýva farad (F):</p>
+    <p>Ak využijeme definíciu potenciálnej energie, ktorú vzťahujeme na nekonečno, môžeme pre prácu potrebnú na vytvorenie sústavy dvoch nábojov \(Q_1\), \(Q_2\) písať:</p>
 
     <div class="equation">
         <div class="equation-content">
-            \[1 \, \text{F} = \frac{1 \, \text{C}}{1 \, \text{V}}\]
+            \[
+            W' = \int_{\infty}^{\vec{r}} \vec{F}' \cdot d\vec{r} = -\int_{\infty}^{\vec{r}} \vec{F} \cdot d\vec{r} = E_p(r) - E_p(\infty) = E_p(r) = \frac{Q_1 Q_2}{4\pi\varepsilon_0} \frac{1}{r_{12}}
+            \]
         </div>
+        <span class="equation-number">(1.17)</span>
     </div>
 
-    <h3><i class="fas fa-layer-group"></i> Kapacita kondenzátora</h3>
+    <p>kde \(\vec{F}'\) je vonkajšia sila, \(\vec{F}\) je sila poľa, \(\vec{r}_{12}\) je polohový vektor náboja \(Q_2\) vzhľadom na polohu náboja \(Q_1\).</p>
 
-    <p>Sústava pozostávajúca z dvoch vodičov nabitých rovnakým nábojom opačného znamienka sa nazýva kondenzátor. Kapacita kondenzátora je definovaná:</p>
+    <p>Pre elektrický potenciál \(\phi_1\) prvého náboja v poli druhého a pre potenciál \(\phi_2\) druhého náboja v poli prvého náboja môžeme na základe vzťahu (1.12) písať:</p>
 
     <div class="equation">
         <div class="equation-content">
-            \[C = \frac{Q}{\phi_1 - \phi_2}\]
+            \[
+            \phi_1 = \frac{Q_2}{4\pi\varepsilon_0} \frac{1}{r_{12}} \quad \text{a} \quad \phi_2 = \frac{Q_1}{4\pi\varepsilon_0} \frac{1}{r_{12}}
+            \]
+        </div>
+        <span class="equation-number">(1.18)</span>
+    </div>
+
+    <p>Z (1.17), (1.18) môžeme vyjadriť energiu \(E_p\) uvažovanej dvojice nábojov nasledovne:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            E_p = W' = Q_1 \phi_1 = Q_2 \phi_2
+            \]
+        </div>
+        <span class="equation-number">(1.19)</span>
+    </div>
+
+    <p>Vzťah (1.19) môžeme vyjadriť aj nasledovným spôsobom:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            E_p = \frac{1}{2} (Q_1 \phi_1 + Q_2 \phi_2)
+            \]
         </div>
     </div>
 
-    <p>kde \(\phi_1\) a \(\phi_2\) sú elektrické potenciály na jednotlivých vodičoch a \(Q\) je náboj vodiča, ktorý má potenciál \(\phi_1\).</p>
+    <h3><i class="fas fa-cubes"></i> Energia sústavy viacerých nábojov</h3>
 
-    <h3><i class="fas fa-square"></i> Kapacita doskového kondenzátora</h3>
+    <p>Postupom naznačeným v úvode tejto kapitoly možno odvodiť analogický vzťah platný pre ľubovolný počet nábojov:</p>
 
-    <p>Na ilustráciu nájdeme vyjadrenie kapacity pre doskový kondenzátor, ktorý tvoria dve rovnobežné vodivé dosky vo vzdialenosti \(d\), ktorá je malá v porovnaní s rozmermi dosiek. Nech na dosky, ktorých plošný obsah je \(S\), sú privedené opačné náboje \(\pm Q\).</p>
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            E_p = \frac{1}{2} \sum_i Q_i \phi_i
+            \]
+        </div>
+        <span class="equation-number">(1.20)</span>
+    </div>
+
+    <p>kde sčítavame cez všetky náboje, \(Q_i\) označuje \(i\)-tý náboj a \(\phi_i\) je elektrický potenciál poľa v mieste \(i\)-tého náboja, ktorý je vytvorený <strong>ostatnými nábojmi</strong>.</p>
+
+    <h3><i class="fas fa-bolt"></i> Energia nabitého vodiča</h3>
+
+    <p>Zo vzťahu (1.20) možno veľmi jednoducho vyjadriť energiu nabitého vodiča. Umožňuje to skutočnosť, že nabitý vodič predstavuje <strong>ekvipotenciálny útvar</strong>. Môžeme sa o tom presvedčiť nasledovnou úvahou. Vieme, že vo vnútri vodiča je \(E = 0\). Ak spojíme dva ľubovoľné body ľubovolnou krivkou a urobíme nižšie naznačenú integráciu, zrejme platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            \int_{\vec{r}_1}^{\vec{r}_2} \vec{E} \cdot d\vec{r} = \phi_1 - \phi_2 = 0
+            \]
+        </div>
+    </div>
+
+    <p>a teda \(\phi_1 = \phi_2 = \phi\) pre ľubovoľnú dvojicu bodov vodiča.</p>
+
+    <p>Pre energiu nabitého vodiča teraz zo vzťahu (1.20) dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            E_p = \frac{1}{2} \sum_i Q_i \phi = \frac{1}{2} \phi \sum_i Q_i = \frac{1}{2} \phi Q
+            \]
+        </div>
+    </div>
+
+    <p>kde \(Q = \sum_i Q_i\) je celkový náboj na vodiči.</p>
+
+    <h3><i class="fas fa-cube"></i> Energia elektrostatického poľa a hustota energie</h3>
+
+    <p>Teraz prejdeme k vyjadreniu energie elektrostatického poľa. Uvažujme dve nekonečné rovnobežné roviny nabité s rovnakou plošnou hustotou náboja opačného znamienka (pozri Obr. 1.12). Ak sa tieto roviny dotýkajú, energia je nulová (\(Q = 0\)). Ak sú vo vzájomnej vzdialenosti \(d\), veľkosť intenzity homogénneho elektrostatického poľa vytvoreného v objeme medzi nimi je:</p>
 
     <div class="theory-image">
-        <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Doskový+kondenzátor" alt="Schéma doskového kondenzátora">
-        <div class="image-caption">Obr. 1.13: Doskový kondenzátor</div>
+        <img src="/Fizika2/img/1.12.png" alt="Dve rovnobežné roviny s opačným nábojom">
+        <div class="image-caption">Obr. 1.12: K výpočtu energie elektrostatického poľa</div>
     </div>
-
-    <p>Rozdiel potenciálov dosiek môže byť vyjadrený</p>
 
     <div class="equation">
         <div class="equation-content">
-            \[\phi_2 - \phi_1 = \int_{\phi_1}^{\phi_2} d\phi = -\int_0^d \vec{E} \cdot d\vec{r} = -\int_0^d E\, dr = -E d\]
+            \[
+            E = \frac{\sigma}{\varepsilon_0}
+            \]
         </div>
-        <span class="equation-number">(1.22)</span>
     </div>
 
-    <p>a s využitím vzťahu \(E = \frac{\sigma_+}{\varepsilon_0}\) dostávame:</p>
+    <p>Vieme tiež, že pole vytvorené jednou rovinou v mieste, kde je uložená druhá, je:</p>
 
     <div class="equation">
         <div class="equation-content">
-            \[\phi_1 - \phi_2 = E d = \frac{\sigma_+}{\varepsilon_0} d = \frac{Q_+}{S\varepsilon_0} d\]
+            \[
+            E_1 = \frac{\sigma}{2\varepsilon_0}
+            \]
         </div>
     </div>
 
-    <p>Potom pre kapacitu dostávame z definície</p>
-
-    <div class="equation">
-        <div class="equation-content">
-            \[C = \frac{Q_+}{\phi_1 - \phi_2} = \varepsilon_0 \frac{S}{d}\]
-        </div>
-        <span class="equation-number">(1.23)</span>
-    </div>
-
-    <div class="important-note">
-        <p><strong>Vzťah (1.23)</strong> ukazuje, že kapacita doskového kondenzátora je priamo úmerná ploche dosiek a nepriamo úmerná vzdialenosti medzi nimi.</p>
-    </div>
-
-    <h3><i class="fas fa-bolt"></i> Napätie a energia kondenzátora</h3>
-
-    <p>Zo vzťahu (1.22) pre elektrické napätie medzi doskami rovinného kondenzátora platí:</p>
-
-    <div class="equation">
-        <div class="equation-content">
-            \[U = \phi_1 - \phi_2 = E d\]
-        </div>
-        <span class="equation-number">(1.24)</span>
-    </div>
-
-    <p>a zo vzťahov (1.21), (1.23) a (1.24) určíme energiu nabitého kondenzátora:</p>
-
-    <div class="equation">
-        <div class="equation-content">
-            \[E_p = \frac{1}{2} C U^2\]
-        </div>
-        <span class="equation-number">(1.25)</span>
-    </div>
-
-    <div class="important-note">
-        <p><strong>Všeobecná platnosť:</strong> Aj keď vzťah (1.25) sme získali v špeciálnom prípade doskového kondenzátora, jeho platnosť je všeobecná a platí pre ľubovoľný elektrický kondenzátor. Môžeme sa o tom presvedčiť, ak použijeme vzťah (1.20), vyjadrujúci energiu sústavy nábojov, a definíciu kapacity elektrického kondenzátora.</p>
-    </div>
-
-    <p>Zo vzťahu (1.20) dostaneme:</p>
+    <p>Potenciálna energia odpovedajúca ploche \(S\) roviny môže byť vyjadrená:</p>
 
     <div class="equation">
         <div class="equation-content">
             \[
             \begin{aligned}
-            E_p &= \frac{1}{2} (Q_+\phi_1 + Q_-\phi_2) = \frac{1}{2} (Q_+\phi_1 - Q_+\phi_2) = \\
-            &= \frac{1}{2} Q_+ (\phi_1 - \phi_2) = \frac{1}{2} Q_+ U = \frac{1}{2} C U^2.
+            E_p &= -\int_0^d \vec{F} \cdot \vec{i}\, dx = \int_0^d F\, dx = S\sigma \int_0^d E_1\, dx = \\
+            &= S\sigma \int_0^d \frac{\sigma}{2\varepsilon_0}\, dx = \frac{\sigma^2}{2\varepsilon_0} S d = \frac{1}{2} \varepsilon_0 E^2 S d
             \end{aligned}
             \]
         </div>
+        <span class="equation-number">(1.21)</span>
+    </div>
+
+    <p>To je energia elektrostatického poľa, ktoré je vytvorené v objeme \(V = Sd\).</p>
+
+    <p>Výraz</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            w_{el} = \frac{E_p}{V} = \frac{1}{2} \varepsilon_0 E^2
+            \]
+        </div>
+    </div>
+
+    <div class="important-note">
+        <p><strong>Fyzikálny význam:</strong> Veličina \(w_{el}\) vyjadruje <strong>hustotu energie</strong> elektrostatického poľa, teda energiu elektrostatického poľa v objemovej jednotke. Tento vzťah platí všeobecne pre ľubovoľné elektrostatické pole, nielen pre homogénne.</p>
     </div>
 </div>
