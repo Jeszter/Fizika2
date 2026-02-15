@@ -1,0 +1,229 @@
+<div class="section active" id="ohmov-zakon">
+  <h2><i class="fas fa-chart-bar"></i> 2.2 Ohmov zákon, Jouleov zákon</h2>
+
+  <p>K tomu, aby vo vodiči tiekol prúd, je potrebný rozdiel potenciálov. G. S. Ohm (1787 - 1854) experimentálne stanovil, že podiel rozdielu potenciálov \(U\) medzi koncami vodiča a prúdu v kovovom vodiči je konštantný:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{U}{I} = R\]
+    </div>
+  </div>
+
+  <p>kde \(R\) je <strong>elektrický odpor</strong> vodiča. Táto závislosť sa nazýva <strong>Ohmov zákon</strong>. Pre kovové vodiče je odpor konštantný a nezávislý od napätia. Jeho jednotkou je <strong>ohm (\(\Omega\))</strong>.</p>
+
+  <h3><i class="fas fa-ruler"></i> Odpor a rezistivita</h3>
+
+  <p>Experimentálne bolo tiež zistené, že odpor \(R\) kovového drôtu je priamo úmerný jeho dĺžke \(l\) a nepriamo úmerný jeho prierezu \(S\), takže:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[R = \rho \frac{l}{S}\]
+    </div>
+  </div>
+
+  <p>kde \(\rho\) je tzv. <strong>rezistivita</strong> a je charakteristikou materiálu.</p>
+
+  <p>Odpor kovov rastie s teplotou a pre nie príliš široký teplotný interval jeho závislosť na teplote možno vyjadriť lineárnou závislosťou typu:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[R = R_0 [1 + \alpha (T - T_0)]\]
+    </div>
+  </div>
+
+  <p>kde \(R\) je odpor pri teplote \(T\), \(R_0\) je odpor pri teplote \(T_0\), a \(\alpha\) je <strong>teplotný koeficient odporu</strong>.</p>
+
+  <p>Prevrátená hodnota rezistivity sa nazýva <strong>konduktivita</strong> \(\gamma\):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\gamma = \frac{1}{\rho}\]
+    </div>
+  </div>
+
+  <p>jej jednotkou je \((\Omega m)^{-1}\).</p>
+
+  <h3><i class="fas fa-microscope"></i> Mikroskopický (diferenciálny) tvar Ohmovho zákona</h3>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Vodič+v+elektrickom+poli" alt="Vodič v homogénnom elektrickom poli">
+    <div class="image-caption">Obr. 2.3: Vodič dĺžky \(l\) v homogénnom elektrickom poli</div>
+  </div>
+
+  <p>Ohmov zákon môže byť zapísaný aj v mikroskopickom tvare. Ak predpokladáme, že vo vodiči (tvaru drôtu) dĺžky \(l\) (Obr. 2.3) je vytvorené homogénne elektrické pole intenzity \(E\), potom pre odpovedajúci rozdiel potenciálov môžeme písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[U = El\]
+    </div>
+  </div>
+
+  <p>Z tejto rovnice, použijúc Ohmov zákon, dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[RI = \rho \frac{l}{S} I = El\]
+    </div>
+  </div>
+
+  <p>Ak predpokladáme homogénnu prúdovú hustotu \(j\) v priereze drôtu, dostaneme z (2.3) pre veľkosť prúdu vzťah \(I = jS\). Potom pre prúdovú hustotu platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[j = \frac{I}{S} = \frac{1}{\rho} E = \gamma E\]
+    </div>
+    <span class="equation-number">(2.5)</span>
+  </div>
+
+  <p>Prúdová hustota vo vodiči je teda priamo úmerná intenzite elektrického poľa, ktoré je vo vodiči vytvorené.</p>
+
+  <p>Poslednú rovnicu možno zapísať aj vo vektorovom tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{j} = \gamma \vec{E}\]
+    </div>
+  </div>
+
+  <p>Je to <strong>mikroskopické vyjadrenie Ohmovho zákona</strong> - Ohmov zákon v diferenciálnom tvare.</p>
+
+  <h3><i class="fas fa-cube"></i> Model vedenia elektrónov v kove</h3>
+
+  <p>Vyššie uvedené experimentálne poznatky možno pochopiť na základe jednoduchého modelu. Predpokladáme, že transport náboja je sprostredkovaný voľnými elektrónmi, ktoré pri svojom pohybe narážajú na rôzne poruchy mriežky. Z hľadiska pochopenia teplotnej závislosti významnú úlohu zohrávajú poruchy v dôsledku tepelných kmitov atómov mriežky. V našom modeli budeme predpokladať, že rýchlosť elektrónu po každej zrážke s mriežkovou poruchou klesne na nulu.</p>
+
+  <p>Nech časový interval medzi dvomi následnými zrážkami je \(\tau\) a počas tohto časového intervalu sa elektrón pohybuje priamočiaro rovnomerne zrýchlene so zrýchlením \(a\) pod vplyvom silového pôsobenia homogénneho elektrického poľa intenzity \(E\), ktoré je vytvorené vo vodiči. Strednú rýchlosť pohybu elektrónu môžeme potom vypočítať nasledovne:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[v_s = \frac{1}{\tau} \int_0^\tau v\, dt = \frac{1}{\tau} \int_0^\tau a t\, dt = \frac{1}{\tau} \frac{a\tau^2}{2} = \frac{a\tau}{2}\]
+    </div>
+  </div>
+
+  <p>Zrýchlenie vyjadríme z 2. Newtonovho zákona:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[m_0 a = eE \quad \Rightarrow \quad a = \frac{eE}{m_0}\]
+    </div>
+  </div>
+
+  <p>kde \(m_0\) je hmotnosť elektrónu. Ak predchádzajúci výsledok dosadíme za zrýchlenie do vzťahu pre strednú rýchlosť elektrónov, dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[v_s = \frac{eE}{2m_0} \tau\]
+    </div>
+  </div>
+
+  <p>a pre prúdovú hustotu potom môžeme písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[j = en v_s = \frac{e^2 n \tau}{2m_0} E = \gamma E\]
+    </div>
+  </div>
+
+  <p>kde</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\gamma = \frac{e^2 n \tau}{2m_0}\]
+    </div>
+  </div>
+
+  <p>je konduktivita daného materiálu. Takýmto spôsobom sme teda dospeli k Ohmovmu zákonu (rovnica 2.5).</p>
+
+  <p>Konduktivita daného materiálu rastie s narastaním počtu voľných nábojových nosičov a tiež s rastom stredného časového intervalu medzi zrážkami \(\tau\).</p>
+
+  <p>Teplotnú závislosť konduktivity ovplyvňujú v rámci takéhoto modelu dva protichodné mechanizmy:</p>
+
+  <ul>
+    <li>Nárast počtu voľných nosičov s teplotou (napríklad polovodiče) vedie k nárastu konduktivity.</li>
+    <li>Naopak, zvyšovanie teploty vedie k nárastu intenzity tepelných kmitov atómov mriežky, zvyšuje sa pravdepodobnosť nárazu nosiča na takúto poruchu a výsledkom je zmenšenie stredného časového intervalu medzi zrážkami \(\tau\). Tento druhý mechanizmus vedie k poklesu konduktivity s narastajúcou teplotou a je dominantným v prípade kovov, kde sa \(n\) prakticky nemení s teplotou.</li>
+  </ul>
+
+  <h3><i class="fas fa-fire"></i> 2.2.2 Jouleov zákon</h3>
+
+  <p>Jednoduchý model, ktorý sme použili v predchádzajúcej časti, je tiež vhodný na vysvetlenie prenosu energie od voľných nábojov na kovovú mriežku vodiča. V rámci tohto modelu sa počas jednej zrážky celá kinetická energia elektrónu odovzdá mriežke. Tento prenos energie je zodpovedný za zvýšenie vnútornej energie vodiča, ktoré sa prejaví zvýšením jeho teploty.</p>
+
+  <p>Energia, ktorú odovzdá jeden elektrón počas jednej zrážky, je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_k = \frac{1}{2} m_0 v_{\max}^2\]
+    </div>
+  </div>
+
+  <p>kde \(v_{\max} = a\tau\) je rýchlosť elektrónu v okamihu zrážky, teda v čase \(\tau\). Keďže \(a = \frac{eE}{m_0}\), pre energiu máme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_k = \frac{1}{2} m_0 v_{\max}^2 = \frac{1}{2} m_0 \left( \frac{Ee\tau}{m_0} \right)^2 = \frac{E^2 e^2 \tau^2}{2m_0}\]
+    </div>
+  </div>
+
+  <p>Energia, ktorá je prenesená v objemovej jednotke vodiča počas časového intervalu \(\tau\), je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_n = n E_k = \frac{n e^2 \tau^2}{2m_0} E^2\]
+    </div>
+  </div>
+
+  <p>Výkon - energia odovzdaná za jednotku času v objemovej jednotke - je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[P_n = \frac{E_n}{\tau} = \frac{n e^2 \tau}{2m_0} E^2 = \gamma E^2 = jE\]
+    </div>
+  </div>
+
+  <p>čo možno zapísať vo vektorovom tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[P_n = \vec{j} \cdot \vec{E}\]
+    </div>
+  </div>
+
+  <p>Získali sme matematické vyjadrenie <strong>Jouleovho zákona v diferenciálnom tvare</strong> - z mikroskopického pohľadu.</p>
+
+  <p>Ak uvažujeme vodič dĺžky \(l\) a prierezu \(S\), môžeme pre výkon v jeho objeme písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      \begin{aligned}
+      P &= P_n S l = \gamma E^2 S l = \gamma \frac{j^2}{\gamma^2} S l = \rho \frac{l}{S} j^2 S^2 = \\
+      &= R I^2 = U I
+      \end{aligned}
+      \]
+    </div>
+  </div>
+
+  <p>Táto rovnica vyjadruje <strong>Jouleov zákon</strong>. V tvare</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[P = U I\]
+    </div>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Všeobecná platnosť:</strong> Vzťah \(P = U I\) platí všeobecne, nielen pre špeciálny prípad úseku vodiča, a hovorí, že výkon elektrického prúdu sa rovná súčinu napätia vo vodiči a prúdu, ktorý tečie vodičom.</p>
+  </div>
+
+  <p>Energia dodaná mriežke v dôsledku toku prúdu je ekvivalentná dodaniu tepla \(Q^*\) a prejaví sa navonok zahriatím vodiča. Môžeme teda písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[P = U I = \frac{dQ^*}{dt}\]
+    </div>
+  </div>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[Q^* = \int_0^t U I\, dt\]
+    </div>
+  </div>
+</div>

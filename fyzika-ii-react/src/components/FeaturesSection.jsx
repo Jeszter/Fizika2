@@ -41,7 +41,7 @@ const FeaturesSection = () => {
                         key={index}
                         className="bg-white dark:bg-gray-800 p-10 rounded-custom-lg text-center shadow-custom dark:shadow-dark-custom border border-border dark:border-gray-700 transition-all duration-300 relative overflow-hidden hover:-translate-y-2 hover:shadow-custom-hover dark:hover:shadow-dark-custom-hover"
                     >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-primary-blue"></div>
+
                         <div className="w-20 h-20 bg-primary-blue rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-3xl transition-all duration-300 hover:scale-110">
                             <i className={`fas ${feature.icon}`}></i>
                         </div>

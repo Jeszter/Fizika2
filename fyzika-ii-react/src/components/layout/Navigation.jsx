@@ -8,7 +8,7 @@ const Navigation = ({ sidebarOpen, toggleSidebar }) => {
     const [isContentPage, setIsContentPage] = useState(false)
 
     useEffect(() => {
-        setIsContentPage(location.pathname === '/content')
+        setIsContentPage(location.pathname !== '/')
     }, [location])
 
     return (

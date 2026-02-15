@@ -26,15 +26,19 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
 
     const isSubmenuOpen = (menuId) => openMenus.includes(menuId)
 
-    const elektrostatikaSections = sections.slice(0, 9)
-    const elektrickyProudSections = sections.slice(9)
+    const elektrostatikaSections = sections.slice(0, 8)
+    const elektrickyProudSections = sections.slice(8, 11)
+    const magnetickePoleSections = sections.slice(11, 18)
+    const elektromagnetickePoleSections = sections.slice(18, 22)
+    const maxwellSections = sections.slice(22)
+
 
     const menuData = [
         {
             id: 'elektrostatika',
             icon: 'fa-bolt',
             title: 'Elektrostatické pole',
-            description: '9 kapitol',
+            description: '8 kapitol',
             sections: elektrostatikaSections
         },
         {
@@ -43,8 +47,30 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
             title: 'Elektrický prúd v kovoch',
             description: '3 kapitoly',
             sections: elektrickyProudSections
+        },
+        {
+            id: 'magneticke-pole',
+            icon: 'fa-magnet',
+            title: 'Magnetické pole',
+            description: '7 kapitol',
+            sections: magnetickePoleSections
+        },
+        {
+            id: 'elektromagneticke-pole',
+            icon: 'fa-wave-square',
+            title: 'Elektromagnetické pole',
+            description: '4 kapitoly',
+            sections: elektromagnetickePoleSections
+        },
+        {
+            id: 'maxwell',
+            icon: 'fa-atom',
+            title: 'Maxwellove rovnice',
+            description: '1 kapitola',
+            sections: maxwellSections
         }
     ]
+
 
     const handleSectionSelect = (sectionId) => {
         window.dispatchEvent(new CustomEvent('sectionChange', {
@@ -64,7 +90,7 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
         >
             <div className="p-6 border-b border-border dark:border-gray-700 bg-primary-blue-bg dark:bg-gray-900/50">
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-start gap-3">
                         <div className="w-10 h-10 bg-gradient-to-br from-primary-blue to-primary-blue-dark rounded-lg flex items-center justify-center shadow-md">
                             <i className="fas fa-book text-white text-lg"></i>
                         </div>
@@ -132,9 +158,9 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                         <li key={sectionId} className="mb-1">
                                             <button
                                                 onClick={() => handleSectionSelect(sectionId)}
-                                                className={`w-full text-left p-3 pl-12 rounded-lg transition-all duration-300 relative group ${
+                                                className={`w-full text-left p-3 pl-12 rounded-lg transition-colors duration-200 relative group min-h-[56px] ${
                                                     isActive
-                                                        ? 'bg-primary-blue/10 dark:bg-blue-500/20 text-primary-blue dark:text-blue-400 font-medium'
+                                                        ? 'bg-primary-blue/10 dark:bg-blue-500/20 text-primary-blue dark:text-blue-400'
                                                         : 'hover:bg-primary-blue/5 dark:hover:bg-blue-500/10 text-text-dark dark:text-gray-400'
                                                 }`}
                                             >
@@ -146,8 +172,9 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                                     }`}>
                                                         {index + 1}
                                                     </div>
-                                                    <span className={`flex-1 text-left text-sm ${
-                                                        isActive
+                                                    <span className={`flex-1 text-left text-sm leading-snug whitespace-normal ${
+
+                                                    isActive
                                                             ? 'text-primary-blue dark:text-blue-400'
                                                             : 'text-text-dark dark:text-gray-400 group-hover:text-primary-blue dark:group-hover:text-blue-300'
                                                     }`}>
