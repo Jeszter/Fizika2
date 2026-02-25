@@ -1,0 +1,155 @@
+<div class="section active" id="sila-na-vodic">
+  <h2><i class="fas fa-bolt"></i> 3.5 Sila pôsobiaca na vodič, ktorým tečie prúd, v magnetickom poli</h2>
+
+  <p>Elektrický prúd vytvárajú pohybujúce sa náboje. Keďže magnetické pole pôsobí silou na každý pohybujúci sa náboj, môžeme očakávať, že bude silovo pôsobiť aj na vodič, ktorým tečie prúd.</p>
+
+  <p>Uvažujme element prúdovodiča dĺžky \(dl\), ktorým tečie konštantný elektrický prúd \(I\). Vodič nech je uložený v magnetickom poli s indukciou \(\vec{B}\). Vektor \(d\vec{l}\) je orientovaný v smere pohybu kladného náboja. Ak \(dQ\) je voľný elementárny náboj, ktorý sa nachádza v dĺžkovom elemente \(dl\), a pohybuje sa rýchlosťou \(\vec{v}\), pre silu pôsobiacu na vybratý element môžeme písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[d\vec{F} = dQ \left( \vec{v} \times \vec{B} \right)\]
+    </div>
+  </div>
+
+  <p>Keďže \(dQ = I dt\) a \(\vec{v} = \frac{d\vec{l}}{dt}\), pre silu môžeme ďalej písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[d\vec{F} = I dt \left( \frac{d\vec{l}}{dt} \times \vec{B} \right)\]
+    </div>
+  </div>
+
+  <p>a teda</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[d\vec{F} = I \left( d\vec{l} \times \vec{B} \right)\]
+    </div>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Ampérov zákon sily:</strong> Táto rovnica - tzv. <strong>Amperov zákon sily</strong>, vyjadruje silu, ktorou pôsobí magnetické pole na dĺžkový element \(dl\) vodiča, ktorým tečie konštantný prúd \(I\).</p>
+  </div>
+
+  <p>Integrovaním tejto rovnice získame silu, ktorá pôsobí na celý vodič dĺžky \(l\):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{F} = \int_l I \left( d\vec{l} \times \vec{B} \right)\]
+    </div>
+    <span class="equation-number">(3.6)</span>
+  </div>
+
+  <h3><i class="fas fa-arrows-alt-h"></i> 3.5.1 Sila pôsobiaca medzi dvomi rovnobežnými priamymi vodičmi</h3>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Sila+medzi+rovnobežnými+vodičmi" alt="Sila medzi dvoma rovnobežnými vodičmi s prúdom">
+    <div class="image-caption">Obr. 3.5: Dva rovnobežné vodiče s prúdom</div>
+  </div>
+
+  <p>Na obrázku 3.5 sú dva priame rovnobežné vodiče vo vzájomnej vzdialenosti \(a\). Vodičmi tečú prúdy \(I_1\) a \(I_2\) v tom istom smere. Prvý vodič vytvára magnetické pole. Veľkosť jeho indukcie v mieste druhého vodiča je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[B_1 = \frac{\mu_0 I_1}{2\pi a}\]
+    </div>
+  </div>
+
+  <p>Vodič 2, ktorým tečie prúd \(I_2\), sa teda nachádza v magnetickom poli s indukciou \(B_1\). Na dĺžku \(l\) tohto vodiča bude pôsobiť magnetická sila \(\vec{F}_{12}\), ktorej veľkosť podľa vzťahu (3.6) je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[F_{12} = I_2 l B_1 = \frac{\mu_0 I_1 I_2}{2\pi a} l\]
+    </div>
+  </div>
+
+  <p>Orientáciu tejto sily \(\vec{F}_{12}\) určíme pomocou definície vektorového súčinu a rovnice \(d\vec{F}_{12} = I_2 \left( d\vec{l} \times \vec{B}_1 \right)\).</p>
+
+  <div class="important-note">
+    <p><strong>Výsledok:</strong> Dva rovnobežné vodiče, ktorými tečú prúdy toho istého smeru, sa <strong>priťahujú</strong> a dva vodiče s prúdmi opačného smeru sa <strong>odpudzujú</strong>.</p>
+  </div>
+
+  <h3><i class="fas fa-redo-alt"></i> 3.5.2 Sily pôsobiace na prúdovú slučku, magnetický moment</h3>
+
+  <p>Sily pôsobiace na slučku s prúdom v magnetickom poli vyšetríme pre najjednoduchší prípad. Majme obdĺžníkovú drôtenú slučku dĺžky \(h\) a šírky \(l\), ktorá je uložená v magnetickom poli \(\vec{B}\). Slučkou tečie prúd \(I\).</p>
+
+  <p>Jednotkový vektor \(\vec{n}\) je kolmý k ploche slučky a je orientovaný tým smerom, odkiaľ je vidieť prúd tiecť proti smeru pohybu hodinových ručičiek (pozri Obr. 3.6).</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x400/006633/FFFFFF?text=Prúdová+slučka+v+magnetickom+poli" alt="Obdĺžniková prúdová slučka v magnetickom poli">
+    <div class="image-caption">Obr. 3.6: Sily pôsobiace na prúdovú slučku</div>
+  </div>
+
+  <p>Výsledná sila pôsobiaca na slučku je vektorovým súčtom síl pôsobiacich na štyri strany slučky. Magnetická sila pôsobiaca na stranu \(ij\) slučky je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[F_{ij} = B I l_{ij} \sin \phi_{ij}\]
+    </div>
+  </div>
+
+  <p>kde \(l_{ij}\) je dĺžka strany a \(\phi_{ij}\) je uhol medzi vektormi \(\vec{B}\) a \(d\vec{l}_{ij}\) pre danú stranu.</p>
+
+  <p>Je zrejmé, že platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{F}_{12} = -\vec{F}_{34} \quad \text{a} \quad \vec{F}_{41} = -\vec{F}_{32}\]
+    </div>
+  </div>
+
+  <p>Keďže sily \(\vec{F}_{12}\) a \(\vec{F}_{34}\) pôsobia pozdĺž tej istej priamky, ich výslednica je nulová, na slučku teda nepôsobia. Pretože sily \(\vec{F}_{41}\) a \(\vec{F}_{32}\) nepôsobia pozdĺž tej istej priamky, ich výslednicou je moment sily, pre ktorý platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{M}_m = \vec{l}_{12} \times \vec{F}_{32}\]
+    </div>
+  </div>
+
+  <p>Keďže \(\left|\vec{F}_{32}\right| = \left|\vec{F}_{41}\right| = B I h\) a \(\left|\vec{l}_{12}\right| = l\), pre veľkosť momentu sily môžeme písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[M_m = B I h l \sin \alpha = B I S \sin \alpha\]
+    </div>
+  </div>
+
+  <p>kde \(S = hl\) je plošný obsah slučky. Tento vzťah, ktorý sme odvodili pre obdĺžnikovú slučku, platí pre rovinnú slučku ľubovoľného tvaru.</p>
+
+  <p>Veličina:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{m} = I S \vec{n} = I \vec{S}\]
+    </div>
+  </div>
+
+  <p>sa nazýva <strong>magnetický moment slučky</strong>. Pomocou tejto definície môžeme písať moment sily vo vektorovom tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{M}_m = \vec{m} \times \vec{B}\]
+    </div>
+  </div>
+
+  <p>Na slučku s prúdom, uloženú v magnetickom poli, pôsobí moment síl, teda pri jej otočení musí byť vykonaná práca a slučka má potenciálnu energiu zviazanú s jej polohou (natočením) vo vonkajšom magnetickom poli.</p>
+
+  <p>Magnetickú potenciálnu energiu v nejakej polohe danej uhlom \(\alpha\) definujeme, ako prácu vonkajších síl, potrebnú na otočenie slučky z polohy s nulovou potenciálnou energiou (obyčajne sa táto poloha volí pre \(\alpha = 90^\circ\)) do danej polohy \(\alpha\). Teda:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      E_p = \int_{90^\circ}^{\alpha} M_m d\alpha = \int_{90^\circ}^{\alpha} m B \sin \alpha \, d\alpha = mB [-\cos \alpha]_{90^\circ}^{\alpha} = -mB \cos \alpha
+      \]
+    </div>
+  </div>
+
+  <p>alebo vo vektorovom tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_p = -\vec{m} \cdot \vec{B}\]
+    </div>
+  </div>
+
+</div>

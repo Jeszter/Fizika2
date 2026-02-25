@@ -1,0 +1,184 @@
+<div class="section active" id="energia-magnetickeho-pola">
+  <h2><i class="fas fa-bolt"></i> 4.3 Energia a hustota energie v magnetickom poli</h2>
+
+  <p>Práca vykonaná pri oddialení dvoch nábojov rôznych znamienok sa uloží do elektrického poľa, ktoré je medzi nimi. Môžeme ju získať späť, ak necháme náboje, aby sa opäť priblížili k sebe.</p>
+
+  <p>Podobne môžeme uložiť energiu v magnetickom poli. Napríklad dva dlhé rovnobežné vodiče, ktorými tečú prúdy v tom istom smere, sa priťahujú a na ich oddialenie musíme vynaložiť prácu. Túto energiu môžeme získať späť, ak necháme vodiče opäť sa k sebe priblížiť do pôvodnej polohy.</p>
+
+  <h3><i class="fas fa-chart-line"></i> Energia magnetického poľa v obvode RL</h3>
+
+  <p>Aby sme odvodili kvantitatívny vzťah pre energiu magnetického poľa, uvažujme obvod ako je na Obr. 4.5, kde je k zdroju elektromotorického napätia ε cez vypínač K pripojená cievka indukčnosti L s odporom R.</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=RL+obvod" alt="RL obvod">
+    <div class="image-caption">Obr. 4.5: RL obvod</div>
+  </div>
+
+  <p>V okamihu t = 0 je RL okruh pripojený k zdroju. V tomto okamihu je prúd I = 0. Podľa 2. Kirchhofovho zákona</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\varepsilon + \varepsilon_L = RI\]
+    </div>
+  </div>
+
+  <p>alebo</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\varepsilon - L \frac{dI}{dt} = RI\]
+    </div>
+  </div>
+
+  <p>Ak túto rovnicu vynásobíme prúdom I, dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\varepsilon I - L \frac{dI}{dt} I = R I^2\]
+    </div>
+    <span class="equation-number">(4.2)</span>
+  </div>
+
+  <p>Rovnica (4.2) vyjadruje zákon zachovania energie pre okruh RL. Jednotlivé členy rovnice môžeme interpretovať nasledovne:</p>
+
+  <ul>
+    <li>výraz \(\varepsilon I\) vyjadruje energiu dodanú za jednotku času zo zdroja do okruhu,</li>
+    <li>\(R I^2\) vyjadruje energiu, ktorá sa za jednotku času v cievke premení na tepelnú energiu.</li>
+  </ul>
+
+  <p>Energia, ktorá sa neprejaví ako tepelná energia, musí byť energiou magnetického poľa vytvoreného v cievke.</p>
+
+  <ul>
+    <li>Výraz \(L I \frac{dI}{dt}\) musí teda predstavovať zmenu energie \(\frac{dE_m}{dt}\) magnetického poľa za jednotku času.</li>
+  </ul>
+
+  <p>Teda</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{dE_m}{dt} = L I \frac{dI}{dt}\]
+    </div>
+  </div>
+
+  <p>čo možno písať</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[dE_m = L I dI\]
+    </div>
+  </div>
+
+  <p>Integrovaním máme</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_m = \int_0^{I_m} L I dI = \frac{1}{2} L I_m^2\]
+    </div>
+    <span class="equation-number">(4.3)</span>
+  </div>
+
+  <p>čo je celková energia magnetického poľa vytvoreného cievkou indukčnosti \(L\), ak ňou prechádza prúd \(I_m\).</p>
+
+  <div class="important-note">
+    <p><strong>Všeobecná platnosť:</strong> Vzťah (4.3) má všeobecnú platnosť a vyjadruje energiu magnetického poľa vodiča ľubovolného tvaru indukčnosti \(L\) a ktorým preteká prúd \(I\).</p>
+  </div>
+
+  <h3><i class="fas fa-cube"></i> Hustota energie magnetického poľa</h3>
+
+  <p>Nájdime teraz všeobecné vyjadrenie energie magnetického poľa pomocou veličín charakterizujúcich pole. Uvažujme úzky toroid s n závitmi, ktorými tečie prúd I, ako je to na obrázku 4.6.</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/006633/FFFFFF?text=Toroid" alt="Toroid">
+    <div class="image-caption">Obr. 4.6: Toroid</div>
+  </div>
+
+  <p>Veľkosť indukcie poľa \(\vec{B}\) vo vzdialenosti r od stredu toroidu vyjadríme pomocou zákona celkového prúdu. Za integračnú dráhu vezmeme kružnicu polomeru r:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\oint \vec{H} \cdot d\vec{l} = \oint H dl = H \int_0^{2\pi r} dl = H 2\pi r = n I\]
+    </div>
+  </div>
+
+  <p>Odtiaľ pre veľkosť indukcie máme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[B = \mu H = \mu \frac{n I}{2\pi r}\]
+    </div>
+    <span class="equation-number">(4.4)</span>
+  </div>
+
+  <p>Pre magnetický tok cez plochu jedného závitu môžeme písať</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Phi_0 = \int_S \vec{B} \cdot d\vec{S} = \int_S B dS = \int_S \frac{\mu n I}{2\pi r} dS = \frac{\mu n I}{2\pi} \int_0^h \int_{r_1}^{r_2} \frac{1}{r} dr dh = \frac{\mu n I h}{2\pi} \ln \frac{r_2}{r_1}\]
+    </div>
+  </div>
+
+  <p>Celkový tok cez n závitov je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Phi = n \Phi_0 = \frac{\mu n^2 I h}{2\pi} \ln \frac{r_2}{r_1}\]
+    </div>
+  </div>
+
+  <p>a vlastná indukčnosť toroidu je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[L = \frac{\Phi}{I} = \frac{n \Phi_0}{I} = \frac{\mu n^2 h}{2\pi} \ln \frac{r_2}{r_1}\]
+    </div>
+  </div>
+
+  <p>Uvažujme teraz prípad, kedy \(\Delta r = r_2 - r_1 \ll r\). V tomto prípade môžeme použiť aproximáciu:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\ln \frac{r_2}{r_1} = \ln \left(1 + \frac{\Delta r}{r_1}\right) \approx \frac{\Delta r}{r}\]
+    </div>
+  </div>
+
+  <p>Pole vo vnútri toroidu môžeme považovať za konštantné a pre indukčnosť môžeme písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[L = \frac{\mu n^2 h \Delta r}{2\pi r}\]
+    </div>
+    <span class="equation-number">(4.5)</span>
+  </div>
+
+  <p>Magnetické pole je iba vo vnútri toroidu a jeho energia \(E_m = \frac{1}{2} L I^2\). Ak za prúd dosadíme \(I = \frac{2\pi r}{n \mu} B\) (pozri (4.4)) a hodnotu \(L\) z rovnice (4.5), dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      \begin{aligned}
+      E_m &= \frac{1}{2} \cdot \frac{\mu n^2 h \Delta r}{2\pi r} \cdot \left( \frac{2\pi r}{n \mu} B \right)^2 \\
+      &= \frac{1}{2} \cdot \frac{B^2}{\mu} \cdot 2\pi r h \Delta r = \frac{1}{2} \cdot \frac{B^2}{\mu} V
+      \end{aligned}
+      \]
+    </div>
+  </div>
+
+  <p>kde \(V = 2\pi r h \Delta r\) je objem toroidu.</p>
+
+  <p>Hustotu energie \(w_m\) magnetického poľa definujeme ako energiu objemovej jednotky. Z predchádzajúcich výpočtov máme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[w_m = \frac{E_m}{V} = \frac{1}{2} \frac{B^2}{\mu}\]
+    </div>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Všeobecné vyjadrenie:</strong> Tento výraz je všeobecný výraz pre výpočet hustoty energie magnetického poľa indukcie \(B\) a dá sa zapísať aj v tvare:</p>
+    <div class="equation">
+      <div class="equation-content">
+        \[w = \frac{1}{2} \vec{H} \cdot \vec{B}\]
+      </div>
+    </div>
+  </div>
+</div>

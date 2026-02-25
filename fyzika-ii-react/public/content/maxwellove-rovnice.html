@@ -1,0 +1,332 @@
+<div class="section active" id="maxwellove-rovnice">
+    <h2><i class="fas fa-atom"></i> 5. Maxwellove rovnice</h2>
+
+    <p>Škótsky fyzik James Clerk Maxwell ukázal, že všetky elektrické a magnetické javy môžu byť opísané pomocou štyroch rovníc zahŕňajúcich elektrické a magnetické pole. Tieto štyri rovnice, známe ako Maxwellove rovnice, sú také fundamentálne ako Newtonove zákony.</p>
+
+    <p>Zákon celkového prúdu (rovnica (3.16)), ktorý vyjadruje skutočnosť, že v okolí vodiča, ktorým tečie prúd, vzniká magnetické pole, možno zapísať v tvare</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{H} \cdot d\vec{l} = I\]
+        </div>
+    </div>
+
+    <p>Faradayov zákon elektromagnetickej indukcie (rovnica (4.1)) hovorí, že ak sa mení v čase magnetické pole, vzniká elektrické pole:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{E} \cdot d\vec{l} = -\frac{d}{dt} \int \vec{B} \cdot d\vec{S}\]
+        </div>
+    </div>
+
+    <p>Gaussov zákon v elektrickom poli (rovnica (1.29)) dáva do súvisu elektrické pole s jeho zdrojom - elektrickým nábojom</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{D} \cdot d\vec{S} = Q\]
+        </div>
+    </div>
+
+    <p>Gaussov zákon v magnetickom poli (rovnica (3.3)) vyjadruje skutočnosť, že magnetické indukčné čiary sú do seba uzavreté krivky, ktoré nemajú počiatok ani koniec (ako elektrické siločiary majú svoj počiatok v náboji), teda:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{B} \cdot d\vec{S} = 0\]
+        </div>
+    </div>
+
+    <p>Spoločne s týmito Maxwellovými rovnicami v tzv. integrálnom tvare sa niekedy súčasne zapisujú rovnice vyjadrujúce vlastnosti materiálu:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{D} = \varepsilon_r \varepsilon_0 \vec{E}, \quad \vec{B} = \mu_r \mu_0 \vec{H} \quad \text{a} \quad \vec{j} = \gamma \vec{E}\]
+        </div>
+    </div>
+
+    <p>Maxwellove rovnice môžu byť zapísané aj v inom, takzvanom diferenciálnom tvare, ktorý je často vhodnejší ako integrálny tvar.</p>
+
+    <h3><i class="fas fa-calculator"></i> Matematické vety pre prechod do diferenciálneho tvaru</h3>
+
+    <p>Aby sme transformovali Maxwellove rovnice z integrálneho do diferenciálneho tvaru, budeme využívať dve vety známe z vektorovej analýzy.</p>
+
+    <p>Prvá je tzv. <strong>Gaussova veta</strong>, ktorá dáva do súvisu integrál cez uzavretú plochu z vektorovej funkcie s jej integrovaním cez objem ohraničený danou plochou:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_S \vec{F} \cdot d\vec{S} = \int_V \nabla \cdot \vec{F} \, dV = \int_V \text{div} \, \vec{F} \, dV\]
+        </div>
+        <span class="equation-number">(5.1)</span>
+    </div>
+
+    <p>kde \(\nabla\) je operátor, ktorý je definovaný:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\nabla = \frac{\partial}{\partial x} \vec{i} + \frac{\partial}{\partial y} \vec{j} + \frac{\partial}{\partial z} \vec{k}\]
+        </div>
+    </div>
+
+    <p>a</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{div} \, \vec{F} = \nabla \vec{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\]
+        </div>
+    </div>
+
+    <p>je tzv. divergencia \(\vec{F}\).</p>
+
+    <p>Druhá veta je <strong>Stokesova veta</strong>, ktorá dáva do súvisu integrál po uzavretej krivke s plošným integrálom cez ľubovoľnú plochu, ktorú daná krivka ohraničuje:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_l \vec{F} \cdot d\vec{l} = \int_S \left( \nabla \times \vec{F} \right) \cdot d\vec{S} = \int_S \text{rot} \, \vec{F} \cdot d\vec{S}\]
+        </div>
+    </div>
+
+    <p>kde \(\text{rot} \, \vec{F} = \nabla \times \vec{F}\) sa nazýva rotácia \(\vec{F}\).</p>
+
+    <h3><i class="fas fa-charging-station"></i> Zákon zachovania náboja v diferenciálnom tvare</h3>
+
+    <p>Najprv využijeme uvedenú Gaussovu vetu na prepísanie zákona zachovania náboja do diferenciálneho tvaru. Zákon zachovania náboja sme matematicky zapísali (rovnica (2.4)):</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_S \vec{j} \cdot d\vec{S} = -\frac{d}{dt} Q_V\]
+        </div>
+    </div>
+
+    <p>Náboj \(Q_V\) v objeme ohraničenom uzavretou plochou \(S\) možno zapísať ako objemový integrál cez tento objem z nábojovej hustoty \(\rho_V\):</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[Q_V = \int_V \rho_V \, dV\]
+        </div>
+    </div>
+
+    <p>Použijúc Gaussovu vetu (5.1), dostaneme</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\int_V \text{div} \, \vec{j} \, dV = -\frac{d}{dt} \int_V \rho_V \, dV = \int_V -\frac{\partial \rho_V}{\partial t} \, dV\]
+        </div>
+    </div>
+
+    <p>Keďže táto rovnica platí pre ľubovoľný objem, zákon zachovania náboja možno zapísať aj v nasledovnom (diferenciálnom) tvare:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{div} \, \vec{j} = -\frac{\partial \rho_V}{\partial t}\]
+        </div>
+    </div>
+
+    <h3><i class="fas fa-magnet"></i> 1. Maxwellova rovnica (Ampérov zákon s posuvným prúdom)</h3>
+
+    <p>Teraz prejdeme k odvodeniu Maxwellových rovníc v diferenciálnom tvare. Najprv budeme aplikovať Stokesovu vetu na ľavú stranu zákona celkového prúdu a zapíšeme prúd pomocou prúdovej hustoty. Môžeme písať</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_l \vec{H} \cdot d\vec{l} = \int_S \text{rot} \, \vec{H} \cdot d\vec{S} = I = \int_S \vec{j} \cdot d\vec{S}\]
+        </div>
+    </div>
+
+    <p>teda</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\int_S \text{rot} \, \vec{H} \cdot d\vec{S} = \int_S \vec{j} \cdot d\vec{S}\]
+        </div>
+    </div>
+
+    <p>Táto rovnica platí pre akúkoľvek integračnú plochu \(S\), ľubovoľnej veľkosti i tvaru, teda výrazy pod integrálmi sa musia rovnať:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{rot} \, \vec{H} = \vec{j}\]
+        </div>
+    </div>
+
+    <p>Je tu ale jedna veľmi dôležitá vec, ktorú treba spomenúť v súvislosti s prvou Maxwellovou rovnicou. Maxwell si všimol, že tu je niečo zvláštne. Divergencia ľavej strany tejto rovnice bude rovná nule, pretože divergencia rotácie je vždy nulová (\(\text{div}(\text{rot} \, \vec{H}) = 0\)). To znamená, že aj jej pravá strana, teda divergencia \(\vec{j}\), má byť tiež nulová. Ale ak \(\text{div} \, \vec{j}\) je nula, potom celkový tok prúdu von z ľuboľnej uzavretej plochy je rovný nule. Ako vieme z rovnice \(\text{div} \, \vec{j} = -\frac{\partial \rho_V}{\partial t}\), tok prúdu cez uzavretú plochu je rovný úbytku náboja v objeme ohraničenom touto plochou. Tento samozrejme nemôže byť vo všeobecnosti nulový, lebo náboje sa môžu pohybovať z miesta na miesto. Maxwell predvídal tento problém a navrhol pridať do rovnice ďalší člen na jej pravú stranu - tzv. <strong>posuvný prúd</strong>.</p>
+
+    <p>Z rozmerovej analýzy je jasné, že výraz \(\frac{\partial \vec{D}}{\partial t}\) vyjadruje prúdovú hustotu a nazýva sa hustota posuvného prúdu</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{j}_D = \frac{\partial \vec{D}}{\partial t}\]
+        </div>
+    </div>
+
+    <p>Celková prúdová hustota je rovná sume hustôt vodivostných a posuvných prúdov a 1. Maxwellova rovnica má tvar:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\boxed{\text{rot} \, \vec{H} = \vec{j} + \frac{\partial \vec{D}}{\partial t}}\]
+        </div>
+    </div>
+
+    <h3><i class="fas fa-bolt"></i> 2. Maxwellova rovnica (Faradayov indukčný zákon)</h3>
+
+    <p>Aplikujme teraz Stokesovu vetu na ľavú stranu Faradayovho zákona. Môžeme písať</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_l \vec{E} \cdot d\vec{l} = \int_S \text{rot} \, \vec{E} \cdot d\vec{S} = -\frac{d}{dt} \int_S \vec{B} \cdot d\vec{S} = \int_S -\frac{\partial \vec{B}}{\partial t} \cdot d\vec{S}\]
+        </div>
+    </div>
+
+    <p>teda</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\int_S \text{rot} \, \vec{E} \cdot d\vec{S} = \int_S -\frac{\partial \vec{B}}{\partial t} \cdot d\vec{S}\]
+        </div>
+    </div>
+
+    <p>Sú to plošné integrály cez tú istú plochu, a keďže rovnica musí platiť pre ľubovoľnú plochu, platí</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\boxed{\text{rot} \, \vec{E} = -\frac{\partial \vec{B}}{\partial t}}\]
+        </div>
+    </div>
+
+    <p>čo je 2. Maxwellova rovnica.</p>
+
+    <h3><i class="fas fa-cloud"></i> 3. Maxwellova rovnica (Gaussov zákon elektrostatiky)</h3>
+
+    <p>Ak aplikujeme Gaussovu vetu (5.1) na Gaussov zákon elektrického poľa a náboj \(Q\) napíšeme ako objemový integrál z nábojovej hustoty, máme</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_S \vec{D} \cdot d\vec{S} = \int_V \text{div} \, \vec{D} \, dV = Q = \int_V \rho \, dV\]
+        </div>
+    </div>
+
+    <p>teda</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\int_V \text{div} \, \vec{D} \, dV = \int_V \rho \, dV\]
+        </div>
+    </div>
+
+    <p>Obe strany obsahujú objemový integrál cez ten istý objem, aby rovnica platila pre ľubovoľný objem (ľubovoľnej veľkosti a tvaru), výrazy pod integrálom musia byť zhodné:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\boxed{\text{div} \, \vec{D} = \rho}\]
+        </div>
+    </div>
+
+    <p>Táto rovnica je 3. Maxwellova rovnica.</p>
+
+    <h3><i class="fas fa-circle-notch"></i> 4. Maxwellova rovnica (Gaussov zákon magnetizmu)</h3>
+
+    <p>Podobne získame štvrtú Maxwellovu rovnicu - Gaussov zákon magnetizmu:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint_S \vec{B} \cdot d\vec{S} = \int_V \text{div} \, \vec{B} \, dV = 0\]
+        </div>
+    </div>
+
+    <p>a teda</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\boxed{\text{div} \, \vec{B} = 0}\]
+        </div>
+    </div>
+
+    <p>čo je 4. Maxwellova rovnica.</p>
+
+    <div class="important-note">
+        <p><strong>Prehľad Maxwellových rovníc v diferenciálnom tvare:</strong></p>
+        <p>1. \(\text{rot} \, \vec{H} = \vec{j} + \frac{\partial \vec{D}}{\partial t}\) (Ampérov zákon s posuvným prúdom)</p>
+        <p>2. \(\text{rot} \, \vec{E} = -\frac{\partial \vec{B}}{\partial t}\) (Faradayov indukčný zákon)</p>
+        <p>3. \(\text{div} \, \vec{D} = \rho\) (Gaussov zákon elektrostatiky)</p>
+        <p>4. \(\text{div} \, \vec{B} = 0\) (Gaussov zákon magnetizmu - neexistencia magnetických monopólov)</p>
+        <p>Materiálové vzťahy: \(\vec{D} = \varepsilon \vec{E}\), \(\vec{B} = \mu \vec{H}\), \(\vec{j} = \gamma \vec{E}\)</p>
+    </div>
+
+    <h3><i class="fas fa-forward"></i> 5.1 Zákon zachovania elektromagnetickej energie, Poyntingov vektor</h3>
+
+    <p>Uvažujme izotropné prostredie. Energia elektromagnetického poľa v nejakom objeme \(V\) je daná</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[W = \int_V w \, d\tau = \frac{1}{2} \int_V \left( \varepsilon \vec{E}^2 + \mu \vec{H}^2 \right) d\tau\]
+        </div>
+    </div>
+
+    <p>Zmena tejto energie za jednotku času je</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{dW}{dt} = \frac{1}{2} \int_V \left( \varepsilon 2 \vec{E} \cdot \frac{\partial \vec{E}}{\partial t} + \mu 2 \vec{H} \cdot \frac{\partial \vec{H}}{\partial t} \right) d\tau = \int_V \left( \varepsilon \vec{E} \cdot \frac{\partial \vec{E}}{\partial t} + \mu \vec{H} \cdot \frac{\partial \vec{H}}{\partial t} \right) d\tau\]
+        </div>
+    </div>
+
+    <p>Použijúc Maxwellove rovnice \(\text{rot} \, \vec{H} = \varepsilon \frac{\partial \vec{E}}{\partial t} + \vec{j}\) a \(\text{rot} \, \vec{E} = -\mu \frac{\partial \vec{H}}{\partial t}\), po úpravách máme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{\partial \vec{E}}{\partial t} = -\frac{\vec{j}}{\varepsilon} + \frac{\text{rot} \, \vec{H}}{\varepsilon}, \quad \frac{\partial \vec{H}}{\partial t} = -\frac{\text{rot} \, \vec{E}}{\mu}\]
+        </div>
+    </div>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            \begin{aligned}
+            \frac{dW}{dt} &= \int_V \left[ \varepsilon \vec{E} \cdot \left( -\frac{\vec{j}}{\varepsilon} + \frac{\text{rot} \, \vec{H}}{\varepsilon} \right) + \mu \vec{H} \cdot \left( -\frac{\text{rot} \, \vec{E}}{\mu} \right) \right] d\tau = \\
+            &= \int_V \left[ \vec{E} \cdot \text{rot} \, \vec{H} - \vec{H} \cdot \text{rot} \, \vec{E} \right] d\tau - \int_V \vec{j} \cdot \vec{E} \, d\tau
+            \end{aligned}
+            \]
+        </div>
+    </div>
+
+    <p>Teraz využijeme Ohmov zákon \(\vec{E} = \rho \vec{j}\) a rovnosť \(\text{div}(\vec{b} \times \vec{a}) = \vec{a} \cdot \text{rot} \, \vec{b} - \vec{b} \cdot \text{rot} \, \vec{a}\) a dostaneme</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{dW}{dt} = -\int_V \text{div} \left( \vec{E} \times \vec{H} \right) d\tau - \int_V \rho \vec{j}^2 \, d\tau\]
+        </div>
+    </div>
+
+    <p>Použijúc Gaussovu (5.1) vetu máme</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{dW}{dt} = -\oint_S \left( \vec{E} \times \vec{H} \right) \cdot d\vec{S} - \int_V \rho \vec{j}^2 \, d\tau\]
+        </div>
+    </div>
+
+    <p>kde plošný integrál na pravej strane rovnice je cez plochu, ktorá obopína uvažovaný objem.</p>
+
+    <p>Vektor</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{\sigma} = \vec{E} \times \vec{H}\]
+        </div>
+    </div>
+
+    <p>je známy ako <strong>Poyntingov vektor</strong> a poslednú rovnicu môžeme písať v tvare:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[-\frac{dW}{dt} = \oint_S \vec{\sigma} \cdot d\vec{S} + \int_V \rho \vec{j}^2 \, d\tau\]
+        </div>
+    </div>
+
+    <div class="important-note">
+        <p><strong>Fyzikálny význam:</strong> Táto rovnica vyjadruje <strong>zákon zachovania elektromagnetickej energie</strong>. Výraz \(-\frac{dW}{dt}\) predstavuje úbytok energie elektromagnetického poľa v danom objeme za jednotku času. To sa môže diať dvoma spôsobmi:</p>
+        <ul>
+            <li>Prvým je tok energie cez ohraničujúcu plochu daný výrazom \(\oint_S \vec{\sigma} \cdot d\vec{S}\),</li>
+            <li>druhým je strata energie v dôsledku prúdenia voľných nábojov v uvažovanom objeme daná výrazom \(\int_V \rho \vec{j}^2 \, d\tau\).</li>
+        </ul>
+    </div>
+
+    <p>Vidíme, že Poyntingov vektor \(\vec{\sigma}\) je kolmý na vektory \(\vec{E}\) a \(\vec{H}\). Vyjadruje energiu elektromagnetického poľa, ktorá je vyžiarená cez jednotkovú plochu za jednotku času v ľubovoľnom časovom okamihu. Má smer šírenia energie, teda smer Poyntingovho vektora je daný smerom šírenia sa elektromagnetického vlnenia ako uvidíme v nasledujúcej časti.</p>
+</div>

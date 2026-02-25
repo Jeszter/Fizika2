@@ -5,14 +5,21 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
 
     useEffect(() => {
         const index = sections.indexOf(activeSection)
-        if (index >= 0 && index <= 8) {
-            if (!openMenus.includes('elektrostatika')) {
-                setOpenMenus(prev => [...prev, 'elektrostatika'])
-            }
-        } else if (index >= 9) {
-            if (!openMenus.includes('elektricky-proud')) {
-                setOpenMenus(prev => [...prev, 'elektricky-proud'])
-            }
+        const groupMap = [
+            { id: 'elektrostatika',               from: 0,  to: 7  },
+            { id: 'elektricky-proud',              from: 8,  to: 10 },
+            { id: 'magneticke-pole',               from: 11, to: 16 },
+            { id: 'elektromagneticke-pole',        from: 17, to: 20 },
+            { id: 'maxwell',                       from: 21, to: 21 },
+            { id: 'elektromagneticke-vlnenie',     from: 22, to: 24 },
+            { id: 'kvantova-mechanika',            from: 25, to: 28 },
+            { id: 'atom',                          from: 29, to: 32 },
+            { id: 'jadro',                         from: 33, to: 36 },
+            { id: 'elementarne-castice',           from: 37, to: 39 },
+        ]
+        const group = groupMap.find(g => index >= g.from && index <= g.to)
+        if (group && !openMenus.includes(group.id)) {
+            setOpenMenus(prev => [...prev, group.id])
         }
     }, [activeSection])
 
@@ -26,51 +33,78 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
 
     const isSubmenuOpen = (menuId) => openMenus.includes(menuId)
 
-    const elektrostatikaSections = sections.slice(0, 8)
-    const elektrickyProudSections = sections.slice(8, 11)
-    const magnetickePoleSections = sections.slice(11, 18)
-    const elektromagnetickePoleSections = sections.slice(18, 22)
-    const maxwellSections = sections.slice(22)
-
-
     const menuData = [
         {
             id: 'elektrostatika',
             icon: 'fa-bolt',
             title: 'Elektrostatické pole',
             description: '8 kapitol',
-            sections: elektrostatikaSections
+            sections: sections.slice(0, 8)
         },
         {
             id: 'elektricky-proud',
-            icon: 'fa-bolt',
+            icon: 'fa-plug',
             title: 'Elektrický prúd v kovoch',
             description: '3 kapitoly',
-            sections: elektrickyProudSections
+            sections: sections.slice(8, 11)
         },
         {
             id: 'magneticke-pole',
             icon: 'fa-magnet',
             title: 'Magnetické pole',
-            description: '7 kapitol',
-            sections: magnetickePoleSections
+            description: '6 kapitol',
+            sections: sections.slice(11, 17)
         },
         {
             id: 'elektromagneticke-pole',
             icon: 'fa-wave-square',
             title: 'Elektromagnetické pole',
             description: '4 kapitoly',
-            sections: elektromagnetickePoleSections
+            sections: sections.slice(17, 21)
         },
         {
             id: 'maxwell',
-            icon: 'fa-atom',
+            icon: 'fa-infinity',
             title: 'Maxwellove rovnice',
             description: '1 kapitola',
-            sections: maxwellSections
-        }
+            sections: sections.slice(21, 22)
+        },
+        {
+            id: 'elektromagneticke-vlnenie',
+            icon: 'fa-broadcast-tower',
+            title: 'Elektromagnetické vlnenie',
+            description: '3 kapitoly',
+            sections: sections.slice(22, 25)
+        },
+        {
+            id: 'kvantova-mechanika',
+            icon: 'fa-atom',
+            title: 'Základy kvantovej mechaniky',
+            description: '4 kapitoly',
+            sections: sections.slice(25, 29)
+        },
+        {
+            id: 'atom',
+            icon: 'fa-circle-dot',
+            title: 'Atóm',
+            description: '4 kapitoly',
+            sections: sections.slice(29, 33)
+        },
+        {
+            id: 'jadro',
+            icon: 'fa-radiation',
+            title: 'Jadro atómu',
+            description: '4 kapitoly',
+            sections: sections.slice(33, 37)
+        },
+        {
+            id: 'elementarne-castice',
+            icon: 'fa-asterisk',
+            title: 'Elementárne častice a sily',
+            description: '3 kapitoly',
+            sections: sections.slice(37)
+        },
     ]
-
 
     const handleSectionSelect = (sectionId) => {
         window.dispatchEvent(new CustomEvent('sectionChange', {
@@ -173,8 +207,7 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                                         {index + 1}
                                                     </div>
                                                     <span className={`flex-1 text-left text-sm leading-snug whitespace-normal ${
-
-                                                    isActive
+                                                        isActive
                                                             ? 'text-primary-blue dark:text-blue-400'
                                                             : 'text-text-dark dark:text-gray-400 group-hover:text-primary-blue dark:group-hover:text-blue-300'
                                                     }`}>

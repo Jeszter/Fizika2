@@ -1,0 +1,223 @@
+<div class="section active" id="oscilacny-obvod">
+  <h2><i class="fas fa-wave-square"></i> 4.4 Elektrický oscilačný obvod</h2>
+
+  <p>Základné pojmy a matematický popis, ktoré sme použili pri štúdiu lineárneho harmonického oscilátora možno aplikovať aj pri štúdiu oscilácií elektrického prúdu v sériovom oscilačnom obvode.</p>
+
+  <h3><i class="fas fa-chart-line"></i> RLC obvod a jeho matematický popis</h3>
+
+  <p>Uvažujme elektrický obvod, tzv. sériový RLC obvod, zložený z ohmického odporu R, cievky s indukčnosťou L a kondenzátora s kapacitou C (pozri Obr. 4.7). RLC obvod je na obrázku 4.7 doplnený o časť obsahujúcu zdroj jednosmerného napätia o veľkosti U0 pripojený k RLC obvodu cez kľúč K1. Pri rozopnutom kľúči K2 a zopnutom kľúči K1 sa kondenzátor nabije na napätie zdroja U0. Toto napätie zostáva na kondenzátore aj po následnom vypnutí kľúča K1.</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=RLC+obvod" alt="Sériový RLC obvod">
+    <div class="image-caption">Obr. 4.7: Sériový RLC obvod</div>
+  </div>
+
+  <p>Vyšetrime časový priebeh prúdu RLC obvodom od momentu zapnutia kľúča K2. Druhý Kirchhoffov zákon pre uvedený RLC obvod má tvar:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[U_L + U_C = RI\]
+    </div>
+    <span class="equation-number">(4.6)</span>
+  </div>
+
+  <p>kde napätie na kondenzátore je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[U_C = \frac{Q}{C}\]
+    </div>
+    <span class="equation-number">(4.7)</span>
+  </div>
+
+  <p>samoindukčné elektromotorické napätie indukované v cievke je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[U_L = -L \frac{dI}{dt}\]
+    </div>
+    <span class="equation-number">(4.8)</span>
+  </div>
+
+  <p>kde Q je náboj na kondenzátore a I je prúd tečúci obvodom.</p>
+
+  <p>V ďalšom kroku dosadíme rovnice (4.7), (4.8) do rovnice (4.6) a následne celú rovnicu zderivujeme podľa času. Dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{1}{C} \frac{dQ}{dt} - L \frac{d^2 I}{dt^2} = R \frac{dI}{dt}\]
+    </div>
+    <span class="equation-number">(4.9)</span>
+  </div>
+
+  <p>Ak si uvedomíme, že</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[I = -\frac{dQ}{dt}\]
+    </div>
+  </div>
+
+  <p>môžeme rovnicu (4.9) vyjadriť v tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[L \frac{d^2 I}{dt^2} + R \frac{dI}{dt} + \frac{1}{C} I = 0\]
+    </div>
+    <span class="equation-number">(4.10)</span>
+  </div>
+
+  <p>Po predelení rovnice (4.10) L a zavedení substitúcií</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[2b = \frac{R}{L} \quad \text{a} \quad \omega_0^2 = \frac{1}{LC}\]
+    </div>
+    <span class="equation-number">(4.11)</span>
+  </div>
+
+  <p>dospejeme k rovnici</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{d^2 I}{dt^2} + 2b \frac{dI}{dt} + \omega_0^2 I = 0\]
+    </div>
+    <span class="equation-number">(4.12)</span>
+  </div>
+
+  <p>K rovnakej rovnici sme dospeli aj pri riešení problému tlmeného lineárneho harmonického oscilátora. Analogicky ako v uvedenom prípade dostaneme, pre prípad malého tlmenia (b < ω0) všeobecné riešenie rovnice (4.12) v tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[I = I_0 e^{-bt} \sin (\omega t + \phi), \quad \omega = \sqrt{\omega_0^2 - b^2}\]
+    </div>
+    <span class="equation-number">(4.13)</span>
+  </div>
+
+  <p>kde amplitúda I0 a fázová konštanta ϕ sú integračné konštanty, závislé na počiatočných podmienkach.</p>
+
+  <h3><i class="fas fa-wave-square"></i> Netlmené oscilácie - LC obvod</h3>
+
+  <p>Špeciálny (ideálny) prípad netlmených elektrických oscilácií predstavuje prípad LC obvodu, t.j. prípad, keď položíme ohmický odpor obvodu R = 0. V tomto prípade nadobudne rovnica (4.12) tvar:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{d^2 I}{dt^2} + \omega_0^2 I = 0\]
+    </div>
+  </div>
+
+  <p>Jej všeobecné riešenie môžeme vyjadriť rovnicou:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[I = I_0 \sin (\omega_0 t + \phi)\]
+    </div>
+    <span class="equation-number">(4.14)</span>
+  </div>
+
+  <p>S využitím rovníc (4.6) (pre R = 0), (4.8) a (4.14) môžeme vyjadriť časovú závislosť napätia na kondenzátore:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[U_C = -U_L = L \frac{dI}{dt} = L I_0 \omega_0 \cos (\omega_0 t + \phi)\]
+    </div>
+    <span class="equation-number">(4.15)</span>
+  </div>
+
+  <p>Pre prípad spustenia oscilácií postupom popísaným v úvode tejto kapitoly je v čase t = 0 I = 0 a U0 = Uc.</p>
+
+  <p>Po dosadení týchto počiatočných podmienok do rovníc (4.14) a (4.15) dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[0 = I_0 \sin (\phi), \quad U_0 = L I_0 \omega_0 \cos (\phi)\]
+    </div>
+  </div>
+
+  <p>a ich riešením je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\phi = 0 \quad \text{a} \quad I_0 = \frac{U_0}{L \omega_0}\]
+    </div>
+  </div>
+
+  <p>Vzťah (4.14) prejde potom do tvaru</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[I = \frac{U_0}{L \omega_0} \sin \omega_0 t\]
+    </div>
+    <span class="equation-number">(4.16)</span>
+  </div>
+
+  <p>Vidíme, že v uvažovanom elektrickom obvode tečie periodicky premenlivý harmonický elektrický prúd. Hovoríme, že ide o harmonické kmity alebo oscilácie elektrického prúdu. Uvažovaný elektrický obvod nazývame preto oscilačným elektrickým obvodom.</p>
+
+  <h3><i class="fas fa-clock"></i> Thomsonov vzorec</h3>
+
+  <p>Pre periódu harmonických oscilácií elektrického prúdu platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[T = \frac{2\pi}{\omega_0} = 2\pi \sqrt{LC}\]
+    </div>
+    <span class="equation-number">(4.17)</span>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Thomsonov vzorec:</strong> Vzťah (4.17) je Thomsonov vzorec. Pre frekvenciu oscilácií platí:</p>
+    <p>\[f = \frac{1}{T} = \frac{1}{2\pi \sqrt{LC}}\]</p>
+  </div>
+
+  <h3><i class="fas fa-exchange-alt"></i> Fyzikálna interpretácia procesov v obvode</h3>
+
+  <p>Všimnime si procesy, ktoré v oscilačnom obvode prebiehajú. V čase t = 0 medzi elektródami nabitého kondenzátora existuje elektrické pole, ktorého energia je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_e = \frac{1}{2} C U_0^2\]
+    </div>
+  </div>
+
+  <p>Po zapnutí kľúča K2 sa začne kondenzátor vybíjať, obvodom preteká premenlivý prúd. Elektrické pole postupne zaniká, a na jeho konto vzniká pole magnetické. Toto pole je najintenzívnejšie vtedy, keď má prúd v obvode maximálnu hodnotu I0. Vtedy je energia magnetického poľa daná vzťahom:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_m = \frac{1}{2} L I_0^2\]
+    </div>
+    <span class="equation-number">(4.18)</span>
+  </div>
+
+  <p>S ohľadom na vzťah (4.16) stane sa tak v čase \(t = \frac{\pi}{2\omega_0} = \frac{T}{4}\). Výraz (4.18), využijúc vzťah (4.11), v tomto okamihu možno upraviť na tvar:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_m = \frac{1}{2} L I_0^2 = \frac{1}{2} L \frac{U_0^2}{L^2} \frac{1}{LC} = \frac{1}{2} C U_0^2 = E_e\]
+    </div>
+  </div>
+
+  <p>Vidíme, že v tomto okamihu je energia magnetického poľa rovná energii pôvodného elektrického poľa, ktoré bolo medzi elektródami kondenzátora v čase t = 0. V čase \(t = \frac{T}{4}\) niet poľa elektrického, na jeho konto vzniklo pole magnetické. Celá energia aj hmotnosť pôvodného elektrického poľa prešla na energiu a hmotnosť magnetického poľa.</p>
+
+  <p>V ďalšom priebehu sa kondenzátor opäť nabíja, pravda s opačnou polaritou, vzniká teda zase pole elektrické a to na konto magnetického poľa, ktoré zaniká a v čase \(t = \frac{\pi}{\omega_0} = \frac{T}{2}\) úplne zanikne. V tomto okamžiku existujúce elektrické pole sa vyznačuje opäť energiou \(E_e = \frac{1}{2} C U_0^2\). V ďalšom priebehu sa zase energia elektrického poľa mení na energiu magnetického poľa a naopak. Máme tu do činenia s prípadom periodickej premeny elektrického poľa na pole magnetické a naopak.</p>
+
+  <p>Takýto oscilačný obvod označujeme ako <strong>netlmený oscilačný obvod</strong>, a oscilácie v ňom vzniklé by sa teoreticky mohli udržať nekonečne dlho. To je však ideálny prípad.</p>
+
+  <h3><i class="fas fa-exclamation-triangle"></i> Tlmené oscilácie</h3>
+
+  <p>V skutočnosti dochádza pri tomto procese k výmene energie nielen medzi elektrickým a magnetickým poľom, ale aj medzi vodičmi, ktoré obvod uzatvárajú. V dôsledku toho sa vždy väčšia a väčšia časť energie elektromagnetickej mení na vnútornú energiu týchto vodičov, až nakoniec oscilácie celkom zaniknú. Tieto straty označujeme ako <strong>ohmické straty</strong> a takýto oscilačný obvod nazývame <strong>tlmeným oscilačným obvodom</strong>. Priebeh prúdu v takomto obvode je popísaný rovnicou (4.13). Pre periódu tlmených oscilácií platí vzťah:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[T = \frac{2\pi}{\omega} = \frac{2\pi}{\sqrt{\omega_0^2 - b^2}}\]
+    </div>
+  </div>
+
+  <h3><i class="fas fa-satellite-dish"></i> Žiarenie a typy oscilačných obvodov</h3>
+
+  <p>Poznamenajme, že aj v prípade ideálneho obvodu (R = 0) existuje zdroj energetických strát, ktoré principiálne nemožno nikdy zanedbať. Príčinou týchto strát je, že elektrický oscilačný obvod časť svojej elektromagnetickej energie odovzdáva prostredníctvom elektromagnetických vĺn, ktoré vysiela. Intenzita tohto vysielaného elektromagnetického vlnenia je veľmi rozdielna a v podstatnej miere závisí od geometrického tvaru oscilačného obvodu.</p>
+
+  <ul>
+    <li><strong>Uzavretý oscilačný obvod:</strong> Pri elektrickom obvode, ktorý pozostáva z husto navinutej indukčnej cievky s indukčnosťou L a doskového kondenzátora kapacity C, je toto vlnenie veľmi slabé vtedy, keď kapacita celého obvodu je prakticky celkom daná kapacitou kondenzátora. Hodnoty L a C musia byť oproti indukčnosti a kapacite ostatných častí obvodu veľmi veľké, ak chceme, aby straty spôsobené vysielaním elektromagnetického vlnenia boli veľmi malé. Obvod nakreslený na Obr. 4.7 je spravidla takýto uzavretý obvod.</li>
+    <li><strong>Otvorený oscilačný obvod:</strong> Pri tzv. otvorenom elektrickom oscilačnom obvode sú energetické straty prostredníctvom vysielaného elektromagnetického žiarenia už veľmi výrazné. V takomto prípade vzniká aj pri nulovom alebo zanedbateľnom ohmickom odpore obvodu značné tlmenie elektrických oscilácií v dôsledku vysielaného elektromagnetického žiarenia, takže možno hovoriť o <strong>tlmení žiarením</strong>. Aby sa kmity v takýchto otvorených zdrojoch udržali, je potrebné vyžiarenú energiu nahradiť energiou z nejakého vonkajšieho generátora.</li>
+  </ul>
+</div>

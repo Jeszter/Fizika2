@@ -26,7 +26,6 @@ const sections = [
     'biot-savartov-zakon',
     'ampereov-zakon',
     'sila-na-vodic',
-    'sily-medzi-vodicmi',
     'magneticke-vlastnosti',
 
     // Elektromagnetické pole
@@ -36,7 +35,35 @@ const sections = [
     'oscilacny-obvod',
 
     // Maxwell
-    'maxwellove-rovnice'
+    'maxwellove-rovnice',
+
+    // Elektromagnetické vlnenie
+    'opis-elektromagnetickeho-vlnenia',
+    'elektromagneticke-spektrum',
+    'vlnove-vlastnosti-ziarenia',
+
+    // Základy kvantovej mechaniky
+    'casticove-vlastnosti-ziarenia',
+    'vlnove-vlastnosti-castic',
+    'heisenbergove-vztahy',
+    'schrodingerova-rovnica',
+
+    // Atóm
+    'uvod-atom',
+    'bohrov-model',
+    'kvantovomechanicky-popis-vodika',
+    'viacelektronove-atomy',
+
+    // Jadro atómu
+    'uvod-jadro',
+    'hmotnost-jadra-vazbova-energia',
+    'prirodzena-radioaktivita',
+    'jadrove-reakcie',
+
+    // Elementárne častice
+    'ako-sa-skuma-mikrosvet',
+    'elementarne-castice',
+    'sily-v-mikrosvete',
 ]
 
 
@@ -49,6 +76,7 @@ const sectionTitles = {
     'energia-sustavy': 'Energia sústavy nábojov, nabitého vodiča a elektrostatického poľa',
     'kapacita': 'Kapacita vodiča, elektrický kondenzátor',
     'dielektrika': 'Dielektriká',
+
     'intenzita-proudu': 'Intenzita prúdu, hustota prúdu',
     'ohmov-zakon': 'Ohmov zákon, Jouleov zákon',
     'elektromotoricke-napatie': 'Elektromotorické napätie',
@@ -58,7 +86,6 @@ const sectionTitles = {
     'biot-savartov-zakon': 'Biotov-Savartov zákon',
     'ampereov-zakon': 'Zákon celkového prúdu (Ampérov zákon)',
     'sila-na-vodic': 'Sila pôsobiaca na vodič v magnetickom poli',
-    'sily-medzi-vodicmi': 'Sila medzi dvomi rovnobežnými vodičmi',
     'magneticke-vlastnosti': 'Magnetické vlastnosti látok',
 
     'elektromagneticka-indukcia': 'Elektromagnetická indukcia',
@@ -66,8 +93,30 @@ const sectionTitles = {
     'energia-magnetickeho-pola': 'Energia v magnetickom poli',
     'oscilacny-obvod': 'Elektrický oscilačný obvod',
 
-    'maxwellove-rovnice': 'Maxwellove rovnice'
+    'maxwellove-rovnice': 'Maxwellove rovnice',
 
+    'opis-elektromagnetickeho-vlnenia': 'Opis elektromagnetického vlnenia',
+    'elektromagneticke-spektrum': 'Elektromagnetické spektrum',
+    'vlnove-vlastnosti-ziarenia': 'Vlnové vlastnosti elektromagnetického žiarenia',
+
+    'casticove-vlastnosti-ziarenia': 'Časticové vlastnosti elektromagnetického žiarenia',
+    'vlnove-vlastnosti-castic': 'Vlnové vlastnosti častíc',
+    'heisenbergove-vztahy': 'Heisenbergove vzťahy neurčitosti',
+    'schrodingerova-rovnica': 'Schrödingerova rovnica',
+
+    'uvod-atom': 'Úvod',
+    'bohrov-model': 'Bohrov model vodíkového atómu',
+    'kvantovomechanicky-popis-vodika': 'Výsledky kvantovomechanického popisu vodíkového atómu',
+    'viacelektronove-atomy': 'Viacelektrónové atómy',
+
+    'uvod-jadro': 'Úvod',
+    'hmotnost-jadra-vazbova-energia': 'Hmotnosť jadra, väzbová energia',
+    'prirodzena-radioaktivita': 'Prirodzená rádioaktivita',
+    'jadrove-reakcie': 'Jadrové reakcie',
+
+    'ako-sa-skuma-mikrosvet': 'Ako sa skúma mikrosvet',
+    'elementarne-castice': 'Elementárne častice',
+    'sily-v-mikrosvete': 'Sily v mikrosvete',
 }
 
 const ContentSection = memo(({
@@ -202,7 +251,7 @@ const ContentSection = memo(({
 const TestView = memo(({ testTopic }) => {
     const formatTopicName = useCallback((topicId) => {
         return topicId
-            .replace(/-/g, ' ') // Исправлено: заменяем все дефисы
+            .replace(/-/g, ' ')
             .split(' ')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
@@ -250,8 +299,8 @@ const TestView = memo(({ testTopic }) => {
 });
 
 const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
-    const { sectionId } = useParams() // Получаем параметр из URL
-    const navigate = useNavigate() // Для навигации
+    const { sectionId } = useParams()
+    const navigate = useNavigate()
     const [activeSection, setActiveSection] = useState('coulombov-zakon')
     const [sectionContent, setSectionContent] = useState('')
     const [loading, setLoading] = useState(true)
@@ -279,7 +328,7 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const loadSection = useCallback(async (sectionId) => {
         setLoading(true)
         try {
-            const response = await fetch(`/Fizika2/content/${sectionId}.html`) // Добавлен /Fizika2/
+            const response = await fetch(`/Fizika2/content/${sectionId}.html`)
             if (!response.ok) throw new Error('Failed to load content')
             let htmlContent = await response.text()
 
@@ -312,7 +361,7 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
             const newSectionId = e.detail.sectionId
             setActiveSection(newSectionId)
             setShowTest(false)
-            navigate(`/${newSectionId}`, { replace: true }) // Обновляем URL
+            navigate(`/${newSectionId}`, { replace: true })
         }
 
         const handleToggleSidebar = () => {
@@ -321,7 +370,7 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
 
         const handleCloseTest = () => {
             setShowTest(false)
-            navigate(`/${activeSection}`, { replace: true }) // Возвращаемся к разделу
+            navigate(`/${activeSection}`, { replace: true })
         }
 
         window.addEventListener('sectionChange', handleSectionChange)
@@ -346,11 +395,10 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
         }
     }, [activeSection])
 
-
     const handleSectionSelect = useCallback((sectionId) => {
         setActiveSection(sectionId)
         setShowTest(false)
-        navigate(`/${sectionId}`, { replace: true }) // Обновляем URL при выборе раздела
+        navigate(`/${sectionId}`, { replace: true })
         if (window.innerWidth <= 768) {
             setSidebarOpen(false)
         }
@@ -365,7 +413,7 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const startTest = useCallback((topicId) => {
         setTestTopic(topicId)
         setShowTest(true)
-        navigate(`/test-${topicId}`, { replace: true }) // Обновляем URL для теста
+        navigate(`/test-${topicId}`, { replace: true })
         window.scrollTo({ top: 0, behavior: 'smooth' })
         document.title = `Test: ${sectionTitles[topicId]}`
     }, [navigate])
