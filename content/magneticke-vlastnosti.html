@@ -1,0 +1,224 @@
+<div class="section active" id="magneticke-vlastnosti">
+    <h2><i class="fas fa-atom"></i> 3.6 Magnetické vlastnosti látok</h2>
+
+    <h3><i class="fas fa-electron"></i> Magnetický moment atómu</h3>
+
+    <p>Môžeme si predstaviť, že elektrón obiehajúci okolo jadra vytvára prúdovú slučku s prúdom \(I_e = e/T = ef\), kde \(e\) je veľkosť náboja elektrónu, \(T\) je doba jeho obehu, \(f\) frekvencia, a teda magnetický moment takejto slučky za predpokladu, že elektrón obieha po kružnici polomeru \(r\) možno vyjadriť:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{m} = I_e \vec{S}_e = -ef \pi r^2 \vec{j}\]
+        </div>
+        <span class="equation-number">(3.7)</span>
+    </div>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Orbitálny+pohyb+elektrónu" alt="Orbitálny pohyb elektrónu okolo jadra">
+        <div class="image-caption">Obr. 3.7: Elektrón obiehajúci okolo jadra vytvára prúdovú slučku</div>
+    </div>
+
+    <p>Keď sa elektrón pohybuje po kružnici, môžeme vektor momentu hybnosti (orbitálneho) elektrónu vyjadriť nasledovne:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{L} = \vec{r} \times m\vec{v} = r m_e v \vec{j} = m_e 2\pi f r^2 \vec{j}\]
+        </div>
+        <span class="equation-number">(3.8)</span>
+    </div>
+
+    <p>kde \(m_e\) je hmotnosť elektrónu, \(v\) je jeho rýchlosť.</p>
+
+    <p>Z porovnania rovníc (3.7) a (3.8) dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{m} = -\frac{e}{2m_e} \vec{L}\]
+        </div>
+    </div>
+
+    <p>Z kvantovej mechaniky je známe, že elektrón má aj <strong>"vlastný moment hybnosti"</strong> - spin \(\vec{L}_s\), ktorý súvisí so spinovým magnetickým momentom \(\vec{m}_s\) nasledovne:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{m}_s = -\frac{e}{m_e} \vec{L}_s\]
+        </div>
+    </div>
+
+    <p>V mnohoelektrónových atómoch sú elektróny s rôznymi orbitami, ich magnetické momenty sú preto rôzne. Výsledný magnetický moment atómu je rovný vektorovému súčtu všetkých orbitálnych a spinových magnetických momentov jeho elektrónov.</p>
+
+    <h3><i class="fas fa-field"></i> Magnetické pole v látkovom prostredí</h3>
+
+    <p>Látky pozostávajú z atómov, ktoré môžu mať nulový alebo nenulový výsledný magnetický moment. Neustály chaotický tepelný pohyb atómov spôsobuje, že v prípade atómov s nenulovým magnetickým momentom, sú magnetické momenty neusporiadane orientované. Táto neusporiadanosť spôsobuje, že sa makroskopicky neprejavia.</p>
+
+    <p>Ak sa ale látka umiestni do magnetického poľa, silovým pôsobením (Lorentzova sila) sa elementárne prúdové slučky usporiadajú - vektory magnetických momentov sa natočia do smeru vektora indukcie vonkajšieho magnetického poľa. Táto orientácia elementárnych prúdov v prúdových slučkách sa prejaví navonok ako prídavné magnetické pole \(\vec{J}\), ktoré sa s pôsobiacim vonkajším magnetickým poľom s indukciou vo vákuu \(\vec{B}_0\) vektorovo sčíta. Podrobnejšie si túto problematiku rozoberme na jednoduchom príklade.</p>
+
+    <p>Uvažujme dva identické solenoidy. Vo vnútri jedného nech je uložená látka, ktorej atómy majú nenulové magnetické momenty. Týmto momentom priradíme elementárne prúdové slučky (napríklad orbitálny pohyb elektrónov v elektrónovom obale atómu). Elementárny prúd takejto slučky označme symbolom \(I_e\). Vo vnútri druhého solenoidu nech je vzduch (v ideálnom prípade vákuum). Nech majú tieto solenoidy \(z\) závitov na dĺžke \(d\) a nech \(I\) je prúd tečúci solenoidom. Magnetické pole vytvorené vo vnútri solenoidu nazveme vonkajším a označíme symbolom \(B_0\). Zároveň predpokladajme, že solenoidy sú dostatočne dlhé na to, aby sme mohli považovať pole mimo ich objemu za nulové.</p>
+
+    <div class="theory-image">
+        <img src="https://via.placeholder.com/600x300/006633/FFFFFF?text=Usporiadanie+magnetických+momentov+v+solenoide" alt="Orientácia magnetických momentov v solenoidoch">
+        <div class="image-caption">Obr. 3.8: a) neusporiadané momenty, b) usporiadané momenty</div>
+    </div>
+
+    <p>Ak solenoidom netečie prúd (pozri Obr. 3.8a), orientácie momentov jednotlivých atómov sú z dôvodu tepelného pohybu rozdelené úplne náhodne. Po zapnutí prúdu solenoidom vytvorené magnetické pole \(B_0\) spôsobí, že sa momenty atómov stáčajú do smeru tohto poľa (Obr. 3.8b). Pre zjednodušenie ďalších úvah predpokladajme úplné stočenie.</p>
+
+    <p>Zvoľme si uzavretú krivku ako je to čiarkovane naznačené na Obr. 3.8 a použime zákon celkového prúdu. Pre prázdny solenoid dostávame:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{B}_0 \cdot d\vec{l} = B_0 l_0 = \mu_0 \frac{z}{d} l_0 I\]
+        </div>
+        <span class="equation-number">(3.9)</span>
+    </div>
+
+    <p>Pre solenoid vyplnený uvažovaným materiálom platí:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{B} \cdot d\vec{l} = B l_0 = \mu_0 \frac{z}{d} l_0 I + \mu_0 N I_e\]
+        </div>
+        <span class="equation-number">(3.10)</span>
+    </div>
+
+    <p>kde \(N\) je počet elementárnych prúdových slučiek, ktorých plochy pretína integračná krivka.</p>
+
+    <p>V našom prípade ide o prúdové slučky ležiace na dĺžke \(l_0\) a ich stredy sa nachádzajú v objeme \(V = S l_0\), kde \(S\) je plocha elementárnej slučky.</p>
+
+    <p>Z rovníc (3.9), (3.10) postupne dostávame:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[B_0 = \mu_0 \frac{z}{d} I\]
+        </div>
+    </div>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[B = \mu_0 \frac{z}{d} I + \mu_0 \frac{N I_e}{l_0} = B_0 + \mu_0 \frac{N I_e}{l_0}\]
+        </div>
+        <span class="equation-number">(3.11)</span>
+    </div>
+
+    <p>Veličina</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[M = \frac{N I_e}{l_0} = \frac{N I_e S}{l_0 S} = \frac{N m}{V}\]
+        </div>
+        <span class="equation-number">(3.12)</span>
+    </div>
+
+    <p>kde \(m\) je magnetický moment elementárnej prúdovej slučky, sa nazýva <strong>magnetizácia</strong>. Zo vzťahu (3.12) je zrejmé, že magnetizácia predstavuje magnetický moment jednotkového objemu.</p>
+
+    <p>Rovnicu (3.11) môžeme teraz napísať nasledovne:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[B = B_0 + \mu_0 M = B_0 + J\]
+        </div>
+        <span class="equation-number">(3.13)</span>
+    </div>
+
+    <p>kde veličina \(J = \mu_0 M\) sa nazýva <strong>magnetická polarizácia</strong>.</p>
+
+    <p>Nakoniec ešte zavedieme veličinu nazývanú <strong>intenzita magnetického poľa</strong> vzťahom:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[H = \frac{B - \mu_0 M}{\mu_0}\]
+        </div>
+        <span class="equation-number">(3.14)</span>
+    </div>
+
+    <p>a po úprave dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[B = \mu_0 H + \mu_0 M = \mu_0 H + J\]
+        </div>
+        <span class="equation-number">(3.15)</span>
+    </div>
+
+    <p>Vo všeobecnosti veličiny \(B, M, J, H\) sú vektorovými veličinami a teda napríklad poslednú rovnicu zapíšeme v tvare:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{B} = \mu_0 \vec{H} + \mu_0 \vec{M} = \mu_0 \vec{H} + \vec{J}\]
+        </div>
+    </div>
+
+    <h3><i class="fas fa-chart-line"></i> Susceptibilita a permeabilita</h3>
+
+    <p>Magnetizácia a magnetická polarizácia daného materiálu sa menia, ak sa tento vloží do vonkajšieho magnetického poľa. Táto zmena je charakterizovaná veličinou</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\kappa = \frac{M}{H}\]
+        </div>
+    </div>
+
+    <p>nazývanou <strong>magnetická susceptibilita</strong>, alebo veličinou</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\mu = \frac{B}{H}\]
+        </div>
+    </div>
+
+    <p>nazývanou <strong>permeabilita</strong>.</p>
+
+    <p>Rovnicu (3.15) môžeme teraz postupne napísať nasledovne:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[B = \mu_0 H + \mu_0 \kappa H = \mu_0 (1 + \kappa) H = \mu H\]
+        </div>
+    </div>
+
+    <p>a teda</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\mu = \mu_0 (1 + \kappa) = \mu_r \mu_0\]
+        </div>
+    </div>
+
+    <p>kde \(\mu_r = 1 + \kappa\) je <strong>relatívna permeabilita</strong>. Je zrejmé, že pre vákuum je \(\kappa = 0\), \(\mu_r = 1\) a \(\mu = \mu_0\).</p>
+
+    <h3><i class="fas fa-sort-amount-down"></i> Rozdelenie látok podľa magnetických vlastností</h3>
+
+    <p>Látky podľa veľkosti ich susceptibility a permeability možno rozdeliť takto:</p>
+
+    <ul>
+        <li><strong>κ = 0, μ<sub>r</sub> = 1</strong> — vákuum</li>
+        <li><strong>κ &lt; 0, μ<sub>r</sub> &lt; 1</strong> — <strong>diamagnetické látky</strong> (napr. pre meď μ<sub>r</sub> = 0,999995)</li>
+        <li><strong>κ &gt; 0, μ<sub>r</sub> &gt; 1</strong> — <strong>paramagnetické látky</strong> (napr. pre vzduch μ<sub>r</sub> = 1,0000031)</li>
+        <li><strong>κ &gt;&gt; 0, μ<sub>r</sub> &gt;&gt; 1</strong> — <strong>feromagnetické látky</strong> (μ<sub>r</sub> môže dosahovať hodnoty až 10<sup>5</sup> − 10<sup>6</sup>)</li>
+    </ul>
+
+    <p>Diamagnetické a paramagnetické látky označujeme ako <strong>slabomagnetické</strong> a feromagnetické ako <strong>silnomagnetické</strong>.</p>
+
+    <h3><i class="fas fa-redo-alt"></i> Alternatívne vyjadrenie zákona celkového prúdu</h3>
+
+    <p>Na záver ešte uveďme alternatívne vyjadrenie zákonu celkového prúdu. Z rovníc (3.9), (3.13) a (3.14) dostávame:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{H} \cdot d\vec{l} = \frac{z}{d} I l_0\]
+        </div>
+    </div>
+
+    <p>Nakoľko na pravej strane je celkový prúd pretekajúci plochou ohraničenou uzavretou integračnou krivkou, ide zrejme o inú formu zápisu zákona celkového prúdu. Aj keď sme k nej dospeli len pre špeciálny prípad, jej platnosť je všeobecná.</p>
+
+    <p>Potom, ak zákon celkového prúdu zapíšeme v tvare</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\oint \vec{H} \cdot d\vec{l} = I\]
+        </div>
+        <span class="equation-number">(3.16)</span>
+    </div>
+
+    <div class="important-note">
+        <p><strong>Rozdiel oproti predchádzajúcej formulácii:</strong> Na pravej strane je celkový prúd pretekajúci plochou ohraničenou uzavretou integračnou krivkou, avšak v rovnici (3.16) ide len o <strong>makroskopické prúdy</strong> na rozdiel od rovnice \(\oint \vec{B} \cdot d\vec{l} = \mu_0 I\), kde na pravej strane vystupujú všetky prúdy, teda aj elementárne prúdy.</p>
+    </div>
+</div>

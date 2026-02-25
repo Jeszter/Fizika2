@@ -1,0 +1,104 @@
+<div class="section active" id="biot-savartov-zakon">
+  <h2><i class="fas fa-chart-line"></i> 3.3 Biotov - Savartov zákon</h2>
+
+  <p>Podľa Biota a Savarta možno vodič, ktorým tečie prúd I, reprezentovať množstvom prúdových elementov. Pod takýmto prúdovým elementom rozumieme veličinu <strong>\(I\,d\vec{l}\)</strong>, kde I je veľkosť prúdu tečúceho vodičom a \(d\vec{l}\) je vektor o veľkosti elementárnej dĺžky vodiča, majúci smer dotyčnice v danom bode vodiča a orientovaný v smere toku prúdu vodičom (Obr. 3.2).</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Prúdový+element" alt="Prúdový element podľa Biota-Savarta">
+    <div class="image-caption">Obr. 3.2: Prúdový element a príspevok k magnetickej indukcii</div>
+  </div>
+
+  <p>Magnetická indukcia \(d\vec{B}\) v ľubovoľnom bode priestoru je daná rovnicou:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[d\vec{B} = \frac{\mu_0 I}{4\pi} \frac{d\vec{l} \times \vec{r}}{r^3}\]
+    </div>
+  </div>
+
+  <p>kde \(\vec{r}\) je polohový vektor miesta, v ktorom magnetickú indukciu počítame, vzhľadom na uvažovaný element vodiča \(d\vec{l}\) a \(\mu_0 = 4\pi \cdot 10^{-7}\,\text{m\,kg\,s}^{-2}\text{A}^{-2}\) je magnetická konštanta. Táto rovnica vyjadruje <strong>Biotov - Savartov zákon</strong>.</p>
+
+  <p>Veľkosť \(d\vec{B}\) je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[dB = \frac{\mu_0 I dl \sin \alpha}{4\pi r^2}\]
+    </div>
+  </div>
+
+  <p>kde \(\alpha\) je uhol medzi \(d\vec{l}\) a \(\vec{r}\). Celkovú indukciu magnetického poľa v danom bode potom získame integrovaním cez celú dĺžku vodiča:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{B} = \int d\vec{B}\]
+    </div>
+  </div>
+
+  <h3><i class="fas fa-infinity"></i> Príklad: Nekonečne dlhý priamy vodič</h3>
+
+  <p>Ako príklad vyjadríme \(\vec{B}\) vo vzdialenosti \(a\) od nekonečne dlhého priameho vodiča, ktorým tečie prúd \(I\).</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x400/006633/FFFFFF?text=Pole+nekonečne+dlhého+vodiča" alt="Magnetické pole nekonečne dlhého vodiča">
+    <div class="image-caption">Obr. 3.3: K výpočtu magnetickej indukcie od priameho vodiča</div>
+  </div>
+
+  <p>Element \(d\vec{l}\) vodiča prispieva do celkovej indukcie v bode \(A\) elementárnou indukciou:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[d\vec{B} = \frac{\mu_0 I}{4\pi} \frac{d\vec{l} \times \vec{r}}{r^3}\]
+    </div>
+  </div>
+
+  <p>Veľkosť tohto príspevku je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[dB = \frac{\mu_0 I dl \sin \alpha}{4\pi r^2}\]
+    </div>
+  </div>
+
+  <p>Súvis medzi veličinami \(l, r, \alpha\) (pozri Obr. 3.3) je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[l = d - a \cot \alpha \quad \text{a} \quad r = \frac{a}{\sin \alpha}\]
+    </div>
+  </div>
+
+  <p>Diferencovaním prvej rovnice dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[dl = \frac{a}{\sin^2 \alpha} d\alpha\]
+    </div>
+  </div>
+
+  <p>a dosadením do výrazu pre \(dB\):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      dB = \frac{\mu_0 I dl \sin \alpha}{4\pi r^2} = \frac{\mu_0 I \frac{a}{\sin^2 \alpha} d\alpha \sin \alpha}{4\pi \frac{a^2}{\sin^2 \alpha}} = \frac{\mu_0 I \sin \alpha \, d\alpha}{4\pi a}
+      \]
+    </div>
+  </div>
+
+  <p>Pre pole vytvorené celým vodičom:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      B = \int dB = \int_0^\pi \frac{\mu_0 I \sin \alpha \, d\alpha}{4\pi a} = \frac{\mu_0 I}{2\pi a}
+      \]
+    </div>
+    <span class="equation-number">(3.4)</span>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Výsledok:</strong> Magnetická indukcia vo vzdialenosti \(a\) od nekonečne dlhého priameho vodiča s prúdom \(I\) je \(B = \frac{\mu_0 I}{2\pi a}\). Smer indukcie je kolmý na rovinu určenú vodičom a bodom \(A\) a určuje sa pravidlom pravej ruky.</p>
+  </div>
+
+  <p>Ako príklad je v dolnej časti obrázka 3.3 nakreslená jedna indukčná čiara. Indukčné čiary majú tvar kružníc so stredom na vodiči a ležia v rovine kolmej na vodič.</p>
+</div>

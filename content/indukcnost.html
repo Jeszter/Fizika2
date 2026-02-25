@@ -1,0 +1,117 @@
+<div class="section active" id="indukcnost">
+  <h2><i class="fas fa-coils"></i> 4.2 Indukčnosť</h2>
+
+  <p>V predchádzajúcej časti sme analyzovali ako meniaci sa magnetický tok cez plochu závitu indukuje elektromotorické napätie v závite. Vieme tiež, že v okolí vodiča, ktorým tečie prúd, vzniká magnetické pole. Môžeme teda očakávať, že premenný prúd v jednom závite bude indukovať napätie v druhom blízkom závite a dokonca bude indukovať elektromotorické napätie aj sám v sebe. Popíšeme teraz tento efekt.</p>
+
+  <h3><i class="fas fa-circle"></i> Vlastná indukčnosť</h3>
+
+  <p>Majme uzavretú slučku, ktorou tečie prúd \(I\) (Obr. 4.3). Magnetický tok \(\Phi\) cez plochu \(S\), ktorá je ohraničená slučkou, je daný vzťahom:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Phi = \int_S \vec{B} \cdot d\vec{S}\]
+    </div>
+  </div>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Vlastná+indukčnosť+slučky" alt="Magnetický tok vlastnou slučkou">
+    <div class="image-caption">Obr. 4.3: Magnetický tok cez plochu ohraničenú slučkou s prúdom</div>
+  </div>
+
+  <p>Hodnotu magnetickej indukcie v danom bode plochy môžeme získať z Biotovho - Savartovho zákona. Je zrejmé, že táto hodnota bude úmerná intenzite prúdu \(I\), teda môžeme písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Phi = \int_S \vec{B} \cdot d\vec{S} = \int_S I \vec{\gamma} \cdot d\vec{S} = I \int_S \vec{\gamma} \cdot d\vec{S}\]
+    </div>
+  </div>
+
+  <p>Ak označíme</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\int_S \vec{\gamma} \cdot d\vec{S} = L\]
+    </div>
+  </div>
+
+  <p>môžeme písať</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Phi = L I\]
+    </div>
+  </div>
+
+  <p>kde konštanta úmernosti \(L\) medzi \(\Phi\) a \(I\) sa nazýva <strong>vlastná indukčnosť</strong>. Veľkosť \(L\) závisí od geometrických vlastností a od permeability prostredia.</p>
+
+  <p>Jednotkou indukčnosti v SI je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[[L] = \frac{[\Phi]}{[I]} = \frac{\text{Wb}}{\text{A}} = \frac{\text{Vs}}{\text{A}} = \text{H (henry)}\]
+    </div>
+  </div>
+
+  <h3><i class="fas fa-wave-square"></i> Indukované napätie pri vlastnej indukcii</h3>
+
+  <p>Majme teraz slučku, ktorou prechádza časovo premenný prúd. V tomto prípade vzniká premenný magnetický tok a ten má za následok indukované napätie. Toto indukované napätie pôsobí proti zmene toku (Lenzovo pravidlo). Napríklad ak prúd v slučke narastá, rastúci magnetický tok indukuje napätie, ktoré spôsobí spomalenie narastania tohto prúdu. Ak prúd je klesajúci, klesajúci magnetický tok indukuje napätie, ktoré bude pôsobiť proti poklesu tohto prúdu.</p>
+
+  <p>Hodnotu napätia indukovaného v slučke s indukčnosťou \(L\) možno získať pomocou Faradayovho zákona:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\mathcal{E} = -\frac{d\Phi}{dt} = -\frac{d}{dt}(L I) = -L \frac{dI}{dt}\]
+    </div>
+  </div>
+
+  <h3><i class="fas fa-layer-group"></i> Vzájomná indukčnosť</h3>
+
+  <p>Teraz uvažujme prípad, keď sú dva závity 1 a 2 uložené blízko seba (Obr. 4.4). Je zrejmé, že premenný prúd v jednom závite bude indukovať napätie v druhom závite.</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/006633/FFFFFF?text=Vzájomná+indukčnosť" alt="Dve slučky s vzájomnou indukčnosťou">
+    <div class="image-caption">Obr. 4.4: Vzájomná indukcia medzi dvoma závitmi</div>
+  </div>
+
+  <p>Podľa Faradayovho zákona bude elektromotorické napätie \(\mathcal{E}_2\) indukované v druhom závite úmerné časovej zmene magnetického toku, ktorý ním prechádza. Tento tok vzniká v dôsledku prúdu \(I_1\), ktorý tečie prvým závitom a je preto vhodné vyjadriť indukované napätie v druhom závite pomocou prúdu prechádzajúceho prvým závitom.</p>
+
+  <p>Nech \(\Phi_{12}\) je magnetický tok prechádzajúci plochou druhého závitu v dôsledku prúdu \(I_1\) v prvom závite. Ak obe slučky majú v priestore nemennú polohu, potom \(\Phi_{12}\) je priamo úmerný prúdu \(I_1\) v prvej slučke a konštanta úmernosti, ktorá sa nazýva <strong>vzájomná indukčnosť</strong> \(M_{12}\), je definovaná takto:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[M_{12} = \frac{\Phi_{12}}{I_1}\]
+    </div>
+  </div>
+
+  <p>Indukované napätie \(\mathcal{E}_2\), ktoré vzniká v druhej slučke v dôsledku premenného prúdu prechádzajúceho prvou slučkou, je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\mathcal{E}_2 = -\frac{d\Phi_{12}}{dt} = -\frac{d}{dt}(M_{12} I_1) = -M_{12} \frac{dI_1}{dt}\]
+    </div>
+  </div>
+
+  <p>Tento vzťah dáva do súvisu prúd v prvej slučke s napätím, ktoré sa v dôsledku toho indukuje v druhej slučke. Vzájomná indukčnosť druhej slučky vzhľadom na prvú je konštanta, ktorá závisí od veľkosti, tvaru a vzájomnej polohy oboch slučiek a tiež od prostredia.</p>
+
+  <p>Ak si teraz predstavíme opačnú situáciu, keď premenný prúd tečúci druhou slučkou indukuje napätie v prvej, máme</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\mathcal{E}_1 = -\frac{d\Phi_{21}}{dt} = -\frac{d}{dt}(M_{21} I_2) = -M_{21} \frac{dI_2}{dt}\]
+    </div>
+  </div>
+
+  <p>kde \(M_{21}\) je vzájomná indukčnosť slučky 1 vzhľadom na slučku 2. Platí, že</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[M_{21} = M_{12} = M\]
+    </div>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Vzájomná indukčnosť:</strong> Pre dané slučky nemusíme písať indexy a teda</p>
+    <p>\[\mathcal{E}_1 = -M \frac{dI_2}{dt} \quad \text{a} \quad \mathcal{E}_2 = -M \frac{dI_1}{dt}\]</p>
+    <p>Jednotkou vzájomnej indukčnosti v SI je <strong>henry (H)</strong>.</p>
+  </div>
+</div>

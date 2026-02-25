@@ -1,0 +1,130 @@
+<div class="section active" id="elektromagneticka-indukcia">
+  <h2><i class="fas fa-bolt"></i> 4.1 Elektromagnetická indukcia</h2>
+
+  <p>Uvažujme vodič dĺžky \(l\), ktorý sa pohybuje konštantnou rýchlosťou \(\vec{v}\) v rovine kolmej na indukciu \(\vec{B}\) homogénneho magnetického poľa (pozri Obr. 4.1). Na všetky náboje vo vnútri vodiča pôsobí sila v smere dĺžky vodiča. Preto sa elektróny budú hromadiť na jeho konci \(B\), kým na konci \(A\) bude prebytok kladného náboja. Vzniká teda elektrické pole \(\vec{E}\), ktoré kompenzuje sily pôsobiace na elektrón vo vodiči, ktorý sa pohybuje v magnetickom poli. Pre takzvané indukované elektrické pole možno písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[q \vec{E}_i = q \left( \vec{v} \times \vec{B} \right)\]
+    </div>
+  </div>
+
+  <p>a teda</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{E}_i = \left( \vec{v} \times \vec{B} \right)\]
+    </div>
+  </div>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Pohybujúci+sa+vodič+v+magnetickom+poli" alt="Pohybujúci sa vodič v magnetickom poli">
+    <div class="image-caption">Obr. 4.1: Vznik indukovaného elektrického poľa v pohybujúcom sa vodiči</div>
+  </div>
+
+  <p>Teraz si predstavme, že tento pohybujúci sa vodič sa posúva po ramenách pevného vodiča tvaru U, ako je to na Obr. 4.2. Z predchádzajúcej analýzy je zrejmé, že vo vnútri vodiča tvaru U vznikne prúd \(I\). V dôsledku tohto prúdu sú redukované náboje na koncoch pohybujúceho sa vodiča, elektrostatické pole vo vnútri pohybujúceho sa vodiča sa oslabí a magnetické sily spôsobia ďalšie posunutie voľných elektrónov od \(B\) ku \(A\).</p>
+
+  <p>Počas pohybu vodiča bude vo vodiči tvaru U tiecť prúd v smere proti pohybu hodinových ručičiek.</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x400/006633/FFFFFF?text=Indukovaný+prúd+v+obvode" alt="Vznik indukovaného prúdu v uzavretom obvode">
+    <div class="image-caption">Obr. 4.2: Pohybujúci sa vodič po U-ramenách</div>
+  </div>
+
+  <p>V pohybujúcom sa vodiči vzniká <strong>indukované elektromotorické napätie</strong> \(\mathcal{E}\), ktorého veľkosť je:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\mathcal{E} = \int_A^B \vec{E}_i \cdot d\vec{l} = \int_A^B \left( \vec{v} \times \vec{B} \right) \cdot d\vec{l} = v B l_0\]
+    </div>
+  </div>
+
+  <h3><i class="fas fa-chart-line"></i> Faradayov zákon</h3>
+
+  <p>K vyjadreniu indukovaného napätia možno dospieť aj iným spôsobom. Nech uzavretou dráhou v definícii elektromotorického napätia je obvod plochy \(S\). Vektor plochy \(d\vec{S}\) definujeme štandardným spôsobom a bude orientovaný tým smerom, odkiaľ vidíme vektory \(d\vec{l}\) v smere proti smeru pohybu hodinových ručičiek. Z obrázka 4.2 je vidieť, že platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\vec{B} \cdot \vec{S} = -BS\]
+    </div>
+  </div>
+
+  <p>kde \(B\) je veľkosť \(\vec{B}\).</p>
+
+  <p>Ak sa vodič posunie doprava o vzdialenosť \(ds\), plocha obvodu (obdĺžnika) \(A\)-\(B\)-\(C\)-\(D\) sa zväčší o</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[dS = l_0 ds\]
+    </div>
+  </div>
+
+  <p>zmena magnetického toku cez plochu ohraničenú obvodom je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[d\Phi = \vec{B} \cdot d\vec{S} = -B dS = -B l_0 ds\]
+    </div>
+  </div>
+
+  <p>a možno písať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{d\Phi}{dt} = -B l_0 \frac{ds}{dt} = -B l_0 v = -\mathcal{E}\]
+    </div>
+  </div>
+
+  <p>Teda platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\mathcal{E} = -\frac{d\Phi}{dt}\]
+    </div>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Faradayov zákon:</strong> Táto rovnica je známa ako <strong>Faradayov zákon</strong>, ktorý hovorí, že indukované napätie vzniká všade tam, kde sa v čase mení magnetický tok.</p>
+  </div>
+
+  <p>Ak napríklad uložíme uzavretú vodivú slučku do premenného magnetického poľa, magnetický tok cez slučku sa bude meniť a vznikne v nej indukované napätie. Toto napätie uvedie do pohybu voľné elektróny vo vodiči, t. j. indukuje elektrický prúd.</p>
+
+  <h3><i class="fas fa-arrows-alt-h"></i> Lenzov zákon</h3>
+
+  <p>Smer tohto prúdu je určený tzv. <strong>Lenzovým zákonom</strong>, ktorý hovorí, že <strong>smer indukovaného prúdu je taký, že pôsobí proti zmene, ktorá ho vyvolala</strong>. Tento fakt môžeme dokázať analýzou situácie na obrázku 4.2.</p>
+
+  <p>Aby sa vodič pohyboval, je potrebná vonkajšia sila \(\vec{F}_{ext}\). Keďže vodičom tečie indukovaný prúd \(I\), magnetické pole \(\vec{B}\) bude naň pôsobiť silou \(\vec{F}_m\). Ako je vidieť, tieto sily sú opačne orientované.</p>
+
+  <p>Indukované elektrické pole je práve také reálne, ako elektrické pole vytvorené statickým nábojom a silovo pôsobí na náboje.</p>
+
+  <h3><i class="fas fa-calculator"></i> Všeobecný tvar Faradayovho zákona</h3>
+
+  <p>Faradayov zákon môžeme zapísať pre všeobecný prípad, ak vezmeme do úvahy, že</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\mathcal{E} = \oint \vec{E} \cdot d\vec{l}\]
+    </div>
+  </div>
+
+  <p>Táto rovnica v kombinácii s Faradayovým zákonom dáva</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\oint \vec{E} \cdot d\vec{l} = -\frac{d\Phi}{dt}\]
+    </div>
+  </div>
+
+  <p>a tiež:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\oint \vec{E} \cdot d\vec{l} = -\frac{d}{dt} \int \vec{B} \cdot d\vec{S}\]
+    </div>
+    <span class="equation-number">(4.1)</span>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Všeobecná platnosť:</strong> Toto je Faradayov zákon v najvšeobecnejšom tvare. Poskytuje hodnotu indukovaného napätia, pričom nezáleží na tom, čo spôsobilo zmenu magnetického toku - či už to bol pohyb vodiča, pohyb magnetu, zmena indukcie, zmena tvaru vodivej slučky alebo niečo iné.</p>
+  </div>
+</div>
