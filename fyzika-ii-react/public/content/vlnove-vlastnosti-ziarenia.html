@@ -1,0 +1,265 @@
+<div class="section active" id="vlnove-vlastnosti-ziarenia">
+  <h2><i class="fas fa-wave-square"></i> 6.3 Vlnové vlastnosti elektromagnetického žiarenia</h2>
+
+  <h3><i class="fas fa-sliders-h"></i> 6.3.1 Youngov interferenčný pokus</h3>
+
+  <p>V oblasti, kde sa prekrývajú vlnenia, dochádza k ich skladaniu - <strong>interferencii</strong>. Výsledné kmitanie v každom mieste sa vyznačuje okamžitou výchylkou rovnou súčtu okamžitých výchyliek jednotlivých vĺn, amplitúda výsledného kmitania bude závisieť najmä od rozdielu fáz skladaných vĺn. Významný je prípad, kedy zdroje vlnení kmitajú s rovnakou frekvenciou, majú rovnaký smer kmitania a konštantný fázový rozdiel - sú <strong>koherentné</strong>. V tomto prípade amplitúda výsledného kmitania v danom bode závisí iba od jeho vzdialenosti od zdrojov vlnení.</p>
+
+  <p>Zásadný význam pre dôkaz vlnovej podstaty svetla mal <strong>Youngov interferenčný pokus</strong>. Ako dva koherentné zdroje vlnenia použil Young dve blízke štrbiny (ich šírka je oveľa menšia ako ich vzájomná vzdialenosť), ktoré sú osvetlené jedným svetelným zdrojom a samy sa podľa Huygensovho princípu stávajú novými zdrojmi vlnení, ktoré kmitajú s rovnakou fázou a amplitúdou (Obr. 6.2). Tieto vlnenia sa prekrývajú a spolu interferujú.</p>
+
+  <div class="theory-image">
+    <img src="/Fizika2/img/6.2.png" alt="Youngov interferenčný pokus">
+    <div class="image-caption">Obr. 6.2: Youngov interferenčný pokus</div>
+  </div>
+
+  <p>Vyšetrime interferenciu v bode \(P\) na tienidle vzdialenom o \(x\) od štrbín, pričom platí \(x \gg d\), kde \(d\) je vzdialenosť štrbín. Za uvedeného predpokladu možno pokladať svetelné lúče prichádzajúce do bodu \(P\) za rovnobežné, pričom uhol, ktorý zvierajú s osou \(x\) nech je \(\phi\).</p>
+
+  <p>Intenzita osvetlenia je úmerná kvadrátu výslednej amplitúdy. Pre výslednú amplitúdu pri skladaní dvoch rovnosmerných kmitavých pohybov s rovnakou amplitúdou \(A\) platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[A_v = \sqrt{2A^2 + 2A^2 \cos(\alpha_2 - \alpha_1)}\]
+    </div>
+  </div>
+
+  <p>takže je zrejmé, že výsledná amplitúda závisí iba od rozdielu fáz \(\alpha_2 - \alpha_1\). Ak \(\cos(\alpha_2 - \alpha_1) = -1\), výsledná amplitúda je rovná nule a v mieste, kde sa skladajú dva takéto lúče, bude tma; najsvetlejšie miesta budú tam, kde sa skladajú dva lúče, pre ktoré \(\cos(\alpha_2 - \alpha_1) = 1\).</p>
+
+  <p>Dva skladajúce sa lúče možno popísať nasledovne:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[u_1 = A \cos\left(\omega t - \frac{2\pi l_1}{\lambda}\right) \quad \text{a} \quad u_2 = A \cos\left(\omega t - \frac{2\pi l_2}{\lambda}\right)\]
+    </div>
+  </div>
+
+  <p>a rozdiel fáz je</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[|\alpha_2 - \alpha_1| = \left| -\frac{2\pi l_2}{\lambda} + \frac{2\pi l_1}{\lambda} \right| = \frac{2\pi}{\lambda} |l_1 - l_2| = \frac{2\pi}{\lambda} \Delta\]
+    </div>
+  </div>
+
+  <p>kde \(\Delta\) je dráhový rozdiel.</p>
+
+  <p>Maximá amplitúdy a teda najsvetlejšie miesta na tienidle budú tam, kde platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{2\pi}{\lambda} \Delta = 2k\pi \quad \Rightarrow \quad \Delta = k\lambda, \quad k = 0, 1, 2, 3, \dots\]
+    </div>
+    <span class="equation-number">(6.8)</span>
+  </div>
+
+  <p>Pre veľkosť dráhového rozdielu \(\Delta\) dostaneme</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      \begin{aligned}
+      \Delta &= l_2 - l_1 = \sqrt{x^2 + \left(y + \frac{d}{2}\right)^2} - \sqrt{x^2 + \left(y - \frac{d}{2}\right)^2} = \\
+      &= x \left[ \sqrt{1 + \left( \frac{y + \frac{d}{2}}{x} \right)^2} - \sqrt{1 + \left( \frac{y - \frac{d}{2}}{x} \right)^2} \right]
+      \end{aligned}
+      \]
+    </div>
+    <span class="equation-number">(6.9)</span>
+  </div>
+
+  <p>Pri experimente je spravidla splnená podmienka, že tak ako vzdialenosť štrbín \(d\) ako aj poloha bodu \(P\) na tienidle \(y\) sú omnoho menšie ako vzdialenosť medzi štrbinami a tienidlom \(x\). Využijúc binomický rozvoj pre \(a \ll 1\) približne platí</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\sqrt{(1 \pm a)} \approx 1 \pm \frac{1}{2} a\]
+    </div>
+  </div>
+
+  <p>Zrejme platí \(a = \left( \frac{y \pm \frac{d}{2}}{x} \right)^2 \ll 1\) a teda v uvedenej aproximácii dostávame zo vzťahu (6.9) pre dráhový rozdiel lúčov:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Delta \approx \frac{y d}{x}\]
+    </div>
+    <span class="equation-number">(6.10)</span>
+  </div>
+
+  <p>Po dosadení do (6.8), pre polohy maxím dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[y = \frac{x}{d} k\lambda\]
+    </div>
+  </div>
+
+  <p>Z (6.10), pravouhlého trojuholníka \(ACP\) na obrázku 6.2 a pre \(y \ll x\) dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Delta \approx \frac{y d}{x} = \text{tg}\phi \, d \approx d \sin \phi\]
+    </div>
+  </div>
+
+  <p>a teda podmienku maxima môžeme napísať aj nasledovným spôsobom:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[d \sin \phi = k\lambda\]
+    </div>
+  </div>
+
+  <div class="important-note">
+    <p><strong>Výsledok:</strong> V bodoch, kde sa skladajú dva také lúče, ktorých dráhový rozdiel je celistvý násobok vlnovej dĺžky dopadajúceho svetla, sa objaví maximálne osvetlenie, kým v miestach, kde \(d \sin \phi = (2k + 1) \frac{\lambda}{2}\) bude amplitúda, a teda aj intenzita nulová. To znamená, že tam budú tmavé miesta. Na tienidle sa objavia striedavo svetlé a tmavé pásy. Takto vypočítané výsledky boli v úplnej zhode s pozorovaním, teda svetlo sa tu prejavuje a dá sa úspešne popísať ako vlnenie.</p>
+  </div>
+
+  <h3><i class="fas fa-layer-group"></i> 6.3.2 Interferencia svetla na tenkej vrstve</h3>
+
+  <p>Na úvod tejto kapitoly definujme <strong>index lomu</strong> \(n\) pre dané prostredie vzťahom</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[n = \frac{c}{v}\]
+    </div>
+  </div>
+
+  <p>kde \(c\) je rýchlosť svetla vo vákuu a \(v\) je rýchlosť svetla v danom prostredí.</p>
+
+  <p>Ako už vieme, podmienku interferenčného zosilnenia pre vlny, a teda aj pre svetlo, postupujúce v tom istom prostredí môžeme vyjadriť vzťahom</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Delta = l_2 - l_1 = k\lambda\]
+    </div>
+    <span class="equation-number">(6.11)</span>
+  </div>
+
+  <p>kde \(\Delta\) označuje rozdiel dĺžok geometrických dráh \(l_1\) a \(l_2\) interferujúcich lúčov, \(\lambda\) je vlnová dĺžka svetla a \(k\) je celé číslo. Vzťah (6.11) môžeme vyjadriť aj nasledovným spôsobom:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{l_2}{\lambda} - \frac{l_1}{\lambda} = k\]
+    </div>
+  </div>
+
+  <p>a vyjadruje skutočnosť, že k interferenčnému zosilneniu dochádza, ak rozdiel počtu vlnových dĺžok pripadajúcich na geometrické dráhy interferujúcich lúčov je rovný celému číslu. Takto formulovaná interferenčná podmienka je platná aj v prípade, ak sa interferujúce lúče pred interferenciou pohybujú rôznymi prostrediami, t.j. interferenčnú podmienku môžeme vyjadriť vzťahom:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{l_2}{\lambda_2} - \frac{l_1}{\lambda_1} = k\]
+    </div>
+    <span class="equation-number">(6.12)</span>
+  </div>
+
+  <p>Skutočnosť, že sa lúče šíria rôznymi prostrediami sme vyjadrili rozdielnosťou vlnových dĺžok.</p>
+
+  <p>Pre ďalšie úvahy je dôležité si uvedomiť, že daný lúč prechádzajúci z jedného prostredia do druhého mení svoju rýchlosť a vlnovú dĺžku, avšak nemení sa jeho frekvencia. Môžeme teda písať</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[f = \frac{v_1}{\lambda_1} = \frac{v_2}{\lambda_2} = \frac{c}{\lambda}\]
+    </div>
+  </div>
+
+  <p>a tiež</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{1}{\lambda_1} = \frac{c}{v_1} \frac{1}{\lambda} = n_1 \frac{1}{\lambda}, \quad \frac{1}{\lambda_2} = \frac{c}{v_2} \frac{1}{\lambda} = n_2 \frac{1}{\lambda}\]
+    </div>
+    <span class="equation-number">(6.13)</span>
+  </div>
+
+  <p>kde \(n_1\), \(n_2\) sú indexy lomu prostredí 1 a 2 a \(\lambda\) je vlnová dĺžka svetla vo vákuu.</p>
+
+  <p>Po dosadení vzťahov (6.13) do vzťahu (6.12) a jednoduchej úprave dostaneme</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[n_2 l_2 - n_1 l_1 = k\lambda\]
+    </div>
+    <span class="equation-number">(6.14)</span>
+  </div>
+
+  <p>Veličina \(nl\), vystupujúca na ľavej strane tejto rovnice, sa nazýva <strong>optická dráha</strong>.</p>
+
+  <div class="theory-image">
+    <img src="/Fizika2/img/6.3.png" alt="Interferencia na tenkej vrstve">
+    <div class="image-caption">Obr. 6.3: Interferencia na tenkej vrstve</div>
+  </div>
+
+  <p>Uvažujme teraz rovnobežný zväzok lúčov dopadajúci na tenkú vrstvu hrúbky \(d\). Index lomu tenkej vrstvy nech je \(n_2\) a index lomu okolitého prostredia nech je \(n_1\) (Obr. 6.3). Časť dopadajúceho svetla sa odráža na povrchu vrstvy a časť preniká do prostredia vrstvy. Podobný proces prebieha aj na dolnom rozhraní. Na obrázku sú znázornené dva lúče, lúč 1 a lúč 2. Tieto dva lúče sa stretajú v bode \(D\).</p>
+
+  <p>Ak uvažujeme rovinnú vlnu, vlnoplocha, v momente dopadu lúča 2 na povrch vrstvy, je znázornená úsečkou \(AB\). Od tohto okamihu do okamihu stretnutia sa oboch lúčov v bode \(D\) prejdú tieto lúče rozdielne dráhy:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[l_2 = AE + ED = 2AE, \quad l_1 = BD\]
+    </div>
+  </div>
+
+  <p>Z obrázka 6.3 a po postupných úpravách dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\sin \alpha = \frac{BD}{AD} = \frac{l_1}{AD}, \quad \sin \beta = \frac{AD}{2AE} = \frac{AD}{l_2}, \quad \cos \beta = \frac{d}{AE} = \frac{2d}{l_2}\]
+    </div>
+  </div>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[l_1 = AD \sin \alpha, \quad AD = l_2 \sin \beta, \quad l_2 = \frac{2d}{\cos \beta}\]
+    </div>
+  </div>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[l_1 = l_2 \sin \beta \sin \alpha = \frac{2d \sin \beta \sin \alpha}{\cos \beta}\]
+    </div>
+  </div>
+
+  <p>Použijúc zákon lomu a definíciu indexu lomu dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{\sin \alpha}{\sin \beta} = \frac{v_1}{v_2} = \frac{n_2}{n_1}\]
+    </div>
+  </div>
+
+  <p>kde \(v_1\) je rýchlosť svetla v prvom prostredí a \(v_2\) je rýchlosť svetla v druhom prostredí. Potom</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[n_1 = n_2 \frac{\sin \beta}{\sin \alpha}\]
+    </div>
+  </div>
+
+  <p>Teraz vyjadríme rozdiel optických dráh (ľavá strana rovnice (6.14)) lúčov 1,2:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[
+      \begin{aligned}
+      n_2 l_2 - n_1 l_1 &= n_2 \frac{2d}{\cos \beta} - n_1 \frac{2d \sin \beta \sin \alpha}{\cos \beta} = \\
+      &= n_2 \frac{2d}{\cos \beta} - n_2 \frac{\sin \beta}{\sin \alpha} \frac{2d \sin \beta \sin \alpha}{\cos \beta} = \\
+      &= 2n_2 d \frac{1}{\cos \beta} (1 - \sin^2 \beta) = 2n_2 d \cos \beta
+      \end{aligned}
+      \]
+    </div>
+  </div>
+
+  <p>Nakoniec ešte potrebujeme vziať do úvahy skutočnosť, že na povrchu vrstvy sa vlna odráža na materiále s väčším indexom lomu ako u prostredia v ktorom sa šíri. Pri odraze svetla na takomto rozhraní dochádza k <strong>fázovému posunu vlny o 180°</strong>. Ak je index lomu prostredia, na hranici ktorého sa svetlo odráža menší ako index lomu prostredia v ktorom sa šíri, k fázovému posunu nedochádza. Túto skutočnosť môžeme zahrnúť do interferenčnej podmienky tak, že k rozdielu optických dráh vo vzťahu (6.14) pripočítame alebo odpočítame jednu polvlnu.</p>
+
+  <p>Pre podmienku interferenčného zosilnenia odrazeného svetla tenkou vrstvou potom dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[2n_2 d \cos \beta = k\lambda + \frac{\lambda}{2} = (2k + 1)\frac{\lambda}{2}\]
+    </div>
+  </div>
+
+  <p>Rovnakým postupom možno dospieť tiež k podmienke interferenčného zoslabenia pre odrazené svetlo tenkou vrstvou. Platí:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[2n_2 d \cos \beta = (2k + 1)\frac{\lambda}{2} - \frac{\lambda}{2} = k\lambda\]
+    </div>
+  </div>
+</div>

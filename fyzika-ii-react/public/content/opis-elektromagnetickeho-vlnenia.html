@@ -1,0 +1,214 @@
+<div class="section active" id="opis-elektromagnetickeho-vlnenia">
+    <h2><i class="fas fa-wave-square"></i> 6.1 Opis elektromagnetického vlnenia</h2>
+
+
+    <p>Na teoretický popis elektromagnetického vlnenia možno použiť Maxwellove rovnice. Pre jednoduchosť budeme uvažovať vákuum, kde nie sú žiadne náboje, prúdy, ani permanentné magnety. Za týchto podmienok majú Maxwellove rovnice tvar:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{rot} \, \vec{B} = \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t}\]
+        </div>
+        <span class="equation-number">(6.1)</span>
+    </div>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{rot} \, \vec{E} = -\frac{\partial \vec{B}}{\partial t}\]
+        </div>
+        <span class="equation-number">(6.2)</span>
+    </div>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{div} \, \vec{E} = 0\]
+        </div>
+        <span class="equation-number">(6.3)</span>
+    </div>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{div} \, \vec{B} = 0\]
+        </div>
+        <span class="equation-number">(6.4)</span>
+    </div>
+
+    <p>Derivujme rovnicu (6.1) podľa času:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{rot} \, \frac{\partial \vec{B}}{\partial t} = \mu_0 \varepsilon_0 \frac{\partial^2 \vec{E}}{\partial t^2}\]
+        </div>
+    </div>
+
+    <p>a za \(\frac{\partial \vec{B}}{\partial t}\) dosadíme z rovnice (6.2):</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{rot} \left( \text{rot} \, \vec{E} \right) = -\mu_0 \varepsilon_0 \frac{\partial^2 \vec{E}}{\partial t^2}\]
+        </div>
+    </div>
+
+    <p>Ak použijeme nasledovnú identitu známu z vektorovej analýzy</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\text{rot} \left( \text{rot} \, \vec{E} \right) = \text{grad} \left( \text{div} \, \vec{E} \right) - \nabla^2 \vec{E}\]
+        </div>
+    </div>
+
+    <p>a rovnicu (6.3), dostaneme</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\Delta \vec{E} = \mu_0 \varepsilon_0 \frac{\partial^2 \vec{E}}{\partial t^2}\]
+        </div>
+        <span class="equation-number">(6.5)</span>
+    </div>
+
+    <p>kde \(\Delta = \nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}\) je tzv. Laplaceov operátor.</p>
+
+    <p>Podobným postupom možno dospieť k rovnakej rovnici pre vektor \(\vec{B}\):</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\Delta \vec{B} = \mu_0 \varepsilon_0 \frac{\partial^2 \vec{B}}{\partial t^2}\]
+        </div>
+        <span class="equation-number">(6.6)</span>
+    </div>
+
+    <p>Rovnica typu \(\Delta \vec{u} = \frac{1}{v^2} \frac{\partial^2 \vec{u}}{\partial t^2}\) je známa ako <strong>vlnová rovnica</strong> popisujúca netlmenú vlnu šíriacu sa rýchlosťou \(v\). Vidíme teda, že rovnice (6.5) a (6.6) sú vlnovými rovnicami a teda popisujú v priestore sa šíriaci vlnový rozruch vo forme zmien vektorov \(\vec{E}\) a \(\vec{B}\). Takúto vlnu nazývame <strong>elektromagnetickou vlnou</strong>.</p>
+
+    <p>Ak porovnáme vyššie uvedenú obecnú vlnovú rovnicu s rovnicami (6.5) a (6.6), dostávame pre rýchlosť elektromagnetickej vlny vo vákuu vzťah:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[v = \frac{1}{\sqrt{\varepsilon_0 \mu_0}}\]
+        </div>
+    </div>
+
+    <p>Ak dosadíme hodnoty permitivity a permeability pre vákuum, dostaneme výsledok</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[v = 3 \times 10^8 \, \text{m·s}^{-1}\]
+        </div>
+    </div>
+
+    <div class="important-note">
+        <p><strong>Dôležitý záver:</strong> Táto hodnota je zhodná s nameranou rýchlosťou svetla vo vákuu. Rýchlosť šírenia sa elektromagnetických vĺn vo vákuu je konštanta, ktorá nezávisí od vlnovej dĺžky a frekvencie.</p>
+    </div>
+
+    <h3><i class="fas fa-arrows-alt"></i> Vlastnosti elektromagnetickej vlny</h3>
+
+    <p>Aby sme sa dozvedeli viac o vlastnostiach elektromagnetickej vlny, uvažujme prípad, keď sa takáto vlna šíri napríklad pozdĺž osi \(x\). Nech vektor intenzity elektrického poľa vyhovuje rovnici rovinnej vlny šíriacej sa v kladnom smere osi \(x\), teda:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{E} = \vec{E} \left( t - \frac{x}{v} \right)\]
+        </div>
+    </div>
+
+    <p>Použijúc substitúciu \(p = t - \frac{x}{v}\) môžeme písať:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{\partial \vec{E}}{\partial x} = \frac{d \vec{E}}{dp} \frac{\partial p}{\partial x} = \frac{d \vec{E}}{dp} \left( -\frac{1}{v} \right)\]
+        </div>
+    </div>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{\partial \vec{E}}{\partial t} = \frac{d \vec{E}}{dp} \frac{\partial p}{\partial t} = \frac{d \vec{E}}{dp}\]
+        </div>
+    </div>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{\partial \vec{E}}{\partial x} = \frac{\partial \vec{E}}{\partial t} \left( -\frac{1}{v} \right)\]
+        </div>
+    </div>
+
+    <p>Z týchto rovníc spolu s Maxwellovou rovnicou \(\text{rot} \, \vec{E} = -\frac{\partial \vec{B}}{\partial t}\) postupne dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            \begin{aligned}
+            \text{rot} \, \vec{E} &= \begin{vmatrix}
+            \vec{i} & \vec{j} & \vec{k} \\
+            \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+            E_x & E_y & E_z
+            \end{vmatrix} = -\frac{\partial E_z}{\partial x} \vec{j} + \frac{\partial E_y}{\partial x} \vec{k} = \\
+            &= \begin{vmatrix}
+            \vec{i} & \vec{j} & \vec{k} \\
+            1 & 0 & 0 \\
+            \frac{\partial E_x}{\partial x} & \frac{\partial E_y}{\partial x} & \frac{\partial E_z}{\partial x}
+            \end{vmatrix} = \vec{i} \times \frac{\partial \vec{E}}{\partial x} = \vec{i} \times \frac{d \vec{E}}{dp} \frac{\partial p}{\partial x} = \\
+            &= \vec{i} \times \frac{d \vec{E}}{dp} \left( -\frac{1}{v} \right) = -\frac{1}{v} \vec{i} \times \frac{\partial \vec{E}}{\partial t} = -\frac{\partial}{\partial t} \left( \frac{\vec{i} \times \vec{E}}{v} \right) = -\frac{\partial \vec{B}}{\partial t}
+            \end{aligned}
+            \]
+        </div>
+    </div>
+
+    <p>Keďže rovnica</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[-\frac{\partial}{\partial t} \left( \frac{\vec{i} \times \vec{E}}{v} \right) = -\frac{\partial \vec{B}}{\partial t}\]
+        </div>
+    </div>
+
+    <p>platí v ľubovoľnom časovom okamihu, môžeme písať:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{B} = \frac{\vec{i} \times \vec{E}}{v} = \sqrt{\varepsilon \mu} \left( \vec{i} \times \vec{E} \right)\]
+        </div>
+        <span class="equation-number">(6.7)</span>
+    </div>
+
+    <div class="important-note">
+        <p><strong>Závery z rovnice (6.7):</strong></p>
+        <ol>
+            <li>vektor \(\vec{B}\) je vždy kolmý na vektor \(\vec{E}\),</li>
+            <li>vektor \(\vec{B}\) je vždy kolmý na vektor \(\vec{i}\), čo znamená že vektor \(\vec{B}\) sa môže meniť iba v rovine, ktorá je kolmá na smer šírenia sa elektromagnetickej vlny,</li>
+            <li>časová závislosť \(\vec{B}\) je rovnaká ako časová závislosť \(\vec{E}\), takže vektory \(\vec{E}\) a \(\vec{B}\) kmitajú vo fáze,</li>
+            <li>súvis medzi veľkosťami vektorov \(\vec{B}\) a \(\vec{E}\) je daný rovnicou \(\left|\vec{B}\right| = \sqrt{\varepsilon \mu} \left|\vec{E}\right|\).</li>
+        </ol>
+    </div>
+
+    <p>Z Maxwellovej rovnice \(\text{div} \, \vec{E} = 0\) dostaneme:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[
+            \begin{aligned}
+            \text{div} \, \vec{E} &= \frac{\partial E_x}{\partial x} = \frac{\partial (\vec{i} \cdot \vec{E})}{\partial x} = \vec{i} \cdot \frac{\partial \vec{E}}{\partial x} = \vec{i} \cdot \frac{d \vec{E}}{dp} \frac{\partial p}{\partial x} = \\
+            &= \vec{i} \cdot \frac{d \vec{E}}{dp} \left( -\frac{1}{v} \right) = -\frac{\vec{i}}{v} \cdot \frac{\partial \vec{E}}{\partial t} = \frac{\partial}{\partial t} \left( -\frac{\vec{i} \cdot \vec{E}}{v} \right) = 0
+            \end{aligned}
+            \]
+        </div>
+    </div>
+
+    <p>Rovnica</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\frac{\partial}{\partial t} \left( \frac{\vec{i} \cdot \vec{E}}{v} \right) = 0\]
+        </div>
+    </div>
+
+    <p>platí pre každý časový okamih, preto:</p>
+
+    <div class="equation">
+        <div class="equation-content">
+            \[\vec{i} \cdot \vec{E} = 0\]
+        </div>
+    </div>
+
+    <p>Z tejto rovnice vyplýva, že vektor \(\vec{E}\) je vždy kolmý na vektor \(\vec{i}\), čo znamená, že aj vektor \(\vec{E}\) sa mení v rovine kolmej na smer šírenia sa elektromagnetického vlnenia.</p>
+
+    <div class="important-note">
+        <p><strong>Záverečný záver:</strong> Z toho vidíme, že rovinná elektromagnetická vlna je <strong>priečnym vlnením</strong> - oba vektory \(\vec{E}\) a \(\vec{B}\) sú kolmé na smer šírenia vlny a sú navzájom kolmé.</p>
+    </div>
+</div>

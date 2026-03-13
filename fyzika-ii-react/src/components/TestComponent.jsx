@@ -40,7 +40,7 @@ const TestComponent = ({ topicId }) => {
     const loadQuestions = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`/tests/${topicId}-test.json`);
+            const response = await fetch(`/Fizika2/tests/${topicId}-test.json`);
             if (!response.ok) throw new Error('Test file not found');
             const data = await response.json();
 

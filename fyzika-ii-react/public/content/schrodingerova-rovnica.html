@@ -1,0 +1,370 @@
+<div class="section active" id="schrodingerova-rovnica">
+  <h2><i class="fas fa-square-root-alt"></i> 7.4 Schrödingerova rovnica</h2>
+
+  <h3><i class="fas fa-tools"></i> 7.4.1 Zostavenie Schrödingerovej rovnice</h3>
+
+  <p>V klasickej mechanike je stav častice alebo sústavy častíc úplne popísaný, ak sú známe napr. súradnice a hybnosti častice alebo sústavy častíc. V kvantovej mechanike informáciu o systéme poskytuje <strong>vlnová funkcia</strong>.</p>
+
+  <p>Stav častice, ktorej pohyb je obmedzený pôsobením vonkajších síl, je úplne popísaný vlnovou funkciou \(\Psi\), ktorá je funkciou súradníc a času. Vlnovú funkciu získame riešením rovnice, ktorá musí byť lineárna a homogénna, aby vlnová funkcia spĺňala princíp superpozície, ktorý všeobecne platí pre vlnové procesy. Rovnica tiež musí byť diferenciálnou rovnicou prvého rádu vzhľadom k času. Potom vývoj vlnovej funkcie v čase môže byť popísaný na základe jej známej hodnoty v počiatočnom okamihu. Takéto úlohy rieši kvantová mechanika, ktorú rozvinuli v rokoch 1925-26 najmä <strong>Erwin Schrödinger</strong> a <strong>Werner Heisenberg</strong>.</p>
+
+  <p>Teraz uvedieme požiadavky, ktoré musí spĺňať vlnová funkcia \(\Psi\). Keďže \(|\Psi|^2\) je rovné hustote pravdepodobnosti výskytu častice v danom mieste, musí byť integrál \(|\Psi|^2\) cez celý priestor rovný 1 - častica sa niekde v priestore určite nachádza:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\int_{-\infty}^{\infty} |\Psi|^2 dV = 1\]
+    </div>
+  </div>
+
+  <p>čo je tzv. <strong>normovanie vlnovej funkcie na jednotku</strong>.</p>
+
+  <p>Vlnová funkcia v kvantovej mechanike popisuje stav častice, pretože pomocou nej môžeme získať úplnú informáciu o všetkých merateľných veličinách v danom fyzikálnom stave častice. Preto vlnová funkcia musí byť <strong>jednoznačnou funkciou</strong> polohy a času a potom aj pravdepodobnosť bude mať jedinú hodnotu v každom mieste a čase.</p>
+
+  <p>Vlnová funkcia musí byť <strong>spojitá a hladká</strong>, teda jej parciálne derivácie podľa jednotlivých súradníc musia byť všade spojité. Keďže samotná vlnová funkcia nemá fyzikálny zmysel, môže byť aj komplexnou funkciou a v jednorozmernom prípade ju možno zapísať v tvare (7.16):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Psi = A e^{\frac{i}{\hbar}(px - Et)}\]
+    </div>
+    <span class="equation-number">(7.22)</span>
+  </div>
+
+  <p>Výraz (7.22) je matematickým popisom vlnového ekvivalentu <strong>voľnej častice</strong> s celkovou energiou \(E\) a hybnosťou \(p\) pohybujúcou sa v kladnom smere osi \(x\).</p>
+
+  <p>Vlnovú funkciu pre časticu voľne sa pohybujúcu v trojrozmernom priestore potom možno napísať v tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Psi(\vec{r}, t) = A e^{\frac{i}{\hbar}(\vec{p}\cdot\vec{r} - Et)}\]
+    </div>
+    <span class="equation-number">(7.23)</span>
+  </div>
+
+  <p>Uvedené vlnové funkcie (7.22) a (7.23) popisujú voľnú časticu, t.j. časticu, ktorá nie je pod vplyvom žiadnych síl. Keďže úlohou kvantovej mechaniky je riešiť prípady, kedy je pohyb častice obmedzený pôsobením rôznych síl, bude treba získať všeobecnú diferenciálnu rovnicu pre vlnovú funkciu, ktorej riešením bude vlnová funkcia v danom silovom poli.</p>
+
+  <p>Budeme postupovať induktívnou metódou - od špeciálneho známeho riešenia dospejeme k všeobecne platnej rovnici. Vlnová funkcia je funkciou súradníc a času. Chceme teda zistiť, ako bude súvisieť časová derivácia tejto funkcie s jej deriváciou podľa súradníc.</p>
+
+  <p>Zderivujeme (7.23) podľa času:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{\partial \Psi(\vec{r}, t)}{\partial t} = A e^{\frac{i}{\hbar}(\vec{p}\cdot\vec{r} - Et)} \cdot \left(-\frac{i}{\hbar}E\right)\]
+    </div>
+  </div>
+
+  <p>čo možno písať</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[i\hbar \frac{\partial \Psi(\vec{r}, t)}{\partial t} = E \cdot A e^{\frac{i}{\hbar}(\vec{p}\cdot\vec{r} - Et)}\]
+    </div>
+  </div>
+
+  <p>Keďže pre voľnú časticu, pohybujúcu sa rýchlosťou oveľa menšou ako je rýchlosť svetla, platí</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E = \frac{\vec{p}^2}{2m}\]
+    </div>
+  </div>
+
+  <p>máme z predchádzajúcej rovnice:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[i\hbar \frac{\partial \Psi(\vec{r}, t)}{\partial t} = \frac{\vec{p}^2}{2m} \Psi(\vec{r}, t)\]
+    </div>
+    <span class="equation-number">(7.24)</span>
+  </div>
+
+  <p>Zderivujeme vlnovú funkciu podľa súradníc. Pre x-ovú súradnicu dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{\partial \Psi(\vec{r}, t)}{\partial x} = A e^{\frac{i}{\hbar}(\vec{p}\cdot\vec{r} - Et)} \cdot \left(\frac{i}{\hbar}p_x\right) \quad \Rightarrow \quad -i\hbar \frac{\partial \Psi(\vec{r}, t)}{\partial x} = p_x \Psi(\vec{r}, t)\]
+    </div>
+  </div>
+
+  <p>Ak teda na vlnovú funkciu aplikujeme operátor \(-i\hbar \frac{\partial}{\partial x}\), dostaneme pôvodnú vlnovú funkciu násobenú x-ovou zložkou hybnosti častice, preto tento operátor nazývame <strong>operátorom hybnosti</strong> \(\hat{p}_x\):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\hat{p}_x = -i\hbar \frac{\partial}{\partial x}\]
+    </div>
+  </div>
+
+  <p>Druhou deriváciou podľa súradníc dostaneme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[-\hbar^2 \frac{\partial^2 \Psi(\vec{r}, t)}{\partial x^2} = p_x^2 \Psi(\vec{r}, t)\]
+    </div>
+  </div>
+
+  <p>V trojrozmernom prípade:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[-\hbar^2 \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) \Psi(\vec{r}, t) = \vec{p}^2 \Psi(\vec{r}, t)\]
+    </div>
+  </div>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[-\hbar^2 \Delta \Psi(\vec{r}, t) = \vec{p}^2 \Psi(\vec{r}, t)\]
+    </div>
+    <span class="equation-number">(7.25)</span>
+  </div>
+
+  <p>Ak túto rovnicu predelíme \(2m\), dostaneme</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[-\frac{\hbar^2}{2m} \Delta \Psi(\vec{r}, t) = \frac{\vec{p}^2}{2m} \Psi(\vec{r}, t) \quad \Rightarrow \quad -\frac{\hbar^2}{2m} \Delta \Psi(\vec{r}, t) = E_k \Psi(\vec{r}, t)\]
+    </div>
+  </div>
+
+  <p>pretože \(E_k = \frac{\vec{p}^2}{2m}\).</p>
+
+  <p>Teda operátor \(-\frac{\hbar^2}{2m} \Delta\) aplikovaný na vlnovú funkciu dáva kinetickú energiu častice násobenú vlnovou funkciou a preto ho nazývame <strong>operátorom kinetickej energie</strong></p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\hat{E}_k = -\frac{\hbar^2}{2m} \Delta\]
+    </div>
+  </div>
+
+  <p>Porovnaním (7.24) a (7.25) dostávame <strong>Schrödingerovu rovnicu pre voľnú časticu</strong>:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[i\hbar \frac{\partial \Psi(\vec{r}, t)}{\partial t} = -\frac{\hbar^2}{2m} \Delta \Psi(\vec{r}, t)\]
+    </div>
+    <span class="equation-number">(7.26)</span>
+  </div>
+
+  <p>Rovnicu (7.26) spĺňa každá rovinná vlna (7.23) a lineárna kombinácia takýchto vĺn, t.j. de Broglieho vlnové balíky.</p>
+
+  <p>Ak sa častica nachádza v silovom poli s potenciálnou energiou \(V(\vec{r}, t)\), na pravej strane (7.26) je treba namiesto operátora kinetickej energie uvažovať operátor celkovej energie:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\hat{H} = -\frac{\hbar^2}{2m} \Delta + V(\vec{r}, t)\]
+    </div>
+  </div>
+
+  <p>a Schrödingerova rovnica pre takúto časticu bude mať tvar:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[i\hbar \frac{\partial \Psi(\vec{r}, t)}{\partial t} = -\frac{\hbar^2}{2m} \Delta \Psi(\vec{r}, t) + V(\vec{r}, t) \Psi(\vec{r}, t)\]
+    </div>
+    <span class="equation-number">(7.27)</span>
+  </div>
+
+  <p>čo pomocou operátora celkovej energie \(\hat{H} = \hat{E}_k + \hat{V}\) (<strong>hamiltoniánu</strong>) možno zapísať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[i\hbar \frac{\partial \Psi(\vec{r}, t)}{\partial t} = \hat{H} \Psi(\vec{r}, t)\]
+    </div>
+  </div>
+
+  <p>V mnohých prípadoch potenciálna energia častice v silovom poli nezávisí od času, pretože sily, ktoré na časticu pôsobia, a teda i potenciálna energia, sa menia iba s polohou. Časticu potom možno popísať vlnovou funkciou:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Psi(\vec{r}, t) = A e^{-\frac{iEt}{\hbar}} e^{\frac{i\vec{p}\vec{r}}{\hbar}} = e^{-\frac{iEt}{\hbar}} \psi(\vec{r})\]
+    </div>
+    <span class="equation-number">(7.28)</span>
+  </div>
+
+  <p>takže vlnová funkcia je súčinom časovo závislej funkcie a funkcie polohy.</p>
+
+  <p>Vlnovú funkciu (7.28) dosadíme do Schrödingerovej rovnice (7.27)</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[i\hbar \frac{\partial}{\partial t} \left( e^{-\frac{iEt}{\hbar}} \right) \psi(\vec{r}) = \left( -\frac{\hbar^2}{2m} \Delta + V(\vec{r}) \right) e^{-\frac{iEt}{\hbar}} \psi(\vec{r})\]
+    </div>
+  </div>
+
+  <p>Po derivovaní a predelení celej rovnice výrazom \(e^{-\frac{iEt}{\hbar}}\) dostávame:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E \psi(\vec{r}) = \left[ -\frac{\hbar^2}{2m} \Delta + V(\vec{r}) \right] \psi(\vec{r})\]
+    </div>
+  </div>
+
+  <p>alebo</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\hat{H} \psi(\vec{r}) = E \psi(\vec{r})\]
+    </div>
+  </div>
+
+  <p>čo je <strong>bezčasová Schrödingerova rovnica</strong>. Riešením tejto rovnice získame vlnové funkcie a z podmienok kladených na vlnové funkcie získame možné hodnoty energie. Príklad na riešenie bezčasovej Schrödingerovej rovnice je uvedený v nasledujúcej kapitole.</p>
+
+  <h3><i class="fas fa-cube"></i> 7.4.2 Častica v jednorozmernej, nekonečne hlbokej jame</h3>
+
+  <p>Nech častica hmotnosti \(m\) sa nachádza v jednorozmernej nekonečne hlbokej jame šírky \(L\). To znamená, že pre polohu častice \(x\) platí: \(0 < x < L\) a pre jej potenciálnu energiu v jame: \(V = 0\), pričom potenciálna energia všade mimo jamy je nekonečne veľká (teda častica je "uväznená" v jame) a teda vlnová funkcia častice mimo jamy bude nulová (Obr. 7.12).</p>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x300/003366/FFFFFF?text=Nekonečne+hlboká+jama" alt="Nekonečne hlboká potenciálová jama">
+    <div class="image-caption">Obr. 7.12: Jednorozmerná nekonečne hlboká potenciálová jama</div>
+  </div>
+
+  <p>Voľný elektrón v kove je podobne "uväznený" - vo vnútri kovu sa môže pohybovať takmer voľne, ale von z kovu sa môže dostať iba po dodaní energie najmenej rovnej výstupnej práci. V reálnych prípadoch majú jamy konečnú hĺbku, takže pravdepodobnosť úniku častice z jamy je nenulová - vlnové funkcie za hranicou jamy nie sú celkom nulové (tzv. <strong>tunelový jav</strong>).</p>
+
+  <p>Normovacia podmienka:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\int_0^L |\Psi|^2 dx = 1\]
+    </div>
+    <span class="equation-number">(7.29)</span>
+  </div>
+
+  <p>Pre potenciálnu energiu v uvedenom intervale platí \(V = 0\) a všade inde je nekonečne veľká. Budeme teda riešiť jednorozmernú, časovo nezávislú Schrödingerovu rovnicu v tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\hat{H} \Psi = E \Psi, \quad \text{kde} \quad \hat{H} = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}\]
+    </div>
+  </div>
+
+  <p>Potom</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{d^2 \Psi}{dx^2} + \frac{2m}{\hbar^2} E \Psi = 0\]
+    </div>
+    <span class="equation-number">(7.30)</span>
+  </div>
+
+  <p>Rovnicu (7.30) možno zapísať v známom tvare pre diferenciálnu rovnicu druhého rádu bez pravej strany:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\frac{d^2 \Psi}{dx^2} = -\omega^2 \Psi, \quad \text{kde} \quad \omega = \sqrt{\frac{2mE}{\hbar^2}}\]
+    </div>
+  </div>
+
+  <p>Jej riešeniami sú:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Psi = A \sin \sqrt{\frac{2mE}{\hbar^2}} x, \quad \Psi = B \cos \sqrt{\frac{2mE}{\hbar^2}} x\]
+    </div>
+    <span class="equation-number">(7.31)</span>
+  </div>
+
+  <p>Okrajové podmienky vyžadujú, aby platilo \(\Psi(0) = \Psi(L) = 0\). Dosadením \(x = 0\) do druhého riešenia dostaneme \(B = 0\) (pretože \(\cos(0) = 1\)), takže nenulové ostáva iba prvé riešenie z (7.31). Ak doň dosadíme \(x = L\), výsledok musí byť rovný nule, pretože v stene častica byť nemôže, teda aj vlnová funkcia tam musí byť nulová:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Psi_{x=L} = A \sin \sqrt{\frac{2mE}{\hbar^2}} L = 0\]
+    </div>
+  </div>
+
+  <p>Keďže \(A\) je rôzne od nuly, musí byť nulová funkcia sínus, čo bude splnené, ak:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\sqrt{\frac{2mE}{\hbar^2}} L = n\pi \quad n = 1, 2, 3, \dots\]
+    </div>
+  </div>
+
+  <p>Odtiaľ pre energiu vyplýva:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_n = \frac{\pi^2 \hbar^2}{2m L^2} n^2\]
+    </div>
+    <span class="equation-number">(7.32)</span>
+  </div>
+
+  <p>\(E_n\) sú <strong>energetické hladiny</strong> a \(n\) je <strong>kvantové číslo (tzv. hlavné)</strong>, ktoré kvantuje energiu. To teda znamená, že častica, ktorej pohyb je obmedzený na šírku jamy a inak je voľná, nemôže nadobúdať ľubovoľné hodnoty energie, nemôže energiu meniť spojite, nemôže mať ani nulovú energiu, ale jej energia môže mať iba diskrétne hodnoty dané vzťahom (7.32). Teda z okrajových podmienok kladených na vlnovú funkciu vyplýva <strong>kvantovanie energie</strong>.</p>
+
+  <p>Zo súvisu energie (energia častice je jej kinetickou energiou) a hybnosti možno získať vzťah pre kvantovanie hybnosti častice:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[p_n = \sqrt{2mE_n} = \pm \frac{\pi \hbar}{L} n\]
+    </div>
+  </div>
+
+  <p>Znamienko \(\pm\) vyjadruje pohyb v oboch smeroch osi \(x\).</p>
+
+  <h4><i class="fas fa-calculator"></i> Príklad</h4>
+
+  <p>Vypočítajme energetické hladiny pre:</p>
+  <p>a) elektrón s hmotnosťou \(m = 9,1 \times 10^{-31}\,\text{kg}\) v jame šírky \(L = 10^{-10}\,\text{m}\),</p>
+  <p>b) guľôčku hmotnosti \(m = 10\,\text{g}\) v jame šírky \(L = 10\,\text{cm}\).</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[E_n = \frac{\pi^2 \hbar^2}{2m L^2} n^2\]
+    </div>
+  </div>
+
+  <p>a) \(E_n = n^2 \cdot 6 \times 10^{-18}\,\text{J} = 38\,\text{eV} \cdot n^2\) (\(1\,\text{eV} = 1,602 \times 10^{-19}\,\text{J}\))</p>
+  <p>\(n = 1 \Rightarrow E_1 = 38\,\text{eV}\)</p>
+  <p>\(n = 2 \Rightarrow E_2 = 152\,\text{eV}\)</p>
+  <p>\(n = 3 \Rightarrow E_3 = 342\,\text{eV}\)</p>
+  <p>Všetky tieto energetické hladiny sú pozorovateľné.</p>
+
+  <p>b) \(E_n = n^2 \cdot 5,5 \times 10^{-64}\,\text{J}\)</p>
+  <p>\(E_1 = 5,5 \times 10^{-64}\,\text{J}\), rýchlosť častice s touto energiou je \(v_1 = 3,3 \times 10^{-31}\,\text{m/s}\), čo je nerozoznateľné od pokoja.</p>
+  <p>Pre bežne pozorovateľnú rýchlosť guľôčky \(v_n = 0,33\,\text{m/s}\) dostaneme pre príslušnú energetickú hladinu kvantové číslo \(n = 10^{30}\). Táto hladina je nerozlíšiteľná od nasledujúcej hladiny, teda energetické spektrum guľôčky sa javí nie ako diskrétne, ale ako spojité.</p>
+
+  <p>Ak do (7.31) dosadíme získané možné hodnoty energie, dostaneme vlnové funkcie, ktoré popisujú dané energetické stavy. Pre \(n\)-tý energetický stav takto máme:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Psi_n = A \sin \frac{n\pi}{L} x\]
+    </div>
+    <span class="equation-number">(7.33)</span>
+  </div>
+
+  <p>Všimnime si, že keby \(n = 0\) (\(E_n = 0\)), potom \(\Psi_n = 0\), teda častica v jame nie je. Preto energia častice nemôže byť nulová.</p>
+
+  <p>Aby sme úlohu vyriešili, ostáva určiť hodnotu konštanty \(A\). Získame ju aplikovaním normovacej podmienky (7.29) na vlastné vlnové funkcie (7.33):</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[A^2 \int_0^L \sin^2 \frac{n\pi x}{L} dx = 1\]
+    </div>
+  </div>
+
+  <p>Aby sme vyriešili integrál, zavedieme substitúciu \(\frac{n\pi x}{L} = y\), potom \(dx = \frac{L}{n\pi} dy\), pričom hranice integrovania sa zmenia nasledovne: \(x = 0 \Rightarrow y = 0\), \(x = L \Rightarrow y = n\pi\) a budeme mať:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[A^2 \frac{L}{n\pi} \int_0^{n\pi} \sin^2 y \, dy = A^2 \frac{L}{n\pi} \left[ -\frac{\cos y \sin y}{2} + \frac{y}{2} \right]_0^{n\pi} = \frac{1}{2} n\pi A^2 \frac{L}{n\pi} = \frac{1}{2} A^2 L = 1\]
+    </div>
+  </div>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[A = \sqrt{\frac{2}{L}}\]
+    </div>
+  </div>
+
+  <p>Výsledné normované vlnové funkcie potom možno písať v tvare:</p>
+
+  <div class="equation">
+    <div class="equation-content">
+      \[\Psi_n = \sqrt{\frac{2}{L}} \sin \frac{n\pi}{L} x\]
+    </div>
+    <span class="equation-number">(7.34)</span>
+  </div>
+
+  <div class="theory-image">
+    <img src="https://via.placeholder.com/600x400/006633/FFFFFF?text=Vlnové+funkcie+v+jame" alt="Vlnové funkcie v nekonečne hlbokej jame">
+    <div class="image-caption">Obr. 7.13: Vlnové funkcie \(\Psi_n\) a hustoty pravdepodobnosti \(|\Psi_n|^2\) pre \(n = 1, 2, 3\)</div>
+  </div>
+
+  <p>Na obrázku 7.13 sú znázornené priebehy vlnových funkcií a ich kvadrátov v závislosti od súradnice \(x\) pre prvé tri najnižšie možné energetické hladiny častice \(n = 1, 2, 3\). Ako už vieme, fyzikálnu interpretáciu majú iba kvadráty vlnových funkcií. Ako je z obrázka vidieť, časticu v najnižšom energetickom stave (\(n = 1\)) nájdeme najpravdepodobnejšie v strede jamy, kým v najbližšom vyššom energetickom stave (\(n = 2\)) tam časticu nenájdeme vôbec, zato najpravdepodobnejšie ju nájdeme v štvrtine a troch štvrtinách \(L\). Získali sme výsledok odlišný od predstáv klasickej fyziky, podľa ktorých by sme časticu v jame našli s rovnakou pravdepodobnosťou v ľubovoľnom mieste. Je treba si opäť uvedomiť, že všetky výsledky odlišné od klasických predstáv, ktoré sme získali pri riešení tohto problému, sa prejavujú a sú merateľné iba v subatómovom svete.</p>
+</div>
