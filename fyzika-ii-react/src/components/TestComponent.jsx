@@ -278,9 +278,9 @@ const TestComponent = ({ topicId }) => {
                                                 )}
                                             </div>
                                             <span className={`difficulty-badge ${question.difficulty}`}>
-                        {question.difficulty === 'easy' ? 'Ľahká' :
-                            question.difficulty === 'medium' ? 'Stredná' : 'Ťažká'}
-                      </span>
+                                                {question.difficulty === 'easy' ? 'Ľahká' :
+                                                    question.difficulty === 'medium' ? 'Stredná' : 'Ťažká'}
+                                            </span>
                                         </div>
 
                                         <div className="review-question-text">{question.question}</div>
@@ -289,8 +289,8 @@ const TestComponent = ({ topicId }) => {
                                             <div className="user-answer">
                                                 <strong>Tvoja odpoveď:</strong>
                                                 <span className={`answer ${isCorrect ? 'correct' : 'incorrect'}`}>
-                          {isAnswered ? question.options[userAnswer] : 'Nezodpovedané'}
-                        </span>
+                                                    {isAnswered ? question.options[userAnswer] : 'Nezodpovedané'}
+                                                </span>
                                             </div>
 
                                             {(!isCorrect || !isAnswered) && (
@@ -319,7 +319,10 @@ const TestComponent = ({ topicId }) => {
                                 <button className="btn btn-retry" onClick={restartTest}>
                                     <i className="fas fa-redo"></i> Skúsiť znova
                                 </button>
-                                <button className="btn btn-secondary" onClick={() => setShowResults(false)}>
+                                <button
+                                    className="btn btn-secondary"
+                                    onClick={() => window.dispatchEvent(new CustomEvent('closeTest'))}
+                                >
                                     <i className="fas fa-arrow-left"></i> Späť na teóriu
                                 </button>
                             </>

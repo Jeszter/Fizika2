@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react'
+import { getTestResults, buildTestMap } from './ProgressModal'
 
+// ─── Sidebar ──────────────────────────────────────────────────────────────────
 const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, sidebarOpen, setSidebarOpen }) => {
     const [openMenus, setOpenMenus] = useState(['elektrostatika', 'elektricky-proud'])
+    const [testMap, setTestMap]     = useState({})
+
+    useEffect(() => {
+        setTestMap(buildTestMap(getTestResults()))
+    }, [activeSection])
+
+    useEffect(() => {
+        const onStorage = (e) => {
+            if (e.key === 'testResults') setTestMap(buildTestMap(getTestResults()))
+        }
+        window.addEventListener('storage', onStorage)
+        return () => window.removeEventListener('storage', onStorage)
+    }, [])
 
     useEffect(() => {
         const index = sections.indexOf(activeSection)
@@ -23,104 +38,32 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
         }
     }, [activeSection])
 
-    const toggleSubmenu = (menuId) => {
-        setOpenMenus(prev =>
-            prev.includes(menuId)
-                ? prev.filter(id => id !== menuId)
-                : [...prev, menuId]
-        )
-    }
-
-    const isSubmenuOpen = (menuId) => openMenus.includes(menuId)
-
     const menuData = [
-        {
-            id: 'elektrostatika',
-            icon: 'fa-bolt',
-            title: 'Elektrostatické pole',
-            description: '8 kapitol',
-            sections: sections.slice(0, 8)
-        },
-        {
-            id: 'elektricky-proud',
-            icon: 'fa-plug',
-            title: 'Elektrický prúd v kovoch',
-            description: '3 kapitoly',
-            sections: sections.slice(8, 11)
-        },
-        {
-            id: 'magneticke-pole',
-            icon: 'fa-magnet',
-            title: 'Magnetické pole',
-            description: '6 kapitol',
-            sections: sections.slice(11, 17)
-        },
-        {
-            id: 'elektromagneticke-pole',
-            icon: 'fa-wave-square',
-            title: 'Elektromagnetické pole',
-            description: '4 kapitoly',
-            sections: sections.slice(17, 21)
-        },
-        {
-            id: 'maxwell',
-            icon: 'fa-infinity',
-            title: 'Maxwellove rovnice',
-            description: '1 kapitola',
-            sections: sections.slice(21, 22)
-        },
-        {
-            id: 'elektromagneticke-vlnenie',
-            icon: 'fa-broadcast-tower',
-            title: 'Elektromagnetické vlnenie',
-            description: '3 kapitoly',
-            sections: sections.slice(22, 25)
-        },
-        {
-            id: 'kvantova-mechanika',
-            icon: 'fa-atom',
-            title: 'Základy kvantovej mechaniky',
-            description: '4 kapitoly',
-            sections: sections.slice(25, 29)
-        },
-        {
-            id: 'atom',
-            icon: 'fa-circle-dot',
-            title: 'Atóm',
-            description: '4 kapitoly',
-            sections: sections.slice(29, 33)
-        },
-        {
-            id: 'jadro',
-            icon: 'fa-radiation',
-            title: 'Jadro atómu',
-            description: '4 kapitoly',
-            sections: sections.slice(33, 37)
-        },
-        {
-            id: 'elementarne-castice',
-            icon: 'fa-asterisk',
-            title: 'Elementárne častice a sily',
-            description: '3 kapitoly',
-            sections: sections.slice(37)
-        },
+        { id: 'elektrostatika',           icon: 'fa-bolt',            title: 'Elektrostatické pole',         description: '8 kapitol',  sections: sections.slice(0, 8) },
+        { id: 'elektricky-proud',          icon: 'fa-plug',            title: 'Elektrický prúd v kovoch',     description: '3 kapitoly', sections: sections.slice(8, 11) },
+        { id: 'magneticke-pole',           icon: 'fa-magnet',          title: 'Magnetické pole',              description: '6 kapitol',  sections: sections.slice(11, 17) },
+        { id: 'elektromagneticke-pole',    icon: 'fa-wave-square',     title: 'Elektromagnetické pole',       description: '4 kapitoly', sections: sections.slice(17, 21) },
+        { id: 'maxwell',                   icon: 'fa-infinity',        title: 'Maxwellove rovnice',           description: '1 kapitola', sections: sections.slice(21, 22) },
+        { id: 'elektromagneticke-vlnenie', icon: 'fa-broadcast-tower', title: 'Elektromagnetické vlnenie',    description: '3 kapitoly', sections: sections.slice(22, 25) },
+        { id: 'kvantova-mechanika',        icon: 'fa-atom',            title: 'Základy kvantovej mechaniky',  description: '4 kapitoly', sections: sections.slice(25, 29) },
+        { id: 'atom',                      icon: 'fa-circle-dot',      title: 'Atóm',                         description: '4 kapitoly', sections: sections.slice(29, 33) },
+        { id: 'jadro',                     icon: 'fa-radiation',       title: 'Jadro atómu',                  description: '4 kapitoly', sections: sections.slice(33, 37) },
+        { id: 'elementarne-castice',       icon: 'fa-asterisk',        title: 'Elementárne častice a sily',   description: '3 kapitoly', sections: sections.slice(37) },
     ]
 
     const handleSectionSelect = (sectionId) => {
-        window.dispatchEvent(new CustomEvent('sectionChange', {
-            detail: { sectionId }
-        }))
+        window.dispatchEvent(new CustomEvent('sectionChange', { detail: { sectionId } }))
         onSectionSelect(sectionId)
     }
 
-    const handleSidebarClick = (e) => {
-        e.stopPropagation()
-    }
+    const readSections = sections.filter(s => testMap[s] && testMap[s].percentage >= 51)
+    const readCount    = readSections.length
+    const pct          = sections.length > 0 ? Math.round((readCount / sections.length) * 100) : 0
 
     return (
         <div
             className="w-80 h-full bg-white dark:bg-gray-800 border-r border-border dark:border-gray-700 shadow-lg flex flex-col"
-            onClick={handleSidebarClick}
+            onClick={e => e.stopPropagation()}
         >
             <div className="p-6 border-b border-border dark:border-gray-700 bg-primary-blue-bg dark:bg-gray-900/50">
                 <div className="flex items-center justify-between">
@@ -130,15 +73,12 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                         </div>
                         <div>
                             <h3 className="text-primary-blue dark:text-blue-400 font-semibold text-lg">Obsah kurzu</h3>
-                            <p className="text-text-light dark:text-gray-400 text-sm">
-                                {sections.length} kapitol
-                            </p>
+                            <p className="text-text-light dark:text-gray-400 text-sm">{sections.length} kapitol</p>
                         </div>
                     </div>
                     <button
                         onClick={() => setSidebarOpen(false)}
                         className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-border dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
-                        aria-label="Zavrieť menu"
                     >
                         <i className="fas fa-times text-text-dark dark:text-gray-300"></i>
                     </button>
@@ -150,21 +90,23 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                     {menuData.map((menu) => (
                         <li key={menu.id} className="menu-item mb-2">
                             <button
-                                onClick={() => toggleSubmenu(menu.id)}
+                                onClick={() => setOpenMenus(prev =>
+                                    prev.includes(menu.id) ? prev.filter(id => id !== menu.id) : [...prev, menu.id]
+                                )}
                                 className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${
-                                    isSubmenuOpen(menu.id)
+                                    openMenus.includes(menu.id)
                                         ? 'bg-primary-blue/10 dark:bg-blue-500/20 text-primary-blue dark:text-blue-400'
                                         : 'text-text-dark dark:text-gray-300 hover:bg-primary-blue-bg dark:hover:bg-gray-700/50'
                                 }`}
                             >
                                 <div className="flex items-center gap-3">
                                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                                        isSubmenuOpen(menu.id)
+                                        openMenus.includes(menu.id)
                                             ? 'bg-primary-blue/20 dark:bg-blue-500/30'
                                             : 'bg-gray-100 dark:bg-gray-700'
                                     }`}>
                                         <i className={`fas ${menu.icon} ${
-                                            isSubmenuOpen(menu.id)
+                                            openMenus.includes(menu.id)
                                                 ? 'text-primary-blue dark:text-blue-400'
                                                 : 'text-text-light dark:text-gray-400'
                                         }`}></i>
@@ -175,18 +117,21 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                     </div>
                                 </div>
                                 <i className={`fas fa-chevron-down transition-transform duration-300 ${
-                                    isSubmenuOpen(menu.id)
+                                    openMenus.includes(menu.id)
                                         ? 'rotate-180 text-primary-blue dark:text-blue-400'
                                         : 'text-text-light dark:text-gray-400'
                                 }`}></i>
                             </button>
 
                             <ul className={`submenu pl-4 overflow-hidden transition-all duration-300 ${
-                                isSubmenuOpen(menu.id) ? 'max-h-[2000px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+                                openMenus.includes(menu.id) ? 'max-h-[2000px] opacity-100 mt-2' : 'max-h-0 opacity-0'
                             }`}>
                                 {menu.sections.map((sectionId) => {
                                     const isActive = activeSection === sectionId
-                                    const index = sections.indexOf(sectionId)
+                                    const index    = sections.indexOf(sectionId)
+                                    const result   = testMap[sectionId]
+                                    const isPassed = result && result.percentage >= 51
+                                    const isFailed = result && result.percentage < 51
 
                                     return (
                                         <li key={sectionId} className="mb-1">
@@ -200,12 +145,17 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                             >
                                                 <div className="flex items-center gap-3">
                                                     <div className={`w-6 h-6 flex-shrink-0 rounded-lg flex items-center justify-center text-xs font-bold ${
-                                                        isActive
-                                                            ? 'bg-primary-blue text-white'
-                                                            : 'bg-gray-200 dark:bg-gray-700 text-text-light dark:text-gray-400'
+                                                        isPassed
+                                                            ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                                                            : isFailed
+                                                                ? 'bg-red-100 dark:bg-red-900/30 text-red-500'
+                                                                : isActive
+                                                                    ? 'bg-primary-blue text-white'
+                                                                    : 'bg-gray-200 dark:bg-gray-700 text-text-light dark:text-gray-400'
                                                     }`}>
                                                         {index + 1}
                                                     </div>
+
                                                     <span className={`flex-1 text-left text-sm leading-snug whitespace-normal ${
                                                         isActive
                                                             ? 'text-primary-blue dark:text-blue-400'
@@ -213,6 +163,16 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                                     }`}>
                                                         {sectionTitles[sectionId] || sectionId}
                                                     </span>
+
+                                                    {result && (
+                                                        <span className={`text-[10px] font-bold px-1 py-0.5 rounded flex-shrink-0 ${
+                                                            isPassed
+                                                                ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                                                                : 'bg-red-100 dark:bg-red-900/30 text-red-500'
+                                                        }`}>
+                                                            {result.percentage}%
+                                                        </span>
+                                                    )}
                                                 </div>
                                                 {isActive && (
                                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary-blue dark:bg-blue-400"></span>
@@ -227,23 +187,31 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                 </ul>
             </div>
 
-            <div className="p-6 border-t border-border dark:border-gray-700 bg-surface dark:bg-gray-900/30">
-                <h4 className="text-sm font-semibold text-text-dark dark:text-gray-300 mb-3 flex items-center gap-2">
-                    <i className="fas fa-chart-line"></i>
-                    Váš pokrok
-                </h4>
-                <div className="space-y-2">
-                    <div className="flex justify-between text-xs text-text-light dark:text-gray-400">
+            <div className="p-4 border-t border-border dark:border-gray-700 bg-surface dark:bg-gray-900/30">
+                <button
+                    onClick={() => window.dispatchEvent(new CustomEvent('openProgress'))}
+                    className="w-full group"
+                >
+                    <div className="flex items-center justify-between mb-1.5">
+                        <h4 className="text-sm font-semibold text-text-dark dark:text-gray-300 flex items-center gap-2">
+                            <i className="fas fa-chart-line text-primary-blue dark:text-blue-400"></i>
+                            Váš pokrok
+                        </h4>
+                        <span className="text-xs text-primary-blue dark:text-blue-400 group-hover:underline flex items-center gap-1">
+                            Detail <i className="fas fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                    <div className="flex justify-between text-xs text-text-light dark:text-gray-400 mb-1">
                         <span>Dokončené kapitoly</span>
-                        <span>{sections.indexOf(activeSection) + 1} / {sections.length}</span>
+                        <span>{readCount} / {sections.length}</span>
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                         <div
                             className="bg-primary-blue dark:bg-blue-500 h-2 rounded-full transition-all duration-500"
-                            style={{ width: `${((sections.indexOf(activeSection) + 1) / sections.length) * 100}%` }}
-                        ></div>
+                            style={{ width: `${pct}%` }}
+                        />
                     </div>
-                </div>
+                </button>
             </div>
         </div>
     )

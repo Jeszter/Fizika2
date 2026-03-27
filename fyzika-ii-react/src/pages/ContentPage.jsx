@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react'
-import { useParams, useNavigate } from 'react-router-dom' // Добавлено
+import { useParams, useNavigate } from 'react-router-dom'
 import Sidebar from '../components/layout/Sidebar'
+import ProgressModal from '../components/layout/Progressmodal.jsx'
 import TestComponent from '../components/TestComponent'
 import '../physics-content.css'
 
@@ -66,7 +67,6 @@ const sections = [
     'sily-v-mikrosvete',
 ]
 
-
 const sectionTitles = {
     'coulombov-zakon': 'Coulombov zákon',
     'intenzita-pola': 'Intenzita elektrostatického poľa',
@@ -119,35 +119,25 @@ const sectionTitles = {
     'sily-v-mikrosvete': 'Sily v mikrosvete',
 }
 
-const ContentSection = memo(({
-                                 activeSection,
-                                 sectionContent,
-                                 loading,
-                                 sectionTitles,
-                                 getChapterNumber,
-                                 onStartTest
-                             }) => {
-    const contentRef = useRef(null)
-    const currentIndex = sections.indexOf(activeSection)
+// ─── ContentSection ───────────────────────────────────────────────────────────
+const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTitles, getChapterNumber, onStartTest }) => {
+    const contentRef     = useRef(null)
+    const currentIndex   = sections.indexOf(activeSection)
     const isFirstSection = currentIndex === 0
-    const isLastSection = currentIndex === sections.length - 1
+    const isLastSection  = currentIndex === sections.length - 1
 
     const navigateToPrevious = () => {
-        const currentIndex = sections.indexOf(activeSection)
-        if (currentIndex > 0) {
-            window.dispatchEvent(new CustomEvent('sectionChange', {
-                detail: { sectionId: sections[currentIndex - 1] }
-            }))
+        const idx = sections.indexOf(activeSection)
+        if (idx > 0) {
+            window.dispatchEvent(new CustomEvent('sectionChange', { detail: { sectionId: sections[idx - 1] } }))
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }
     }
 
     const navigateToNext = () => {
-        const currentIndex = sections.indexOf(activeSection)
-        if (currentIndex < sections.length - 1) {
-            window.dispatchEvent(new CustomEvent('sectionChange', {
-                detail: { sectionId: sections[currentIndex + 1] }
-            }))
+        const idx = sections.indexOf(activeSection)
+        if (idx < sections.length - 1) {
+            window.dispatchEvent(new CustomEvent('sectionChange', { detail: { sectionId: sections[idx + 1] } }))
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }
     }
@@ -183,7 +173,6 @@ const ContentSection = memo(({
                                 <span>{getChapterNumber()}</span>
                             </div>
                         </div>
-
                         <h1 className="text-3xl md:text-4xl font-bold text-text-dark dark:text-white">
                             {sectionTitles[activeSection] || 'Kapitola kurzu'}
                         </h1>
@@ -212,20 +201,13 @@ const ContentSection = memo(({
                     <button
                         onClick={navigateToPrevious}
                         disabled={isFirstSection}
-                        className={`btn-nav ${
-                            isFirstSection
-                                ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
-                                : 'btn-secondary'
-                        }`}
+                        className={`btn-nav ${isFirstSection ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed' : 'btn-secondary'}`}
                     >
                         <i className="fas fa-arrow-left"></i>
                         <span>Predchádzajúca kapitola</span>
                     </button>
 
-                    <button
-                        onClick={() => onStartTest(activeSection)}
-                        className="btn-nav btn-test"
-                    >
+                    <button onClick={() => onStartTest(activeSection)} className="btn-nav btn-test">
                         <i className="fas fa-graduation-cap"></i>
                         <span>Spustiť test</span>
                     </button>
@@ -233,11 +215,7 @@ const ContentSection = memo(({
                     <button
                         onClick={navigateToNext}
                         disabled={isLastSection}
-                        className={`btn-nav ${
-                            isLastSection
-                                ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
-                                : 'btn-secondary'
-                        }`}
+                        className={`btn-nav ${isLastSection ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed' : 'btn-secondary'}`}
                     >
                         <span>Ďalšia kapitola</span>
                         <i className="fas fa-arrow-right"></i>
@@ -248,14 +226,15 @@ const ContentSection = memo(({
     )
 })
 
+// ─── TestView ─────────────────────────────────────────────────────────────────
 const TestView = memo(({ testTopic }) => {
     const formatTopicName = useCallback((topicId) => {
         return topicId
             .replace(/-/g, ' ')
             .split(' ')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    }, []);
+            .join(' ')
+    }, [])
 
     return (
         <div className="max-w-5xl mx-auto pb-8">
@@ -276,7 +255,6 @@ const TestView = memo(({ testTopic }) => {
                                 <span>Test z kapitoly</span>
                             </div>
                         </div>
-
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg">
                                 <i className="fas fa-file-pen text-lg"></i>
@@ -285,7 +263,6 @@ const TestView = memo(({ testTopic }) => {
                                 {formatTopicName(testTopic)}
                             </h1>
                         </div>
-
                         <p className="text-text-light dark:text-gray-400 text-sm">
                             Vyberte správne odpovede a overte svoje vedomosti
                         </p>
@@ -295,19 +272,24 @@ const TestView = memo(({ testTopic }) => {
 
             <TestComponent topicId={testTopic} />
         </div>
-    );
-});
+    )
+})
 
+// ─── ContentPage ──────────────────────────────────────────────────────────────
 const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const { sectionId } = useParams()
-    const navigate = useNavigate()
-    const [activeSection, setActiveSection] = useState('coulombov-zakon')
-    const [sectionContent, setSectionContent] = useState('')
-    const [loading, setLoading] = useState(true)
-    const [showTest, setShowTest] = useState(false)
-    const [testTopic, setTestTopic] = useState('')
+    const navigate      = useNavigate()
 
-    // Синхронизация с URL
+    const [activeSection,  setActiveSection]  = useState('coulombov-zakon')
+    const [sectionContent, setSectionContent] = useState('')
+    const [loading,        setLoading]        = useState(true)
+    const [showTest,       setShowTest]       = useState(false)
+    const [testTopic,      setTestTopic]      = useState('')
+
+    // ── NEW: full-screen progress modal state ──
+    const [showProgress, setShowProgress] = useState(false)
+
+    // Sync with URL
     useEffect(() => {
         if (sectionId) {
             if (sectionId.startsWith('test-')) {
@@ -331,11 +313,9 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
             const response = await fetch(`/Fizika2/content/${sectionId}.html`)
             if (!response.ok) throw new Error('Failed to load content')
             let htmlContent = await response.text()
-
             htmlContent = htmlContent.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
             htmlContent = htmlContent.replace(/<div class="animated-bg"><\/div>/gi, '')
             htmlContent = htmlContent.replace(/<div class="floating-shapes">.*?<\/div>/gs, '')
-
             setSectionContent(htmlContent)
         } catch (error) {
             console.error('Error loading section:', error)
@@ -351,9 +331,7 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     }, [])
 
     useEffect(() => {
-        if (!showTest) {
-            loadSection(activeSection)
-        }
+        if (!showTest) loadSection(activeSection)
     }, [activeSection, loadSection, showTest])
 
     useEffect(() => {
@@ -363,51 +341,43 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
             setShowTest(false)
             navigate(`/${newSectionId}`, { replace: true })
         }
-
-        const handleToggleSidebar = () => {
-            setSidebarOpen(prev => !prev)
-        }
-
-        const handleCloseTest = () => {
+        const handleToggleSidebar = () => setSidebarOpen(prev => !prev)
+        const handleCloseTest     = () => {
             setShowTest(false)
             navigate(`/${activeSection}`, { replace: true })
         }
+        // ── NEW: listen for openProgress event from Sidebar ──
+        const handleOpenProgress  = () => setShowProgress(true)
 
-        window.addEventListener('sectionChange', handleSectionChange)
-        window.addEventListener('toggleSidebar', handleToggleSidebar)
-        window.addEventListener('closeTest', handleCloseTest)
+        window.addEventListener('sectionChange',  handleSectionChange)
+        window.addEventListener('toggleSidebar',  handleToggleSidebar)
+        window.addEventListener('closeTest',      handleCloseTest)
+        window.addEventListener('openProgress',   handleOpenProgress)
 
         return () => {
-            window.removeEventListener('sectionChange', handleSectionChange)
-            window.removeEventListener('toggleSidebar', handleToggleSidebar)
-            window.removeEventListener('closeTest', handleCloseTest)
+            window.removeEventListener('sectionChange',  handleSectionChange)
+            window.removeEventListener('toggleSidebar',  handleToggleSidebar)
+            window.removeEventListener('closeTest',      handleCloseTest)
+            window.removeEventListener('openProgress',   handleOpenProgress)
         }
     }, [setSidebarOpen, activeSection, navigate])
 
     const getChapterNumber = useCallback(() => {
         const currentIndex = sections.indexOf(activeSection)
-
-        if (currentIndex < 8) {
-            return `Kapitola ${currentIndex + 1} z 8`
-        } else {
-            const topicIndex = currentIndex - 8
-            return `Kapitola ${topicIndex + 1} z ${sections.length - 8}`
-        }
+        if (currentIndex < 8) return `Kapitola ${currentIndex + 1} z 8`
+        const topicIndex = currentIndex - 8
+        return `Kapitola ${topicIndex + 1} z ${sections.length - 8}`
     }, [activeSection])
 
     const handleSectionSelect = useCallback((sectionId) => {
         setActiveSection(sectionId)
         setShowTest(false)
         navigate(`/${sectionId}`, { replace: true })
-        if (window.innerWidth <= 768) {
-            setSidebarOpen(false)
-        }
+        if (window.innerWidth <= 768) setSidebarOpen(false)
     }, [setSidebarOpen, navigate])
 
-    const handleOverlayClick = useCallback((e) => {
-        if (sidebarOpen && window.innerWidth <= 768) {
-            setSidebarOpen(false)
-        }
+    const handleOverlayClick = useCallback(() => {
+        if (sidebarOpen && window.innerWidth <= 768) setSidebarOpen(false)
     }, [sidebarOpen])
 
     const startTest = useCallback((topicId) => {
@@ -421,11 +391,10 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     return (
         <div className="relative min-h-screen flex w-full overflow-x-hidden">
 
-            <div
-                className={`sidebar-wrapper fixed top-0 left-0 h-full z-40 transition-transform duration-300 ${
-                    sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-                }`}
-            >
+            {/* Sidebar */}
+            <div className={`sidebar-wrapper fixed top-0 left-0 h-full z-40 transition-transform duration-300 ${
+                sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            }`}>
                 <Sidebar
                     activeSection={activeSection}
                     onSectionSelect={handleSectionSelect}
@@ -441,9 +410,10 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
                 <div
                     className="fixed inset-0 bg-black/50 z-30 md:hidden"
                     onClick={handleOverlayClick}
-                ></div>
+                />
             )}
 
+            {/* Main content */}
             <div className={`content-area flex-1 pt-16 px-4 md:px-8 transition-all duration-300 min-h-screen ml-0 overflow-x-hidden ${
                 sidebarOpen && window.innerWidth > 768 ? 'md:ml-80' : ''
             }`}>
@@ -460,6 +430,15 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
                     />
                 )}
             </div>
+
+            {/* ── Full-screen ProgressModal — рендерится ВНЕ сайдбара ── */}
+            {showProgress && (
+                <ProgressModal
+                    sections={sections}
+                    sectionTitles={sectionTitles}
+                    onClose={() => setShowProgress(false)}
+                />
+            )}
         </div>
     )
 }
