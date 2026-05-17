@@ -7,7 +7,6 @@ const HeroSection = () => {
     const [counts, setCounts] = useState({ chapters: 0, tests: 0, lessons: 0 })
     const fullText = 'Fyziky II'
 
-    // Vygenerujeme pozície častíc LEN RAZ pomocou useMemo
     const particles = useMemo(() => {
         return [...Array(20)].map(() => ({
             top: `${Math.random() * 100}%`,
@@ -15,9 +14,8 @@ const HeroSection = () => {
             delay: `${Math.random() * 5}s`,
             duration: `${8 + Math.random() * 10}s`
         }))
-    }, []) // Prázdne pole = vygeneruje sa len raz
+    }, [])
 
-    // Efekt písania
     useEffect(() => {
         let i = 0
         const typing = setInterval(() => {
@@ -32,7 +30,6 @@ const HeroSection = () => {
         return () => clearInterval(typing)
     }, [])
 
-    // Counter animácia
     useEffect(() => {
         const duration = 2000
         const steps = 60

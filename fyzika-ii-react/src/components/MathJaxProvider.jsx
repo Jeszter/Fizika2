@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 const MathJaxProvider = ({ children }) => {
     useEffect(() => {
-        // Загружаем MathJax
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
         script.async = true;
@@ -35,7 +34,6 @@ const MathJaxProvider = ({ children }) => {
         document.head.appendChild(script);
 
         return () => {
-            // Очистка при размонтировании
             const existingScript = document.getElementById('MathJax-script');
             if (existingScript) {
                 existingScript.remove();

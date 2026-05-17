@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../TestComponent.css';
 
 const TestComponent = ({ topicId }) => {
@@ -22,29 +22,40 @@ const TestComponent = ({ topicId }) => {
 
     useEffect(() => {
         let timer;
+
         if (!testCompleted && timeLeft > 0) {
             timer = setInterval(() => {
                 setTimeLeft(prev => {
                     if (prev <= 1) {
                         finishTest();
+                        setShowResults(true);
                         return 0;
                     }
+
                     return prev - 1;
                 });
+
                 setTimeSpent(prev => prev + 1);
             }, 1000);
         }
+
         return () => clearInterval(timer);
-    }, [testCompleted, timeLeft]);
+    }, [testCompleted, timeLeft, selectedAnswers, questions]);
 
     const loadQuestions = async () => {
         setLoading(true);
+
         try {
             const response = await fetch(`/Fizika2/tests/${topicId}-test.json`);
-            if (!response.ok) throw new Error('Test file not found');
+
+            if (!response.ok) {
+                throw new Error('Test file not found');
+            }
+
             const data = await response.json();
 
             let selectedQuestions = [...data.questions];
+
             if (testConfig.randomize) {
                 selectedQuestions = selectedQuestions
                     .sort(() => Math.random() - 0.5)
@@ -54,6 +65,7 @@ const TestComponent = ({ topicId }) => {
             setQuestions(selectedQuestions);
             setSelectedAnswers({});
             setCurrentQuestionIndex(0);
+            setScore(0);
             setTimeLeft(900);
             setTimeSpent(0);
             setTestCompleted(false);
@@ -75,10 +87,10 @@ const TestComponent = ({ topicId }) => {
                 id: i + 1,
                 question: `Príkladová otázka ${i + 1} pre ${topicName}: Aká je hlavná vlastnosť tejto témy?`,
                 options: [
-                    "A) Prvá možnosť",
-                    "B) Druhá možnosť",
-                    "C) Tretia možnosť",
-                    "D) Štvrtá možnosť"
+                    'A) Prvá možnosť',
+                    'B) Druhá možnosť',
+                    'C) Tretia možnosť',
+                    'D) Štvrtá možnosť'
                 ],
                 correctAnswer: Math.floor(Math.random() * 4),
                 explanation: `Toto je príkladové vysvetlenie pre otázku ${i + 1}.`,
@@ -87,13 +99,20 @@ const TestComponent = ({ topicId }) => {
         }
 
         setQuestions(mockQuestions);
+        setSelectedAnswers({});
+        setCurrentQuestionIndex(0);
+        setScore(0);
+        setTimeLeft(900);
+        setTimeSpent(0);
+        setTestCompleted(false);
+        setShowResults(false);
     };
 
     const handleAnswerSelect = (questionIndex, answerIndex) => {
-        setSelectedAnswers({
-            ...selectedAnswers,
+        setSelectedAnswers(prev => ({
+            ...prev,
             [questionIndex]: answerIndex
-        });
+        }));
     };
 
     const nextQuestion = () => {
@@ -108,12 +127,13 @@ const TestComponent = ({ topicId }) => {
         }
     };
 
-    const jumpToQuestion = (index) => {
+    const jumpToQuestion = index => {
         setCurrentQuestionIndex(index);
     };
 
     const finishTest = () => {
         let correctCount = 0;
+
         questions.forEach((question, index) => {
             if (selectedAnswers[index] === question.correctAnswer) {
                 correctCount++;
@@ -125,17 +145,17 @@ const TestComponent = ({ topicId }) => {
         saveResult(correctCount, questions.length, topicId);
     };
 
-    const saveResult = (score, total, topic) => {
+    const saveResult = (scoreValue, total, topic) => {
         const results = JSON.parse(localStorage.getItem('testResults') || '[]');
-        const percentage = Math.round((score / total) * 100);
+        const percentage = Math.round((scoreValue / total) * 100);
 
         results.push({
             date: new Date().toISOString(),
             topic: topic.replace('-', ' '),
-            score,
+            score: scoreValue,
             total,
             percentage,
-            timeSpent: 900 - timeLeft,
+            timeSpent,
             timestamp: Date.now()
         });
 
@@ -154,15 +174,17 @@ const TestComponent = ({ topicId }) => {
         loadQuestions();
     };
 
-    const formatTime = (seconds) => {
+    const formatTime = seconds => {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
+
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
 
     const getTestHistory = () => {
         const results = JSON.parse(localStorage.getItem('testResults') || '[]');
-        return results.filter(r => r.topic === topicId.replace('-', ' '));
+
+        return results.filter(result => result.topic === topicId.replace('-', ' '));
     };
 
     if (loading) {
@@ -191,7 +213,7 @@ const TestComponent = ({ topicId }) => {
         const passed = percentage >= 51;
         const history = getTestHistory();
         const previousBest = history.length > 1
-            ? Math.max(...history.slice(0, -1).map(r => r.percentage))
+            ? Math.max(...history.slice(0, -1).map(result => result.percentage))
             : percentage;
 
         return (
@@ -263,7 +285,7 @@ const TestComponent = ({ topicId }) => {
                                 const isAnswered = userAnswer !== undefined;
 
                                 return (
-                                    <div key={index} className={`review-question ${isCorrect ? 'correct' : 'incorrect'}`}>
+                                    <div key={question.id || index} className={`review-question ${isCorrect ? 'correct' : 'incorrect'}`}>
                                         <div className="review-question-header">
                                             <div className="question-number">
                                                 Otázka {index + 1}
@@ -347,7 +369,6 @@ const TestComponent = ({ topicId }) => {
 
     const currentQuestion = questions[currentQuestionIndex];
     const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
-    const answeredCount = Object.keys(selectedAnswers).length;
 
     return (
         <div className="section active" id="test-section">
@@ -425,21 +446,25 @@ const TestComponent = ({ topicId }) => {
                     })}
                 </div>
 
-                <div className="question-hint">
-                    <i className="fas fa-info-circle"></i>
-                    <span>Vyberte správnu odpoveď kliknutím na možnosť. Môžete sa k otázke vrátiť neskôr.</span>
-                </div>
             </div>
 
             <div className="test-navigation">
-                <div className="nav-buttons">
-                    <button
-                        className="btn btn-secondary"
-                        onClick={prevQuestion}
-                        disabled={currentQuestionIndex === 0}
-                    >
-                        <i className="fas fa-arrow-left"></i> Predchádzajúca
-                    </button>
+                <div className={`nav-buttons ${currentQuestionIndex === 0 ? 'first-question' : ''}`}>
+                    {currentQuestionIndex > 0 ? (
+                        <button
+                            className="btn btn-secondary"
+                            onClick={prevQuestion}
+                        >
+                            <i className="fas fa-arrow-left"></i> Predchádzajúca
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-secondary"
+                            onClick={() => window.dispatchEvent(new CustomEvent('closeTest'))}
+                        >
+                            <i className="fas fa-arrow-left"></i> Späť k teórii
+                        </button>
+                    )}
 
                     {currentQuestionIndex === questions.length - 1 ? (
                         <button

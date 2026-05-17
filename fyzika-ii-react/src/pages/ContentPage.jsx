@@ -119,7 +119,6 @@ const sectionTitles = {
     'sily-v-mikrosvete': 'Sily v mikrosvete',
 }
 
-// ─── ContentSection ───────────────────────────────────────────────────────────
 const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTitles, getChapterNumber, onStartTest }) => {
     const contentRef     = useRef(null)
     const currentIndex   = sections.indexOf(activeSection)
@@ -168,10 +167,6 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="flex-1 min-w-0">
                         <div className="mb-3">
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-blue/10 dark:bg-blue-500/20 text-primary-blue dark:text-blue-400 rounded-full text-sm font-medium">
-                                <i className="fas fa-bookmark text-xs"></i>
-                                <span>{getChapterNumber()}</span>
-                            </div>
                         </div>
                         <h1 className="text-3xl md:text-4xl font-bold text-text-dark dark:text-white">
                             {sectionTitles[activeSection] || 'Kapitola kurzu'}
@@ -226,7 +221,6 @@ const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTi
     )
 })
 
-// ─── TestView ─────────────────────────────────────────────────────────────────
 const TestView = memo(({ testTopic }) => {
     const formatTopicName = useCallback((topicId) => {
         return topicId
@@ -246,27 +240,27 @@ const TestView = memo(({ testTopic }) => {
                 <i className="fas fa-bars text-text-dark dark:text-gray-300"></i>
             </button>
 
-            <div className="mb-8 mt-4">
-                <div className="flex items-start justify-between gap-4 flex-wrap">
-                    <div className="flex-1 min-w-0">
-                        <div className="mb-6">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl text-sm font-medium shadow-lg">
-                                <i className="fas fa-graduation-cap text-xs"></i>
-                                <span>Test z kapitoly</span>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i className="fas fa-file-pen text-lg"></i>
-                            </div>
-                            <h1 className="text-2xl md:text-3xl font-bold text-text-dark dark:text-white">
-                                {formatTopicName(testTopic)}
-                            </h1>
-                        </div>
-                        <p className="text-text-light dark:text-gray-400 text-sm">
-                            Vyberte správne odpovede a overte svoje vedomosti
-                        </p>
+            <div className="mb-4 mt-2">
+                <div className="flex items-center gap-2 min-w-0 text-sm">
+                    <div className="w-8 h-8 shrink-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center text-white shadow-md">
+                        <i className="fas fa-graduation-cap text-xs"></i>
                     </div>
+
+                    <span className="text-xs font-semibold uppercase tracking-wide text-green-600 dark:text-emerald-400 shrink-0">
+            Test z kapitoly
+        </span>
+
+                    <span className="text-gray-300 dark:text-gray-600">•</span>
+
+                    <h1 className="text-sm md:text-base font-bold text-text-dark dark:text-white truncate">
+                        {formatTopicName(testTopic)}
+                    </h1>
+
+                    <span className="hidden sm:inline text-gray-300 dark:text-gray-600">•</span>
+
+                    <p className="hidden sm:block text-text-light dark:text-gray-400 text-xs truncate">
+                        Vyberte správne odpovede
+                    </p>
                 </div>
             </div>
 
@@ -275,7 +269,6 @@ const TestView = memo(({ testTopic }) => {
     )
 })
 
-// ─── ContentPage ──────────────────────────────────────────────────────────────
 const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const { sectionId } = useParams()
     const navigate      = useNavigate()
@@ -286,10 +279,8 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const [showTest,       setShowTest]       = useState(false)
     const [testTopic,      setTestTopic]      = useState('')
 
-    // ── NEW: full-screen progress modal state ──
     const [showProgress, setShowProgress] = useState(false)
 
-    // Sync with URL
     useEffect(() => {
         if (sectionId) {
             if (sectionId.startsWith('test-')) {
@@ -346,7 +337,6 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
             setShowTest(false)
             navigate(`/${activeSection}`, { replace: true })
         }
-        // ── NEW: listen for openProgress event from Sidebar ──
         const handleOpenProgress  = () => setShowProgress(true)
 
         window.addEventListener('sectionChange',  handleSectionChange)
