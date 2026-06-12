@@ -7,71 +7,73 @@
       "id": 1,
       "question": "Intenzita elektrického poľa je definovaná ako:",
       "options": [
-        "a) sila na jednotkový náboj",
-        "b) práca na jednotkový náboj",
-        "c) potenciálna energia na jednotkový náboj",
-        "d) tok na jednotkovú plochu"
+        "a) elektrická sila pôsobiaca na jednotkový kladný náboj",
+        "b) práca vykonaná elektrickým poľom pri premiestnení jednotkového náboja medzi dvoma bodmi",
+        "c) potenciálna energia jednotkového náboja v danom bode elektrického poľa",
+        "d) elektrický tok prechádzajúci jednotkovou plochou"
       ],
       "correctAnswer": 0,
-      "explanation": "E = F/q, kde F je sila pôsobiaca na skúšobný náboj q.",
-      "difficulty": "easy"
+      "explanation": "Veľkosť intenzity elektrického poľa E = F/q, kde F je veľkosť elektrickej sily pôsobiacej na skúšobný náboj q.",
+      "difficulty": "medium",
+      "formula": "E = F/q"
     },
     {
       "id": 2,
       "question": "Jednotka intenzity elektrického poľa je:",
       "options": [
         "a) V/m",
-        "b) N/C",
-        "c) obe a) a b)",
-        "d) J/C"
+        "b) J/C",
+        "c) N/C",
+        "d) a) aj c)"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 3,
       "explanation": "1 V/m = 1 N/C, obe jednotky sú ekvivalentné.",
-      "difficulty": "easy"
-    },
-    {
-      "id": 3,
-      "question": "Intenzita poľa bodového náboja Q vo vzdialenosti r je:",
-      "options": [
-        "a) E = kQ/r",
-        "b) E = kQ/r²",
-        "c) E = kQ/r³",
-        "d) E = kQ²/r²"
-      ],
-      "correctAnswer": 1,
-      "explanation": "Pre bodový náboj: E = kQ/r² (radiálne pole).",
-      "difficulty": "medium",
-      "formula": "E = kQ/r²"
-    },
-    {
-      "id": 4,
-      "question": "Smer intenzity poľa kladného bodového náboja je:",
-      "options": [
-        "a) k náboju",
-        "b) preč od náboja",
-        "c) tangenciálny",
-        "d) závisí od prostredia"
-      ],
-      "correctAnswer": 1,
-      "explanation": "Pre kladný náboj má intenzita smer preč od náboja (odpudzovanie kladného skúšobného náboja).",
-      "difficulty": "easy"
-    },
-    {
-      "id": 5,
-      "question": "Ak sa vzdialenosť od bodového náboja zväčší 2-krát, intenzita poľa sa zmenší:",
-      "options": [
-        "a) 2-krát",
-        "b) 4-krát",
-        "c) 8-krát",
-        "d) 16-krát"
-      ],
-      "correctAnswer": 1,
-      "explanation": "E ∼ 1/r², takže E₂ = E₁/4",
       "difficulty": "medium"
     },
     {
+      "id": 3,
+      "question": "Intenzita elektrického poľa v okolí bodového náboja Q vo vzdialenosti r od náboja je:",
+      "options": [
+        "a) E = k·Q/r",
+        "b) E = k·Q/r²",
+        "c) E = k·Q/r³",
+        "d) E = k·Q²/r²"
+      ],
+      "correctAnswer": 1,
+      "explanation": "E = F/q = k·Qq/(r²q) = k·Q/r².",
+      "difficulty": "medium",
+      "formula": "E = k·Q/r²"
+    },
+    {
+      "id": 4,
+      "question": "Smer intenzity elektrického poľa vytvoreného kladným bodovým nábojom je:",
+      "options": [
+        "a) radiálne smerom k náboju",
+        "b) radiálne smerom od náboja",
+        "c) tangenciálny ku kružnici okolo náboja",
+        "d) závisí od permitivity prostredia"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Smer intenzity elektrického poľa je definovaný ako smer sily pôsobiacej na kladný skúšobný náboj. Kladný bodový náboj kladný skúšobný náboj odpudzuje, preto je intenzita poľa orientovaná radiálne smerom od bodového náboja.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "question": "Ak sa vzdialenosť od bodového náboja zväčší 2-krát, intenzita elektrického poľa sa:",
+      "options": [
+        "a) zmenší 16-krát",
+        "b) zmenší 4-krát",
+        "c) zväčší 8-krát",
+        "d) zmenší 2-krát"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Intenzita elektrického poľa v okolí bodového náboja E = k·Q/r² je nepriamo úmerná štvorcu vzdialenosti. E' = E/2² = E/4.",
+      "difficulty": "medium",
+      "formula": "E ∼ 1/r²"
+    },
+    {
       "id": 6,
-      "question": "Siločiara je krivka, ktorej dotyčnica v každom bode má smer:",
+      "question": "Siločiara elektrického poľa je krivka, ktorej dotyčnica v každom bode má smer:",
       "options": [
         "a) intenzity elektrického poľa",
         "b) gradientu potenciálu",
@@ -79,8 +81,8 @@
         "d) magnetickej indukcie"
       ],
       "correctAnswer": 0,
-      "explanation": "Siločiara je tangentová krivka k vektoru intenzity elektrického poľa.",
-      "difficulty": "easy"
+      "explanation": "Dotyčnica k siločiare v každom bode má smer intenzity elektrického poľa v tomto bode.",
+      "difficulty": "medium"
     },
     {
       "id": 7,
@@ -92,7 +94,7 @@
         "d) sú vždy priame"
       ],
       "correctAnswer": 2,
-      "explanation": "Siločiary začínajú na kladných nábojoch a končia na záporných nábojoch.",
+      "explanation": "Siločiary elektrického poľa vychádzajú z kladných nábojov a končia na záporných nábojoch. Nie sú uzavreté a vo všeobecnosti sú zakrivené.",
       "difficulty": "medium"
     },
     {
@@ -100,108 +102,112 @@
       "question": "Superpozícia elektrických polí znamená, že:",
       "options": [
         "a) polia sa navzájom rušia",
-        "b) výsledné pole je vektorový súčet jednotlivých polí",
-        "c) polia sú nezávislé",
-        "d) siločiary sa nikdy nepretínajú"
+        "b) výsledné elektrické pole je vektorovým súčtom jednotlivých polí",
+        "c) intenzita výsledného poľa je aritmetickým súčtom veľkostí jednotlivých polí",
+        "d) siločiary jednotlivých polí sa nikdy nepretínajú"
       ],
       "correctAnswer": 1,
-      "explanation": "Princíp superpozície: E = E₁ + E₂ + ... (vektorový súčet).",
+      "explanation": "Podľa princípu superpozície je výsledná intenzita elektrického poľa v ľubovoľnom bode vektorovým súčtom intenzít všetkých polí pôsobiacich v tomto bode: E = E₁ + E₂ + ... (vektorový súčet).",
       "difficulty": "medium"
     },
     {
       "id": 9,
-      "question": "Intenzita poľa vo vnútri vodivej gule s nábojem Q je:",
+      "question": "Intenzita elektrického poľa vo vnútri nabitej vodivej gule je:",
       "options": [
         "a) konštantná",
-        "b) nulová",
-        "c) maximálna v strede",
+        "b) maximálna v strede",
+        "c) nulová",
         "d) úmerná 1/r²"
       ],
-      "correctAnswer": 1,
-      "explanation": "Vo vnútri vodivej gule je intenzita elektrického poľa nulová (Faradayova klietka).",
-      "difficulty": "hard"
+      "correctAnswer": 2,
+      "explanation": "Vo vodiči v elektrostatickej rovnováhe sa všetok prebytočný náboj nachádza na jeho povrchu. Intenzita elektrického poľa vo vnútri vodivej gule je preto nulová.",
+      "difficulty": "medium"
     },
     {
       "id": 10,
-      "question": "Čiary konštantného potenciálu sú:",
+      "question": "Aký veľký je bodový náboj, ktorý v bode vzdialenom 10 cm budí elektrické pole o intenzite 20 N/C? (k = 1/(4πε₀) ≈ 9×10⁹ N·m²/C²)",
       "options": [
-        "a) rovnobežné so siločiarami",
-        "b) kolmé na siločiary",
-        "c) pod uhlom 45°",
-        "d) nikdy neexistujú"
+        "a) 0,22×10⁻⁶ C",
+        "b) 0,44×10⁻⁶ C",
+        "c) 2,2×10⁻¹² C",
+        "d) 22×10⁻¹² C"
       ],
-      "correctAnswer": 1,
-      "explanation": "Ekvinipotenciálne plochy sú vždy kolmé na siločiary.",
-      "difficulty": "medium"
+      "correctAnswer": 3,
+      "explanation": "E = k·Q/r² ⇒ Q = Er²/k = 20 · 0,1²/(9×10⁹) = 2,2×10⁻¹¹ C = 22 pC.",
+      "difficulty": "medium",
+      "formula": "Q = E·r²/k"
     },
     {
       "id": 11,
-      "question": "Intenzita poľa medzi dvoma rovnobežnými doskami s opačnými nábojmi je:",
+      "question": "Dva bodové náboje Q₁ = 9Q a Q₂= 4Q sú vo vzdialenosti 10 cm od seba. V akej vzdialenosti od prvého náboja je na spojnici oboch nábojov výsledné elektrické pole nulové?",
       "options": [
-        "a) nulová",
-        "b) konštantná",
-        "c) lineárne rastúca",
-        "d) kvadraticky rastúca"
+        "a) 4 cm",
+        "b) 5 cm",
+        "c) 6 cm",
+        "d) 0,6 cm"
       ],
-      "correctAnswer": 1,
-      "explanation": "Medzi dvoma veľkými rovnobežnými doskami je homogénne pole E = σ/ε₀.",
-      "difficulty": "medium"
+      "correctAnswer": 2,
+      "explanation": "Keďže oba náboje majú rovnaké znamienko, bod s nulovou intenzitou elektrického poľa sa nachádza na spojnici medzi nimi. V tomto bode majú intenzity elektrických polí od oboch nábojov rovnakú veľkosť, ale opačný smer, takže sa navzájom vyrušia: E₁ = E₂ ⇒ k·9Q/x² = k·4Q/(10-x)² ⇒ 3/x = 2/(10-x) ⇒ x = 6 cm od prvého náboja.",
+      "difficulty": "medium",
+      "formula": "k·9Q/x² = k·4Q/(10-x)²"
     },
     {
       "id": 12,
-      "question": "Aký je smer intenzity poľa záporného bodového náboja?",
+      "question": "Aký je smer intenzity elektrického poľa vytvoreného záporným bodovým nábojom?",
       "options": [
-        "a) radiálne von",
-        "b) radiálne do stredu",
-        "c) tangenciálny",
+        "a) radiálne smerom od náboja",
+        "b) radiálne smerom k náboju",
+        "c) tangenciálny ku kružnici okolo náboja",
         "d) náhodný"
       ],
       "correctAnswer": 1,
-      "explanation": "Pre záporný náboj má intenzita smer do stredu (priťahovanie kladného skúšobného náboja).",
-      "difficulty": "easy"
+      "explanation": "Smer intenzity elektrického poľa je definovaný ako smer sily pôsobiacej na kladný skúšobný náboj. Záporný bodový náboj kladný skúšobný náboj priťahuje, preto je intenzita poľa orientovaná radiálne smerom k bodovému náboju.",
+      "difficulty": "medium"
     },
     {
       "id": 13,
-      "question": "Čo je to elektrický dipólový moment?",
+      "question": "Dva bodové náboje Q₁ = 3 nC a Q₂ = -6 nC sú umiestnené na jednej priamke. Kde sa nachádza bod, v ktorom je výsledná intenzita elektrického poľa nulová?",
       "options": [
-        "a) súčin náboja a vzdialenosti",
-        "b) podiel náboja a vzdialenosti",
-        "c) súčet nábojov",
-        "d) rozdiel nábojov"
+        "a) medzi nábojmi",
+        "b) naľavo od kladného náboja Q₁",
+        "c) napravo od záporného náboja Q₂",
+        "d) miesto s nulovou intenzitou neexistuje"
       ],
-      "correctAnswer": 0,
-      "explanation": "p = q·d, kde q je náboj a d je vektor od záporného ku kladnému náboju.",
+      "correctAnswer": 1,
+      "explanation": "Medzi nábojmi majú intenzity elektrických polí rovnaký smer, preto sa vyrušiť nemôžu. Bod s nulovou intenzitou sa pri nábojoch opačného znamienka nachádza mimo úsečky spájajúcej náboje a vždy na strane náboja s menšou veľkosťou.",
       "difficulty": "medium"
     },
     {
       "id": 14,
-      "question": "Intenzita poľa na osi dipólu vo veľkej vzdialenosti je úmerná:",
+      "question": "Dva bodové náboje Q₁ = 36 nC a Q₂ = -4 nC sú vo vzdialenosti 10 cm od seba, pričom náboj Q₁ sa nachádza naľavo od náboja Q₂. Kde sa nachádza bod, v ktorom je výsledná intenzita elektrického poľa nulová?",
       "options": [
-        "a) 1/r",
-        "b) 1/r²",
-        "c) 1/r³",
-        "d) 1/r⁴"
+        "a) 5 cm napravo od záporného náboja Q₂",
+        "b) v strede medzi nábojmi",
+        "c) 5 cm naľavo od kladného náboja Q₁",
+        "d) 15 cm napravo od záporného náboja Q₂"
       ],
-      "correctAnswer": 2,
-      "explanation": "Pre dipól: E ∼ 1/r³ na osi, E ∼ 1/r³ v rovine kolmej na os.",
-      "difficulty": "hard"
+      "correctAnswer": 0,
+      "explanation": "Keďže náboje majú opačné znamienko, bod s nulovou intenzitou elektrického poľa sa nachádza mimo úsečky spájajúcej náboje, na priamke na strane menšieho náboja. V tomto bode majú intenzity elektrických polí od oboch nábojov rovnakú veľkosť, ale opačný smer, takže sa navzájom vyrušia: E₁ = E₂ ⇒ k·36/(10+x)² = k·4/x² ⇒ 3/(10+x) = 1/x ⇒ x = 5 cm napravo od náboja Q₂.",
+      "difficulty": "medium",
+      "formula": "k·36/(10+x)² = k·4/x²"
     },
     {
       "id": 15,
-      "question": "Gradient elektrického potenciálu sa rovná:",
+      "question": "Atóm plutónia má polomer jadra 6,64 fm a atómové číslo Z = 94. Aká je veľkosť elektrickej intenzity na povrchu jadra za predpokladu, že je kladný náboj v jadre rozdelený rovnomerne? (k = 1/(4πε₀) ≈ 9×10⁹ N·m²/C², e = 1,602×10⁻¹⁹ C)",
       "options": [
-        "a) intenzite poľa",
-        "b) zápornej intenzite poľa",
-        "c) energii poľa",
-        "d) toku poľa"
+        "a) 2,1×10²¹ N/C",
+        "b) 2,1×10²² N/C",
+        "c) 3,1×10¹² N/C",
+        "d) 3,1×10²¹ N/C"
       ],
-      "correctAnswer": 1,
-      "explanation": "E = -∇V, intenzita je záporný gradient potenciálu.",
-      "difficulty": "hard"
+      "correctAnswer": 3,
+      "explanation": "E = k·Ze/r² = 9×10⁹ · 94 · 1,602×10⁻¹⁹ / (6,64×10⁻¹⁵)² = 3,1×10²¹ N/C.",
+      "difficulty": "medium",
+      "formula": "E = k·Ze/r²"
     },
     {
       "id": 16,
-      "question": "Ktoré tvrdenie o siločiarach je nepravdivé?",
+      "question": "Ktoré tvrdenie o siločiarach elektrostatického poľa je nepravdivé?",
       "options": [
         "a) nikdy sa nepretínajú",
         "b) začínajú na kladných nábojoch",
@@ -209,60 +215,62 @@
         "d) môžu byť uzavreté"
       ],
       "correctAnswer": 3,
-      "explanation": "Siločiary elektrostatického poľa nie sú uzavreté (na rozdiel od magnetického poľa).",
+      "explanation": "Siločiary elektrostatického poľa sa nikdy nepretínajú. Začínajú na kladných nábojoch a končia na záporných nábojoch. Na rozdiel od siločiar magnetického poľa netvoria uzavreté krivky.",
       "difficulty": "medium"
     },
     {
       "id": 17,
-      "question": "Intenzita poľa nekonečne dlhého nabitého vodiča je úmerná:",
+      "question": "Aká je veľkosť intenzity elektrického poľa vytvoreného bodovým nábojom -2 μC vo vzdialenosti 5 cm od náboja? (k = 1/(4πε₀) ≈ 9×10⁹ N·m²/C²)",
       "options": [
-        "a) 1/r",
-        "b) 1/r²",
-        "c) 1/r³",
-        "d) konštantná"
+        "a) 7,2×10³ N/C",
+        "b) 3,6×10⁶ N/C",
+        "c) 7,2×10⁶ N/C",
+        "d) 3,6×10¹² N/C"
       ],
-      "correctAnswer": 0,
-      "explanation": "Pre nekonečne dlhý vodič: E = λ/(2πε₀r) ∼ 1/r.",
-      "difficulty": "hard"
+      "correctAnswer": 2,
+      "explanation": "E = k·Q/r² = 9×10⁹ · 2×10⁻⁶/(0,05)² = 7,2×10⁶ N/C.",
+      "difficulty": "medium",
+      "formula": "E = k·|Q|/r²"
     },
     {
       "id": 18,
       "question": "Ak je intenzita poľa 100 V/m, aká sila pôsobí na náboj 2 μC?",
       "options": [
-        "a) 0.2 mN",
-        "b) 0.5 mN",
+        "a) 0,2 mN",
+        "b) 0,5 mN",
         "c) 2 mN",
         "d) 5 mN"
       ],
       "correctAnswer": 0,
-      "explanation": "F = qE = 2×10⁻⁶ × 100 = 2×10⁻⁴ N = 0.2 mN",
-      "difficulty": "medium"
+      "explanation": "F = qE = 2×10⁻⁶ × 100 = 2×10⁻⁴ N = 0,2 mN.",
+      "difficulty": "medium",
+      "formula": "F = q·E"
     },
     {
       "id": 19,
-      "question": "Intenzita poľa nabitej roviny s plošnou hustotou σ je:",
+      "question": "Aká je intenzita elektrického poľa v strede spojnice medzi dvomi rovnakými bodovými nábojmi?",
       "options": [
-        "a) σ/ε₀",
-        "b) σ/(2ε₀)",
-        "c) σ/(4ε₀)",
-        "d) σ/(8ε₀)"
+        "a) E = 2k·Q/r²",
+        "b) závisí od vzdialenosti medzi nábojmi",
+        "c) nulová",
+        "d) maximálna"
       ],
-      "correctAnswer": 1,
-      "explanation": "Pre nekonečnú rovinu: E = σ/(2ε₀) na každej strane.",
-      "difficulty": "hard"
+      "correctAnswer": 2,
+      "explanation": "Od stredu spojnice sú oba náboje rovnako vzdialené. Intenzity elektrického poľa od jednotlivých nábojov majú rovnakú veľkosť, ale opačný smer, preto sa navzájom vyrušia a výsledná intenzita elektrického poľa je nulová.",
+      "difficulty": "medium"
     },
     {
       "id": 20,
-      "question": "Hustota siločiar je úmerná:",
+      "question": "Hustota siločiar elektrického poľa je úmerná:",
       "options": [
-        "a) veľkosti intenzity poľa",
+        "a) potenciálnej energii",
         "b) veľkosti náboja",
-        "c) potenciálu",
-        "d) energii"
+        "c) elektrickému potenciálu",
+        "d) veľkosti intenzity elektrického poľa"
       ],
-      "correctAnswer": 0,
-      "explanation": "Čím hustejšie siločiary, tým väčšia intenzita elektrického poľa.",
-      "difficulty": "easy"
+      "correctAnswer": 3,
+      "explanation": "Hustota siločiar je grafickým vyjadrením veľkosti intenzity elektrického poľa. Čím sú siločiary v danej oblasti hustejšie, tým je intenzita elektrického poľa väčšia.",
+      "difficulty": "medium"
     }
   ]
 }
