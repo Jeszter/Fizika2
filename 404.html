@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fyzika II</title>
     <script>
-        sessionStorage.redirect = location.pathname + location.search + location.hash;
+        sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
         location.replace('/Fizika2/');
     </script>
 </head>
