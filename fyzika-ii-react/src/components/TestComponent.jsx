@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../TestComponent.css';
+import { storage } from '../utils/storage';
 
 const TestComponent = ({ topicId }) => {
     const [questions, setQuestions] = useState([]);
@@ -40,19 +41,22 @@ const TestComponent = ({ topicId }) => {
         }
 
         return () => clearInterval(timer);
-    }, [testCompleted, timeLeft, selectedAnswers, questions]);
+    }, [testCompleted, timeLeft]);
 
     const loadQuestions = async () => {
         setLoading(true);
 
         try {
-            const response = await fetch(`/Fizika2/tests/${topicId}-test.json`);
+            const teacherTest = storage.getTeacherTests()[topicId];
+            let data;
 
-            if (!response.ok) {
-                throw new Error('Test file not found');
+            if (teacherTest?.questions?.length) {
+                data = teacherTest;
+            } else {
+                const response = await fetch(`${import.meta.env.BASE_URL}tests/${topicId}-test.json`);
+                if (!response.ok) throw new Error('Test file not found');
+                data = await response.json();
             }
-
-            const data = await response.json();
 
             let selectedQuestions = [...data.questions];
 
@@ -72,40 +76,10 @@ const TestComponent = ({ topicId }) => {
             setShowResults(false);
         } catch (error) {
             console.error('Error loading questions:', error);
-            createMockQuestions();
+            setQuestions([]);
         } finally {
             setLoading(false);
         }
-    };
-
-    const createMockQuestions = () => {
-        const mockQuestions = [];
-        const topicName = topicId.replace('-', ' ');
-
-        for (let i = 0; i < 10; i++) {
-            mockQuestions.push({
-                id: i + 1,
-                question: `Príkladová otázka ${i + 1} pre ${topicName}: Aká je hlavná vlastnosť tejto témy?`,
-                options: [
-                    'A) Prvá možnosť',
-                    'B) Druhá možnosť',
-                    'C) Tretia možnosť',
-                    'D) Štvrtá možnosť'
-                ],
-                correctAnswer: Math.floor(Math.random() * 4),
-                explanation: `Toto je príkladové vysvetlenie pre otázku ${i + 1}.`,
-                difficulty: ['easy', 'medium', 'hard'][i % 3]
-            });
-        }
-
-        setQuestions(mockQuestions);
-        setSelectedAnswers({});
-        setCurrentQuestionIndex(0);
-        setScore(0);
-        setTimeLeft(900);
-        setTimeSpent(0);
-        setTestCompleted(false);
-        setShowResults(false);
     };
 
     const handleAnswerSelect = (questionIndex, answerIndex) => {
@@ -146,12 +120,13 @@ const TestComponent = ({ topicId }) => {
     };
 
     const saveResult = (scoreValue, total, topic) => {
-        const results = JSON.parse(localStorage.getItem('testResults') || '[]');
+        const results = storage.getResults();
         const percentage = Math.round((scoreValue / total) * 100);
 
         results.push({
             date: new Date().toISOString(),
-            topic: topic.replace('-', ' '),
+            topicId: topic,
+            topic: topic.replaceAll('-', ' '),
             score: scoreValue,
             total,
             percentage,
@@ -159,7 +134,7 @@ const TestComponent = ({ topicId }) => {
             timestamp: Date.now()
         });
 
-        localStorage.setItem('testResults', JSON.stringify(results.slice(-50)));
+        storage.setResults(results);
     };
 
     const restartTest = () => {
@@ -182,9 +157,9 @@ const TestComponent = ({ topicId }) => {
     };
 
     const getTestHistory = () => {
-        const results = JSON.parse(localStorage.getItem('testResults') || '[]');
+        const results = storage.getResults();
 
-        return results.filter(result => result.topic === topicId.replace('-', ' '));
+        return results.filter(result => (result.topicId || result.topic?.replaceAll(' ', '-')) === topicId);
     };
 
     if (loading) {
@@ -200,7 +175,7 @@ const TestComponent = ({ topicId }) => {
         return (
             <div className="test-error">
                 <i className="fas fa-exclamation-triangle"></i>
-                <p>Nie sú k dispozícii otázky pre túto tému.</p>
+                <p>Test pre túto tému sa ešte pripravuje.</p>
                 <button onClick={loadQuestions} className="btn btn-primary mt-4">
                     Skúsiť znova
                 </button>

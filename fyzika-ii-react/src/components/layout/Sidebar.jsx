@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { getTestResults, buildTestMap } from './ProgressModal'
+import { getTestResults, buildTestMap } from './Progressmodal'
 
 // ─── Sidebar ──────────────────────────────────────────────────────────────────
-const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, sidebarOpen, setSidebarOpen }) => {
+const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, setSidebarOpen }) => {
     const [openMenus, setOpenMenus] = useState(['elektrostatika', 'elektricky-proud'])
     const [testMap, setTestMap]     = useState({})
 

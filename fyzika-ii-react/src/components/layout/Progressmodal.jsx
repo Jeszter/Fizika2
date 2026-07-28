@@ -9,7 +9,7 @@ export const getTestResults = () => {
 export const buildTestMap = (results) => {
     const map = {}
     results.forEach(r => {
-        const sectionId = r.topic.replace(' ', '-')
+        const sectionId = r.topicId || r.topic.replaceAll(' ', '-')
         if (!map[sectionId] || r.percentage > map[sectionId].percentage) {
             map[sectionId] = r
         }
@@ -161,7 +161,7 @@ const ProgressModal = ({ sections, sectionTitles, onClose }) => {
                         <div className="flex-1 min-w-0">
                             <p className="text-[10px] text-text-light dark:text-gray-400">Posledná aktivita</p>
                             <p className="text-xs font-medium text-text-dark dark:text-gray-200 truncate">
-                                {sectionTitles[lastActivity.topic.replace(' ', '-')] || lastActivity.topic}
+                                {sectionTitles[lastActivity.topicId || lastActivity.topic.replaceAll(' ', '-')] || lastActivity.topic}
                                 <span className={`ml-1.5 font-bold ${lastActivity.percentage >= 51 ? 'text-green-500' : 'text-red-400'}`}>
                                     {lastActivity.percentage}%
                                 </span>
@@ -287,7 +287,7 @@ const ProgressModal = ({ sections, sectionTitles, onClose }) => {
 
                                     <div className="space-y-2">
                                         {sortedResults.map((result, i) => {
-                                            const sectionId = result.topic.replace(' ', '-')
+                                            const sectionId = result.topicId || result.topic.replaceAll(' ', '-')
                                             const isPassed  = result.percentage >= 51
                                             return (
                                                 <div key={i} className={`flex items-center gap-3 p-3 rounded-xl border ${
