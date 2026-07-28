@@ -119,36 +119,7 @@ const sectionTitles = {
     'sily-v-mikrosvete': 'Sily v mikrosvete',
 }
 
-const contentCache = new Map()
-
-const cleanChapterHtml = (html) => {
-    const documentNode = new DOMParser().parseFromString(html, 'text/html')
-    documentNode.querySelectorAll('script, style, .animated-bg, .floating-shapes').forEach(node => node.remove())
-    documentNode.querySelectorAll('*').forEach(node => {
-        Array.from(node.attributes).forEach(attribute => {
-            if (attribute.name.startsWith('on')) node.removeAttribute(attribute.name)
-        })
-    })
-    return documentNode.body.innerHTML
-}
-
-const getChapterHtml = async (sectionId) => {
-    if (contentCache.has(sectionId)) return contentCache.get(sectionId)
-    const request = fetch(`${import.meta.env.BASE_URL}content/${sectionId}.html`)
-        .then(response => {
-            if (!response.ok) throw new Error('Chapter is not available')
-            return response.text()
-        })
-        .then(cleanChapterHtml)
-        .catch(error => {
-            contentCache.delete(sectionId)
-            throw error
-        })
-    contentCache.set(sectionId, request)
-    return request
-}
-
-const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTitles, onStartTest }) => {
+const ContentSection = memo(({ activeSection, sectionContent, loading, sectionTitles, getChapterNumber, onStartTest }) => {
     const contentRef     = useRef(null)
     const currentIndex   = sections.indexOf(activeSection)
     const isFirstSection = currentIndex === 0
@@ -330,20 +301,19 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
     const loadSection = useCallback(async (sectionId) => {
         setLoading(true)
         try {
-            const htmlContent = await getChapterHtml(sectionId)
+            const response = await fetch(`/Fizika2/content/${sectionId}.html`)
+            if (!response.ok) throw new Error('Failed to load content')
+            let htmlContent = await response.text()
+            htmlContent = htmlContent.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+            htmlContent = htmlContent.replace(/<div class="animated-bg"><\/div>/gi, '')
+            htmlContent = htmlContent.replace(/<div class="floating-shapes">.*?<\/div>/gs, '')
             setSectionContent(htmlContent)
-
-            const index = sections.indexOf(sectionId)
-            const neighbours = [sections[index - 1], sections[index + 1]].filter(Boolean)
-            const schedulePrefetch = () => neighbours.forEach(id => getChapterHtml(id).catch(() => {}))
-            if ('requestIdleCallback' in window) window.requestIdleCallback(schedulePrefetch, { timeout: 1500 })
-            else setTimeout(schedulePrefetch, 250)
         } catch (error) {
             console.error('Error loading section:', error)
             setSectionContent(`
                 <div class="section active" id="error">
-                    <h2><i class="fas fa-hourglass-half"></i> Kapitola sa pripravuje</h2>
-                    <p>Materiál pre túto tému bude doplnený čoskoro. Zatiaľ môžete pokračovať inou pripravenou kapitolou.</p>
+                    <h2><i class="fas fa-exclamation-triangle"></i> Chyba pri načítavaní</h2>
+                    <p>Obsah sekcie sa nepodarilo načítať. Skúste to prosím neskôr.</p>
                 </div>
             `)
         } finally {
@@ -445,6 +415,7 @@ const ContentPage = ({ sidebarOpen, setSidebarOpen }) => {
                         sectionContent={sectionContent}
                         loading={loading}
                         sectionTitles={sectionTitles}
+                        getChapterNumber={getChapterNumber}
                         onStartTest={startTest}
                     />
                 )}

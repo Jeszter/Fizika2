@@ -1,37 +1,61 @@
-import { Link } from 'react-router-dom'
-import { courseGroups, getGroupSections } from '../data/courseCatalog'
+import React from 'react'
 
-const FeaturesSection = () => (
-  <>
-    <section className="benefits-strip">
-      <article><span><i className="fas fa-gauge-high" /></span><div><strong>Rýchle štúdium</strong><p>Obsah sa načítava bez čakania</p></div></article>
-      <article><span><i className="fas fa-brain" /></span><div><strong>Aktívne učenie</strong><p>Teória, príklady a overenie vedomostí</p></div></article>
-      <article><span><i className="fas fa-chart-simple" /></span><div><strong>Jasný pokrok</strong><p>Výsledky zostanú vo vašom zariadení</p></div></article>
-    </section>
-    <section className="course-map-section" id="course-map">
-      <div className="section-heading">
-        <span className="eyebrow">Mapa kurzu</span>
-        <h2>Od elektrického náboja<br />až po kvantový svet</h2>
-        <p>Vyberte si oblasť a pokračujte vlastným tempom.</p>
-      </div>
-      <div className="course-map-grid">
-        {courseGroups.map((group, index) => {
-          const sections = getGroupSections(group.id)
-          const firstReady = sections.find((section) => section.ready)
-          const ready = sections.filter((section) => section.ready).length
-          return (
-            <Link key={group.id} to={firstReady ? `/${firstReady.id}` : '/'} className={`course-map-card accent-${group.accent} ${!firstReady ? 'is-upcoming' : ''}`}>
-              <span className="course-card-index">{String(index + 1).padStart(2, '0')}</span>
-              <span className="group-icon"><i className={`fas ${group.icon}`} /></span>
-              <h3>{group.title}</h3>
-              <p>{ready ? `${ready} pripravených kapitol` : 'Obsah sa pripravuje'}</p>
-              <div><span>{ready}/{sections.length}</span><i className="fas fa-arrow-right" /></div>
-            </Link>
-          )
-        })}
-      </div>
-    </section>
-  </>
-)
+const FeaturesSection = () => {
+    const features = [
+        {
+            icon: 'fa-bolt',
+            title: 'Elektrostatika',
+            description: 'Coulombov zákon, elektrické pole, potenciál a kapacita v prehľadnej forme'
+        },
+        {
+            icon: 'fa-magnet',
+            title: 'Magnetizmus',
+            description: 'Magnetické polia, elektromagnetická indukcia a striedavé prúdy'
+        },
+        {
+            icon: 'fa-lightbulb',
+            title: 'Optika',
+            description: 'Geometrická a vlnová optika, interferencia a difrakcia svetla'
+        },
+        {
+            icon: 'fa-atom',
+            title: 'Modernejšia fyzika',
+            description: 'Špeciálna teória relativity a úvod do kvantovej fyziky'
+        }
+    ]
+
+    return (
+        <section className="py-24 px-8 bg-surface dark:bg-gray-800/50">
+            <div className="text-center mb-16">
+                <h2 className="text-5xl font-bold mb-4 text-text-dark dark:text-white">
+                    Čo nájdete v kurze
+                </h2>
+                <p className="text-xl text-text-light dark:text-gray-300 max-w-3xl mx-auto">
+                    Prehľadná štruktúra a kvalitné vzdelávacie materiály
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                {features.map((feature, index) => (
+                    <div
+                        key={index}
+                        className="bg-white dark:bg-gray-800 p-10 rounded-custom-lg text-center shadow-custom dark:shadow-dark-custom border border-border dark:border-gray-700 transition-all duration-300 relative overflow-hidden hover:-translate-y-2 hover:shadow-custom-hover dark:hover:shadow-dark-custom-hover"
+                    >
+
+                        <div className="w-20 h-20 bg-primary-blue rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-3xl transition-all duration-300 hover:scale-110">
+                            <i className={`fas ${feature.icon}`}></i>
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-text-dark dark:text-white">
+                            {feature.title}
+                        </h3>
+                        <p className="text-text-light dark:text-gray-300">
+                            {feature.description}
+                        </p>
+                    </div>
+                ))}
+            </div>
+        </section>
+    )
+}
 
 export default FeaturesSection
