@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import HomePage from './pages/HomePage'
 import ContentPage from './pages/ContentPage'
+import TeacherPanel from './pages/TeacherPanel'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Navigation from './components/layout/Navigation'
@@ -41,6 +42,21 @@ const App = () => {
 
                         <Routes>
                             <Route path="/" element={<HomePage />} />
+                            <Route path="/teacher" element={<TeacherPanel />} />
+                            <Route path="/teacher/edit/:chapterId" element={
+                                <ContentPage
+                                    sidebarOpen={sidebarOpen}
+                                    setSidebarOpen={setSidebarOpen}
+                                    teacherEditMode
+                                />
+                            } />
+                            <Route path="/teacher/edit-test/:chapterId" element={
+                                <ContentPage
+                                    sidebarOpen={sidebarOpen}
+                                    setSidebarOpen={setSidebarOpen}
+                                    teacherTestEditMode
+                                />
+                            } />
                             <Route path="/:sectionId" element={
                                 <ContentPage
                                     sidebarOpen={sidebarOpen}

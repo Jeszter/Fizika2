@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import { getTestResults, buildTestMap } from './ProgressModal'
+import { getTestResults, buildTestMap } from './Progressmodal'
+import { getCourseData } from '../../utils/courseCms'
 
 // ─── Sidebar ──────────────────────────────────────────────────────────────────
-const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, sidebarOpen, setSidebarOpen }) => {
-    const [openMenus, setOpenMenus] = useState(['elektrostatika', 'elektricky-proud'])
+const Sidebar = ({
+    activeSection,
+    onSectionSelect,
+    sections,
+    sectionTitles,
+    setSidebarOpen,
+    teacherEditMode = false,
+    onRenameGroup,
+    onRenameChapter,
+    onDeleteGroup,
+    onDeleteChapter,
+}) => {
+    const [openMenus, setOpenMenus] = useState(['electrostatics', 'current'])
     const [testMap, setTestMap]     = useState({})
+    const course = getCourseData()
 
     useEffect(() => {
         setTestMap(buildTestMap(getTestResults()))
@@ -19,41 +32,44 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
     }, [])
 
     useEffect(() => {
-        const index = sections.indexOf(activeSection)
-        const groupMap = [
-            { id: 'elektrostatika',               from: 0,  to: 7  },
-            { id: 'elektricky-proud',              from: 8,  to: 10 },
-            { id: 'magneticke-pole',               from: 11, to: 16 },
-            { id: 'elektromagneticke-pole',        from: 17, to: 20 },
-            { id: 'maxwell',                       from: 21, to: 21 },
-            { id: 'elektromagneticke-vlnenie',     from: 22, to: 24 },
-            { id: 'kvantova-mechanika',            from: 25, to: 28 },
-            { id: 'atom',                          from: 29, to: 32 },
-            { id: 'jadro',                         from: 33, to: 36 },
-            { id: 'elementarne-castice',           from: 37, to: 39 },
-        ]
-        const group = groupMap.find(g => index >= g.from && index <= g.to)
-        if (group && !openMenus.includes(group.id)) {
-            setOpenMenus(prev => [...prev, group.id])
+        const chapter = course.chapters.find(item => item.id === activeSection)
+        if (chapter && !openMenus.includes(chapter.groupId)) {
+            setOpenMenus(prev => [...prev, chapter.groupId])
         }
     }, [activeSection])
 
-    const menuData = [
-        { id: 'elektrostatika',           icon: 'fa-bolt',            title: 'Elektrostatické pole',         description: '8 kapitol',  sections: sections.slice(0, 8) },
-        { id: 'elektricky-proud',          icon: 'fa-plug',            title: 'Elektrický prúd v kovoch',     description: '3 kapitoly', sections: sections.slice(8, 11) },
-        { id: 'magneticke-pole',           icon: 'fa-magnet',          title: 'Magnetické pole',              description: '6 kapitol',  sections: sections.slice(11, 17) },
-        { id: 'elektromagneticke-pole',    icon: 'fa-wave-square',     title: 'Elektromagnetické pole',       description: '4 kapitoly', sections: sections.slice(17, 21) },
-        { id: 'maxwell',                   icon: 'fa-infinity',        title: 'Maxwellove rovnice',           description: '1 kapitola', sections: sections.slice(21, 22) },
-        { id: 'elektromagneticke-vlnenie', icon: 'fa-broadcast-tower', title: 'Elektromagnetické vlnenie',    description: '3 kapitoly', sections: sections.slice(22, 25) },
-        { id: 'kvantova-mechanika',        icon: 'fa-atom',            title: 'Základy kvantovej mechaniky',  description: '4 kapitoly', sections: sections.slice(25, 29) },
-        { id: 'atom',                      icon: 'fa-circle-dot',      title: 'Atóm',                         description: '4 kapitoly', sections: sections.slice(29, 33) },
-        { id: 'jadro',                     icon: 'fa-radiation',       title: 'Jadro atómu',                  description: '4 kapitoly', sections: sections.slice(33, 37) },
-        { id: 'elementarne-castice',       icon: 'fa-asterisk',        title: 'Elementárne častice a sily',   description: '3 kapitoly', sections: sections.slice(37) },
-    ]
+    const menuData = course.groups.map(group => {
+        const groupChapters = course.chapters
+            .filter(chapter => chapter.groupId === group.id)
+            .sort((a, b) => a.order - b.order)
+        const ordered = groupChapters
+            .filter(chapter => !chapter.parentId)
+            .flatMap(chapter => [chapter, ...groupChapters.filter(child => child.parentId === chapter.id)])
+        return {
+            ...group,
+            description: `${ordered.length} kapitol`,
+            sections: ordered.map(chapter => chapter.id),
+        }
+    }).filter(menu => menu.sections.length)
+    const orderedMenuSections = menuData.flatMap(menu => menu.sections)
 
     const handleSectionSelect = (sectionId) => {
-        window.dispatchEvent(new CustomEvent('sectionChange', { detail: { sectionId } }))
         onSectionSelect(sectionId)
+    }
+
+    const editGroupTitle = (event, menu) => {
+        event.preventDefault()
+        event.stopPropagation()
+        const title = window.prompt('Názov oddielu:', menu.title)?.trim()
+        if (title && title !== menu.title) onRenameGroup?.(menu.id, title)
+    }
+
+    const editChapterTitle = (event, sectionId) => {
+        event.preventDefault()
+        event.stopPropagation()
+        const currentTitle = sectionTitles[sectionId] || sectionId
+        const title = window.prompt('Názov kapitoly:', currentTitle)?.trim()
+        if (title && title !== currentTitle) onRenameChapter?.(sectionId, title)
     }
 
     const readSections = sections.filter(s => testMap[s] && testMap[s].percentage >= 51)
@@ -89,16 +105,17 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                 <ul className="p-4">
                     {menuData.map((menu) => (
                         <li key={menu.id} className="menu-item mb-2">
-                            <button
-                                onClick={() => setOpenMenus(prev =>
-                                    prev.includes(menu.id) ? prev.filter(id => id !== menu.id) : [...prev, menu.id]
-                                )}
-                                className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${
+                            <div className="relative">
+                                <button
+                                    onClick={() => setOpenMenus(prev =>
+                                        prev.includes(menu.id) ? prev.filter(id => id !== menu.id) : [...prev, menu.id]
+                                    )}
+                                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${
                                     openMenus.includes(menu.id)
                                         ? 'bg-primary-blue/10 dark:bg-blue-500/20 text-primary-blue dark:text-blue-400'
                                         : 'text-text-dark dark:text-gray-300 hover:bg-primary-blue-bg dark:hover:bg-gray-700/50'
-                                }`}
-                            >
+                                } ${teacherEditMode ? 'pr-24' : ''}`}
+                                >
                                 <div className="flex items-center gap-3">
                                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                                         openMenus.includes(menu.id)
@@ -116,28 +133,56 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                         <div className="text-xs text-text-light dark:text-gray-400">{menu.description}</div>
                                     </div>
                                 </div>
-                                <i className={`fas fa-chevron-down transition-transform duration-300 ${
+                                    <i className={`fas fa-chevron-down transition-transform duration-300 ${
                                     openMenus.includes(menu.id)
                                         ? 'rotate-180 text-primary-blue dark:text-blue-400'
                                         : 'text-text-light dark:text-gray-400'
                                 }`}></i>
-                            </button>
+                                </button>
+                                {teacherEditMode && (
+                                    <button
+                                        type="button"
+                                        onClick={event => editGroupTitle(event, menu)}
+                                        className="teacher-sidebar-pencil absolute right-12 top-1/2 -translate-y-1/2"
+                                        aria-label={`Upraviť názov oddielu ${menu.title}`}
+                                        title="Upraviť názov oddielu"
+                                    >
+                                        <i className="fas fa-pen"></i>
+                                    </button>
+                                )}
+                                {teacherEditMode && (
+                                    <button
+                                        type="button"
+                                        onClick={event => {
+                                            event.preventDefault()
+                                            event.stopPropagation()
+                                            onDeleteGroup?.(menu.id)
+                                        }}
+                                        className="teacher-sidebar-delete absolute right-2 top-1/2 -translate-y-1/2"
+                                        aria-label={`Odstrániť oddiel ${menu.title}`}
+                                        title="Odstrániť oddiel"
+                                    >
+                                        <i className="fas fa-trash"></i>
+                                    </button>
+                                )}
+                            </div>
 
                             <ul className={`submenu pl-4 overflow-hidden transition-all duration-300 ${
                                 openMenus.includes(menu.id) ? 'max-h-[2000px] opacity-100 mt-2' : 'max-h-0 opacity-0'
                             }`}>
                                 {menu.sections.map((sectionId) => {
                                     const isActive = activeSection === sectionId
-                                    const index    = sections.indexOf(sectionId)
+                                    const index    = orderedMenuSections.indexOf(sectionId)
+                                    const isSubchapter = Boolean(course.chapters.find(chapter => chapter.id === sectionId)?.parentId)
                                     const result   = testMap[sectionId]
                                     const isPassed = result && result.percentage >= 51
                                     const isFailed = result && result.percentage < 51
 
                                     return (
-                                        <li key={sectionId} className="mb-1">
+                                        <li key={sectionId} className="mb-1 relative">
                                             <button
                                                 onClick={() => handleSectionSelect(sectionId)}
-                                                className={`w-full text-left p-3 pl-12 rounded-lg transition-colors duration-200 relative group min-h-[56px] ${
+                                                className={`w-full text-left p-3 ${isSubchapter ? 'pl-16' : 'pl-12'} ${teacherEditMode ? 'pr-20' : ''} rounded-lg transition-colors duration-200 relative group min-h-[56px] ${
                                                     isActive
                                                         ? 'bg-primary-blue/10 dark:bg-blue-500/20 text-primary-blue dark:text-blue-400'
                                                         : 'hover:bg-primary-blue/5 dark:hover:bg-blue-500/10 text-text-dark dark:text-gray-400'
@@ -178,6 +223,32 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary-blue dark:bg-blue-400"></span>
                                                 )}
                                             </button>
+                                            {teacherEditMode && (
+                                                <button
+                                                    type="button"
+                                                    onClick={event => editChapterTitle(event, sectionId)}
+                                                    className="teacher-sidebar-pencil absolute right-11 top-1/2 -translate-y-1/2"
+                                                    aria-label={`Upraviť názov kapitoly ${sectionTitles[sectionId] || sectionId}`}
+                                                    title="Upraviť názov kapitoly"
+                                                >
+                                                    <i className="fas fa-pen"></i>
+                                                </button>
+                                            )}
+                                            {teacherEditMode && (
+                                                <button
+                                                    type="button"
+                                                    onClick={event => {
+                                                        event.preventDefault()
+                                                        event.stopPropagation()
+                                                        onDeleteChapter?.(sectionId)
+                                                    }}
+                                                    className="teacher-sidebar-delete absolute right-2 top-1/2 -translate-y-1/2"
+                                                    aria-label={`Odstrániť kapitolu ${sectionTitles[sectionId] || sectionId}`}
+                                                    title="Odstrániť kapitolu"
+                                                >
+                                                    <i className="fas fa-trash"></i>
+                                                </button>
+                                            )}
                                         </li>
                                     )
                                 })}
@@ -187,7 +258,7 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                 </ul>
             </div>
 
-            <div className="p-4 border-t border-border dark:border-gray-700 bg-surface dark:bg-gray-900/30">
+            {!teacherEditMode && <div className="p-4 border-t border-border dark:border-gray-700 bg-surface dark:bg-gray-900/30">
                 <button
                     onClick={() => window.dispatchEvent(new CustomEvent('openProgress'))}
                     className="w-full group"
@@ -212,7 +283,7 @@ const Sidebar = ({ activeSection, onSectionSelect, sections, sectionTitles, side
                         />
                     </div>
                 </button>
-            </div>
+            </div>}
         </div>
     )
 }

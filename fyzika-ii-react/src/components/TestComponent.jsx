@@ -1,29 +1,312 @@
 import React, { useState, useEffect } from 'react';
 import '../TestComponent.css';
+import { getTeacherTests, saveTeacherTests, TESTS_STORAGE_KEY } from '../utils/courseCms';
 
-const TestComponent = ({ topicId }) => {
+const STUDENT_QUESTIONS_COUNT = 10;
+const DEFAULT_TEST_CONFIG = {
+    questionsCount: STUDENT_QUESTIONS_COUNT,
+    randomize: true,
+    timeLimitMinutes: 15,
+};
+
+const shuffled = items => {
+    const result = [...items];
+    for (let index = result.length - 1; index > 0; index--) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+        [result[index], result[randomIndex]] = [result[randomIndex], result[index]];
+    }
+    return result;
+};
+
+const TestSettingsModal = ({ config, bankSize, onSave, onClose }) => {
+    const [draft, setDraft] = useState(config);
+
+    const apply = () => {
+        onSave({
+            questionsCount: Math.max(1, Math.min(bankSize, Number(draft.questionsCount) || 1)),
+            timeLimitMinutes: Math.max(1, Math.min(180, Number(draft.timeLimitMinutes) || 1)),
+            randomize: Boolean(draft.randomize),
+        });
+    };
+
+    return (
+        <div className="teacher-modal-backdrop" onMouseDown={event => event.target === event.currentTarget && onClose()}>
+            <section className="teacher-test-settings-modal" role="dialog" aria-modal="true" aria-label="Nastavenia testu">
+                <header className="teacher-modal-header">
+                    <div><p>Správanie pre študenta</p><h2>Nastavenia testu</h2></div>
+                    <button type="button" onClick={onClose} aria-label="Zavrieť nastavenia testu"><i className="fas fa-times"></i></button>
+                </header>
+                <div className="teacher-test-settings-grid">
+                    <label>
+                        <span className="teacher-setting-icon teacher-setting-icon--blue"><i className="fas fa-list-ol"></i></span>
+                        <span className="teacher-setting-copy"><strong>Počet otázok pre študenta</strong><small>V banke je aktuálne {bankSize} otázok</small></span>
+                        <input
+                            type="number"
+                            min="1"
+                            max={Math.max(1, bankSize)}
+                            value={draft.questionsCount}
+                            onChange={event => setDraft({ ...draft, questionsCount: event.target.value })}
+                            aria-label="Počet otázok pre študenta"
+                        />
+                    </label>
+                    <label>
+                        <span className="teacher-setting-icon teacher-setting-icon--amber"><i className="fas fa-clock"></i></span>
+                        <span className="teacher-setting-copy"><strong>Časový limit</strong><small>Čas na dokončenie jedného pokusu</small></span>
+                        <span className="teacher-setting-input-suffix">
+                            <input
+                                type="number"
+                                min="1"
+                                max="180"
+                                value={draft.timeLimitMinutes}
+                                onChange={event => setDraft({ ...draft, timeLimitMinutes: event.target.value })}
+                                aria-label="Časový limit v minútach"
+                            />
+                            <span>min</span>
+                        </span>
+                    </label>
+                    <label className="teacher-setting-toggle-row">
+                        <span className="teacher-setting-icon teacher-setting-icon--green"><i className="fas fa-shuffle"></i></span>
+                        <span className="teacher-setting-copy"><strong>Náhodný výber</strong><small>Pri každom pokuse vytvorí nový výber a poradie otázok</small></span>
+                        <input
+                            type="checkbox"
+                            checked={draft.randomize}
+                            onChange={event => setDraft({ ...draft, randomize: event.target.checked })}
+                            aria-label="Náhodný výber otázok"
+                        />
+                    </label>
+                </div>
+                <footer className="teacher-modal-footer">
+                    <span>Každá kapitola môže mať vlastný počet otázok a vlastný čas.</span>
+                    <div>
+                        <button type="button" className="teacher-modal-cancel" onClick={onClose}>Zrušiť</button>
+                        <button type="button" className="teacher-modal-primary" onClick={apply}><i className="fas fa-check"></i> Použiť nastavenia</button>
+                    </div>
+                </footer>
+            </section>
+        </div>
+    );
+};
+
+const TeacherTestVisual = ({
+    questions,
+    currentQuestionIndex,
+    setCurrentQuestionIndex,
+    currentQuestion,
+    saveState,
+    updateQuestion,
+    addQuestion,
+    duplicateQuestion,
+    deleteQuestion,
+    saveTeacherTest,
+    prevQuestion,
+    nextQuestion,
+    onExitEditor,
+    markDirty,
+    testConfig,
+    updateTestConfig,
+}) => {
+    const [showSettings, setShowSettings] = useState(false);
+    const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+
+    return (
+        <div className="section active teacher-test-editor" id="test-section">
+            <div className="teacher-builder-toolbar" role="toolbar" aria-label="Vizuálny editor testu">
+                <div className="teacher-builder-toolbar__inner">
+                    <button type="button" className="teacher-tool teacher-tool--back" onClick={onExitEditor}>
+                        <i className="fas fa-arrow-left"></i><span>Panel</span>
+                    </button>
+                    <span className="teacher-toolbar-divider"></span>
+                    <button type="button" className="teacher-tool teacher-tool--text-editor" onClick={addQuestion} title="Pridať otázku">
+                        <i className="fas fa-plus"></i><span>Otázka</span>
+                    </button>
+                    <button type="button" className="teacher-tool" onClick={duplicateQuestion} title="Duplikovať otázku"><i className="fas fa-copy"></i></button>
+                    <button type="button" className="teacher-tool teacher-test-delete-tool" onClick={deleteQuestion} title="Odstrániť otázku"><i className="fas fa-trash"></i></button>
+                    <button type="button" className="teacher-tool teacher-test-settings-tool" onClick={() => setShowSettings(true)} title="Nastavenia testu">
+                        <i className="fas fa-sliders"></i><span>Nastavenia</span>
+                    </button>
+                    <div className="teacher-toolbar-save">
+                        <span className={`teacher-save-state teacher-save-state--${saveState}`}>
+                            {saveState === 'dirty' ? 'Neuložené zmeny' : 'Uložené'}
+                        </span>
+                        <button type="button" className="teacher-save-button" onClick={saveTeacherTest}>
+                            <i className="fas fa-floppy-disk"></i> Uložiť test
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div className="test-header">
+                <div className="test-header-top">
+                    <div className="test-info">
+                        <div className="teacher-test-mode-badge"><i className="fas fa-pen-ruler"></i> Úprava testu</div>
+                        <div className="teacher-test-bank-summary">
+                            <span><strong>{questions.length}</strong> v banke</span>
+                            <i className="fas fa-arrow-right"></i>
+                            <span><strong>{Math.min(Number(testConfig.questionsCount) || 1, questions.length)}</strong> pre študenta</span>
+                            <span className="teacher-test-time-summary"><i className="fas fa-clock"></i> {testConfig.timeLimitMinutes} min</span>
+                        </div>
+                        <div className="questions-dots">
+                            {questions.map((_, index) => (
+                                <button
+                                    key={index}
+                                    className={`question-dot ${index === currentQuestionIndex ? 'current' : ''}`}
+                                    onClick={() => setCurrentQuestionIndex(index)}
+                                    title={`Otázka ${index + 1}`}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
+                        </div>
+                        <div className="test-progress">
+                            <span className="progress-text">Otázka {currentQuestionIndex + 1} z {questions.length}</span>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${progressPercentage}%` }}></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="question active">
+                <div className="question-header">
+                    <h3>Otázka {currentQuestionIndex + 1}</h3>
+                    <label className={`teacher-difficulty-select difficulty-badge ${currentQuestion.difficulty}`}>
+                        <i className="fas fa-gauge-high"></i>
+                        <select
+                            value={currentQuestion.difficulty}
+                            onChange={event => updateQuestion(currentQuestionIndex, { difficulty: event.target.value })}
+                            aria-label="Obtiažnosť otázky"
+                        >
+                            <option value="easy">Ľahká</option>
+                            <option value="medium">Stredná</option>
+                            <option value="hard">Ťažká</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div className="question-text teacher-test-editable">
+                    <span
+                        contentEditable
+                        suppressContentEditableWarning
+                        onInput={markDirty}
+                        onBlur={event => updateQuestion(currentQuestionIndex, { question: event.currentTarget.textContent.trim() })}
+                    >
+                        {currentQuestion.question}
+                    </span>
+                    <i className="fas fa-pen teacher-test-pencil"></i>
+                </div>
+
+                <div className="options">
+                    {currentQuestion.options.map((option, index) => {
+                        const isCorrect = currentQuestion.correctAnswer === index;
+                        return (
+                            <div
+                                key={index}
+                                className={`option teacher-test-option ${isCorrect ? 'selected' : ''}`}
+                                onClick={() => updateQuestion(currentQuestionIndex, { correctAnswer: index })}
+                            >
+                                <div className="option-letter">{String.fromCharCode(65 + index)}</div>
+                                <div
+                                    className="option-text"
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onClick={event => event.stopPropagation()}
+                                    onInput={markDirty}
+                                    onBlur={event => {
+                                        const nextOptions = [...currentQuestion.options];
+                                        nextOptions[index] = event.currentTarget.textContent.trim();
+                                        updateQuestion(currentQuestionIndex, { options: nextOptions });
+                                    }}
+                                >
+                                    {option}
+                                </div>
+                                <button
+                                    type="button"
+                                    className={`teacher-correct-answer ${isCorrect ? 'active' : ''}`}
+                                    onClick={event => {
+                                        event.stopPropagation();
+                                        updateQuestion(currentQuestionIndex, { correctAnswer: index });
+                                    }}
+                                    title="Označiť ako správnu odpoveď"
+                                    aria-label={`Odpoveď ${String.fromCharCode(65 + index)} je správna`}
+                                >
+                                    <i className="fas fa-check"></i>
+                                </button>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                <div className="teacher-test-explanation">
+                    <div className="teacher-test-explanation__label"><i className="fas fa-lightbulb"></i> Vysvetlenie po vyhodnotení</div>
+                    <div
+                        contentEditable
+                        suppressContentEditableWarning
+                        onInput={markDirty}
+                        onBlur={event => updateQuestion(currentQuestionIndex, { explanation: event.currentTarget.textContent.trim() })}
+                    >
+                        {currentQuestion.explanation || 'Doplňte vysvetlenie správnej odpovede…'}
+                    </div>
+                    <i className="fas fa-pen teacher-test-pencil"></i>
+                </div>
+            </div>
+
+            <div className="test-navigation">
+                <div className={`nav-buttons ${currentQuestionIndex === 0 ? 'first-question' : ''}`}>
+                    {currentQuestionIndex > 0 ? (
+                        <button className="btn btn-secondary" onClick={prevQuestion}><i className="fas fa-arrow-left"></i> Predchádzajúca</button>
+                    ) : (
+                        <button className="btn btn-secondary" onClick={onExitEditor}><i className="fas fa-arrow-left"></i> Späť do panela</button>
+                    )}
+                    {currentQuestionIndex < questions.length - 1 ? (
+                        <button className="btn btn-primary" onClick={nextQuestion}>Ďalšia <i className="fas fa-arrow-right"></i></button>
+                    ) : (
+                        <button className="btn btn-primary" onClick={addQuestion}><i className="fas fa-plus"></i> Pridať otázku</button>
+                    )}
+                </div>
+            </div>
+            {showSettings && (
+                <TestSettingsModal
+                    config={testConfig}
+                    bankSize={questions.length}
+                    onClose={() => setShowSettings(false)}
+                    onSave={nextConfig => {
+                        updateTestConfig(nextConfig);
+                        setShowSettings(false);
+                    }}
+                />
+            )}
+        </div>
+    );
+};
+
+const TestComponent = ({ topicId, teacherEditMode = false, onExitEditor, onDirtyChange }) => {
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [score, setScore] = useState(0);
     const [testCompleted, setTestCompleted] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [timeLeft, setTimeLeft] = useState(900);
+    const [timeLeft, setTimeLeft] = useState(DEFAULT_TEST_CONFIG.timeLimitMinutes * 60);
     const [timeSpent, setTimeSpent] = useState(0);
     const [showResults, setShowResults] = useState(false);
-    const [testConfig] = useState({
-        questionsCount: 10,
-        randomize: true
-    });
+    const [saveState, setSaveState] = useState('saved');
+    const [testConfig, setTestConfig] = useState(DEFAULT_TEST_CONFIG);
 
     useEffect(() => {
         loadQuestions();
     }, [topicId]);
 
     useEffect(() => {
+        const refreshQuestions = event => {
+            if (event.key === TESTS_STORAGE_KEY) loadQuestions();
+        };
+        window.addEventListener('storage', refreshQuestions);
+        return () => window.removeEventListener('storage', refreshQuestions);
+    }, [topicId]);
+
+    useEffect(() => {
         let timer;
 
-        if (!testCompleted && timeLeft > 0) {
+        if (!teacherEditMode && !testCompleted && timeLeft > 0) {
             timer = setInterval(() => {
                 setTimeLeft(prev => {
                     if (prev <= 1) {
@@ -40,36 +323,46 @@ const TestComponent = ({ topicId }) => {
         }
 
         return () => clearInterval(timer);
-    }, [testCompleted, timeLeft, selectedAnswers, questions]);
+    }, [testCompleted, timeLeft, selectedAnswers, questions, teacherEditMode]);
 
     const loadQuestions = async () => {
         setLoading(true);
 
         try {
-            const response = await fetch(`/Fizika2/tests/${topicId}-test.json`);
-
-            if (!response.ok) {
-                throw new Error('Test file not found');
+            const teacherTest = getTeacherTests()[topicId];
+            let data;
+            if (teacherTest?.questions?.length) {
+                data = teacherTest;
+            } else {
+                const response = await fetch(`/Fizika2/tests/${topicId}-test.json`);
+                if (!response.ok) throw new Error('Test file not found');
+                data = await response.json();
             }
 
-            const data = await response.json();
-
+            const effectiveConfig = {
+                ...DEFAULT_TEST_CONFIG,
+                ...(data.settings || {}),
+            };
             let selectedQuestions = [...data.questions];
 
-            if (testConfig.randomize) {
-                selectedQuestions = selectedQuestions
-                    .sort(() => Math.random() - 0.5)
-                    .slice(0, testConfig.questionsCount);
+            if (effectiveConfig.randomize && !teacherEditMode) {
+                selectedQuestions = shuffled(selectedQuestions)
+                    .slice(0, effectiveConfig.questionsCount);
+            } else if (!teacherEditMode) {
+                selectedQuestions = selectedQuestions.slice(0, effectiveConfig.questionsCount);
             }
 
+            setTestConfig(effectiveConfig);
             setQuestions(selectedQuestions);
             setSelectedAnswers({});
             setCurrentQuestionIndex(0);
             setScore(0);
-            setTimeLeft(900);
+            setTimeLeft(effectiveConfig.timeLimitMinutes * 60);
             setTimeSpent(0);
             setTestCompleted(false);
             setShowResults(false);
+            setSaveState('saved');
+            onDirtyChange?.(false);
         } catch (error) {
             console.error('Error loading questions:', error);
             createMockQuestions();
@@ -102,17 +395,95 @@ const TestComponent = ({ topicId }) => {
         setSelectedAnswers({});
         setCurrentQuestionIndex(0);
         setScore(0);
-        setTimeLeft(900);
+        setTimeLeft(testConfig.timeLimitMinutes * 60);
         setTimeSpent(0);
         setTestCompleted(false);
         setShowResults(false);
     };
 
     const handleAnswerSelect = (questionIndex, answerIndex) => {
+        if (teacherEditMode) {
+            updateQuestion(questionIndex, { correctAnswer: answerIndex });
+            return;
+        }
         setSelectedAnswers(prev => ({
             ...prev,
             [questionIndex]: answerIndex
         }));
+    };
+
+    const markDirty = () => {
+        setSaveState('dirty');
+        onDirtyChange?.(true);
+    };
+
+    const updateQuestion = (questionIndex, patch) => {
+        setQuestions(current => current.map((question, index) =>
+            index === questionIndex ? { ...question, ...patch } : question
+        ));
+        markDirty();
+    };
+
+    const updateTestConfig = nextConfig => {
+        setTestConfig(nextConfig);
+        markDirty();
+    };
+
+    const addQuestion = () => {
+        const question = {
+            id: crypto.randomUUID?.() || Date.now(),
+            question: 'Nová otázka',
+            options: ['Prvá možnosť', 'Druhá možnosť', 'Tretia možnosť', 'Štvrtá možnosť'],
+            correctAnswer: 0,
+            explanation: 'Doplňte vysvetlenie správnej odpovede.',
+            difficulty: 'medium',
+        };
+        const next = [...questions];
+        next.splice(currentQuestionIndex + 1, 0, question);
+        setQuestions(next);
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        markDirty();
+    };
+
+    const duplicateQuestion = () => {
+        const source = questions[currentQuestionIndex];
+        const copy = {
+            ...source,
+            id: crypto.randomUUID?.() || Date.now(),
+            options: [...source.options],
+            question: `${source.question} – kópia`,
+        };
+        const next = [...questions];
+        next.splice(currentQuestionIndex + 1, 0, copy);
+        setQuestions(next);
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        markDirty();
+    };
+
+    const deleteQuestion = () => {
+        if (questions.length === 1) {
+            window.alert('Test musí obsahovať aspoň jednu otázku.');
+            return;
+        }
+        if (!window.confirm(`Odstrániť otázku ${currentQuestionIndex + 1}?`)) return;
+        const next = questions.filter((_, index) => index !== currentQuestionIndex);
+        setQuestions(next);
+        setCurrentQuestionIndex(Math.min(currentQuestionIndex, next.length - 1));
+        markDirty();
+    };
+
+    const saveTeacherTest = () => {
+        const tests = getTeacherTests();
+        saveTeacherTests({
+            ...tests,
+            [topicId]: {
+                questions,
+                settings: testConfig,
+                updatedAt: new Date().toISOString(),
+            },
+        });
+        setSaveState('saved');
+        onDirtyChange?.(false);
     };
 
     const nextQuestion = () => {
@@ -168,7 +539,7 @@ const TestComponent = ({ topicId }) => {
         setScore(0);
         setTestCompleted(false);
         setShowResults(false);
-        setTimeLeft(900);
+        setTimeLeft(testConfig.timeLimitMinutes * 60);
         setTimeSpent(0);
         setLoading(true);
         loadQuestions();
@@ -369,6 +740,29 @@ const TestComponent = ({ topicId }) => {
 
     const currentQuestion = questions[currentQuestionIndex];
     const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+
+    if (teacherEditMode) {
+        return (
+            <TeacherTestVisual
+                questions={questions}
+                currentQuestionIndex={currentQuestionIndex}
+                setCurrentQuestionIndex={setCurrentQuestionIndex}
+                currentQuestion={currentQuestion}
+                saveState={saveState}
+                updateQuestion={updateQuestion}
+                addQuestion={addQuestion}
+                duplicateQuestion={duplicateQuestion}
+                deleteQuestion={deleteQuestion}
+                saveTeacherTest={saveTeacherTest}
+                prevQuestion={prevQuestion}
+                nextQuestion={nextQuestion}
+                onExitEditor={onExitEditor}
+                markDirty={markDirty}
+                testConfig={testConfig}
+                updateTestConfig={updateTestConfig}
+            />
+        );
+    }
 
     return (
         <div className="section active" id="test-section">

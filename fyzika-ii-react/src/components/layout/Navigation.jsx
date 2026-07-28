@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeContext'
 
 const Navigation = ({ sidebarOpen, toggleSidebar }) => {
     const { isDark, toggleTheme } = useTheme()
     const location = useLocation()
-    const [isContentPage, setIsContentPage] = useState(false)
-
-    useEffect(() => {
-        setIsContentPage(location.pathname !== '/')
-    }, [location])
+    const isContentPage = location.pathname !== '/' && location.pathname !== '/teacher'
 
     return (
         <nav className="fixed top-0 left-0 w-full py-3 px-4 md:px-6 z-50 flex justify-between items-center bg-white dark:bg-gray-900 border-b border-border dark:border-gray-800 shadow-md">
