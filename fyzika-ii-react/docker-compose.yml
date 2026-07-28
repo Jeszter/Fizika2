@@ -1,0 +1,9 @@
+services:
+  fyzika-ii:
+    build:
+      context: .
+      args:
+        VITE_BASE_PATH: /
+    ports:
+      - "8080:80"
+    restart: unless-stopped
